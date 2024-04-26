@@ -10,6 +10,10 @@ class ArrayCommits{
     }
 
     getCommits(){
+        return this.commitsArray;
+    }
+
+    getCommits(){
         return this.commitsArray.map(commit => commit.getTitulo());
     }
 };

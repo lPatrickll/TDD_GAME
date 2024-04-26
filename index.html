@@ -1,10 +1,19 @@
-<html>
-  <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagina Commit</title>
-  </head>
-  <body>
+    <title>Pagina Commits</title>
+</head>
+<body>
     <h1>Sube tus commits</h1>
-  </body>
+    <button id="btnAniadirCommit">Añadir Commit</button>
+    <form id="commitForm" style="display: none;">
+        <input type="text" id="inputTitulo" placeholder="Ingrese el título del commit">
+        <button type="button" id="btnConfirmCommit">Confirmar Commit</button>
+        <div id="mensajeError" style="display: none; color: red;"></div> <!-- Se mueve el div aquí dentro -->
+    </form>
+    <div id="commitContainer"></div>
+    <script src="src/SCRIPTS/principal.js" type="module"></script>
+</body>
 </html>
