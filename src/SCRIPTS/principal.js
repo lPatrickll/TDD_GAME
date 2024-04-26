@@ -1,53 +1,53 @@
-import ArrayCommits from "../OBJETOS/commitsArray"; // Asegúrate de que la ruta del archivo sea correcta
+import ArrayProyectos from "../OBJETOS/proyectosArray"; // Asegúrate de que la ruta del archivo sea correcta
 
-const arrayCommits = new ArrayCommits(); // Esto crea una instancia de ArrayCommits
+const arrayProyectos = new ArrayProyectos(); // Esto crea una instancia de ArrayCommits
 
-const btnAddCommit = document.getElementById('btnAniadirCommit');
-const commitForm = document.getElementById('commitForm');
+const btnAddProyecto = document.getElementById('btnAniadirProyecto');
+const proyectoForm = document.getElementById('proyectoForm');
 const inputTitulo = document.getElementById('inputTitulo');
-const btnConfirmCommit = document.getElementById('btnConfirmCommit');
-const commitContainer = document.getElementById('commitContainer');
+const btnConfirmProyecto = document.getElementById('btnConfirmProyecto');
+const proyectoContainer = document.getElementById('proyectoContainer');
 const mensajeError = document.getElementById('mensajeError');
 
-btnAddCommit.addEventListener('click', () => {
-    btnAddCommit.style.display = 'none'; // Ocultar el botón "Añadir Commit"
-    commitForm.style.display = 'block';
+btnAddProyecto.addEventListener('click', () => {
+    btnAddProyecto.style.display = 'none'; // Ocultar el botón "Añadir Commit"
+    proyectoForm.style.display = 'block';
 });
 
-btnConfirmCommit.addEventListener('click', () => {
-    const tituloCommit = inputTitulo.value;
-    if (tituloCommit) {
-        arrayCommits.aniadirCommit(tituloCommit);
+btnConfirmProyecto.addEventListener('click', () => {
+    const tituloProyecto = inputTitulo.value;
+    if (tituloProyecto) {
+        arrayProyectos.aniadirProyecto(tituloProyecto);
         inputTitulo.value = '';
-        commitForm.style.display = 'none';
-        actualizarCommitsEnPantalla();
+        proyectoForm.style.display = 'none';
+        actualizarProyectosEnPantalla();
         // Mostrar mensaje de éxito y botón "Aceptar"
         const successMessage = document.createElement('div');
-        successMessage.textContent = 'Commit añadido con éxito';
+        successMessage.textContent = 'Proyecto añadido con éxito';
         const acceptButton = document.createElement('button');
         acceptButton.textContent = 'Aceptar';
         acceptButton.addEventListener('click', () => {
-            commitContainer.removeChild(successMessage);
+            proyectoContainer.removeChild(successMessage);
         });
         successMessage.appendChild(acceptButton);
-        commitContainer.appendChild(successMessage);
+        proyectoContainer.appendChild(successMessage);
         // Restaurar la visibilidad del botón "Añadir Commit"
-        btnAddCommit.style.display = 'block';
+        btnAddProyecto.style.display = 'block';
         // Ocultar y restablecer el mensaje de error
         mensajeError.textContent = '';
         mensajeError.style.display = 'none';
     } else {
-        mensajeError.textContent = 'Por favor ingrese un título para el commit.';
+        mensajeError.textContent = 'Por favor ingrese un título para el proyecto.';
         mensajeError.style.display = 'block';
     }
 });
 
-function actualizarCommitsEnPantalla() {
-    commitContainer.innerHTML = '';
-    const commits = arrayCommits.getCommits();
-    commits.forEach(commit => {
-        const commitElement = document.createElement('div');
-        commitElement.textContent = commit; // No es necesario llamar a commit.getTitulo() aquí
-        commitContainer.appendChild(commitElement);
+function actualizarProyectosEnPantalla() {
+    proyectoContainer.innerHTML = '';
+    const proyectos = arrayProyectos.getProyectos();
+    proyectos.forEach(proyecto => {
+        const proyectoElement = document.createElement('div');
+        proyectoElement.textContent = proyecto; // No es necesario llamar a commit.getTitulo() aquí
+        proyectoContainer.appendChild(proyectoElement);
     });
 }

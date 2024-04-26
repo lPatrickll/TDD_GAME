@@ -1,4 +1,4 @@
-class Commit{
+class Proyecto{
     constructor(titulo){
         this.titulo = titulo;
     }
@@ -8,4 +8,4 @@ class Commit{
     }
 };
 
-export default Commit;
+export default Proyecto;
