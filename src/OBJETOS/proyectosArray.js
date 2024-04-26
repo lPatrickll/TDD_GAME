@@ -13,6 +13,10 @@ class ArrayProyectos{
     getProyectos(){
         return this.proyectosArray.map(proyecto => proyecto.getTitulo());
     }
+
+    borrarProyecto(tituloProyecto) {
+        return this.proyectosArray = [];
+    }
 };
 
 export default ArrayProyectos;

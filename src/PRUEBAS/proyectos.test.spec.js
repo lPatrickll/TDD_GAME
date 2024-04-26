@@ -24,4 +24,10 @@ describe("Ingresar Proyectos", () => {
   });
   // ************************************************************************
 
+  // Segunda Historia de Usuario -> Patrick *********************************
+  it("Se debe borrar un proyecto", () => {
+    arrayProyectos.aniadirProyecto("Proyecto1");
+    expect(arrayProyectos.borrarProyecto()).toEqual([]);
+  });
+  // ************************************************************************
 });
