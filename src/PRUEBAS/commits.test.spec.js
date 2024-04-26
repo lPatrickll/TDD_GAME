@@ -16,6 +16,12 @@ describe("Ingresar commit", () => {
     arrayCommits.aniadirCommit("Commit1");
     expect(arrayCommits.getCommits()).toEqual(["Commit1"]);
   });
+
+  it("Si ingreso 2 un commits, deberia devolverme un array con esos 2 commits", () => {
+    arrayCommits.aniadirCommit("Commit1");
+    arrayCommits.aniadirCommit("Commit2");
+    expect(arrayCommits.getCommits()).toEqual(["Commit1", "Commit2"]);
+  });
   // ************************************************************************
 
 });
