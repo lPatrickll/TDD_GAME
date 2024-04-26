@@ -1,16 +1,16 @@
-//import Commit from "./commit"
+import Commit from "./commit"
 class ArrayCommits{
     constructor(){
         this.commitsArray = [];
     }
-/*
-    añadirCommit(tituloCommit){
+
+    aniadirCommit(tituloCommit){
         const nuevoCommit = new Commit(tituloCommit);
         this.commitsArray.push(nuevoCommit);
-    }*/
+    }
 
     getCommits(){
-        return this.commitsArray;
+        return this.commitsArray.map(commit => commit.getTitulo());
     }
 };
 
