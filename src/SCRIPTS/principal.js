@@ -10,7 +10,7 @@ const proyectoContainer = document.getElementById('proyectoContainer');
 const mensajeError = document.getElementById('mensajeError');
 
 btnAddProyecto.addEventListener('click', () => {
-    btnAddProyecto.style.display = 'none'; // Ocultar el botón "Añadir Commit"
+    btnAddProyecto.style.display = 'none'; // Ocultar el botón "Añadir proyecto"
     proyectoForm.style.display = 'block';
 });
 
@@ -31,7 +31,7 @@ btnConfirmProyecto.addEventListener('click', () => {
         });
         successMessage.appendChild(acceptButton);
         proyectoContainer.appendChild(successMessage);
-        // Restaurar la visibilidad del botón "Añadir Commit"
+        // Restaurar la visibilidad del botón "Añadir proyectos"
         btnAddProyecto.style.display = 'block';
         // Ocultar y restablecer el mensaje de error
         mensajeError.textContent = '';
@@ -53,8 +53,11 @@ function actualizarProyectosEnPantalla() {
         const btnBorrar = document.createElement('button');
         btnBorrar.textContent = 'Borrar';
         btnBorrar.addEventListener('click', () => {
-            arrayProyectos.borrarProyecto(proyecto); // Aquí usamos el título del proyecto
-            actualizarProyectosEnPantalla(); // Actualizar la interfaz después de borrar
+            const confirmacion = window.confirm('¿Estás seguro de que deseas borrar este proyecto?');
+            if (confirmacion) {
+                arrayProyectos.borrarProyecto(proyecto);
+                actualizarProyectosEnPantalla();
+            }
         });
         proyectoElement.appendChild(btnBorrar);
 
