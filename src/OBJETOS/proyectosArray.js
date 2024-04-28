@@ -1,21 +1,22 @@
 import Proyecto from "./proyecto";
 
-class ArrayProyectos{
-    constructor(){
+class ArrayProyectos {
+    constructor() {
         this.proyectosArray = [];
     }
 
-    aniadirProyecto(tituloProyecto){
+    aniadirProyecto(tituloProyecto) {
         const nuevoProyecto = new Proyecto(tituloProyecto);
         this.proyectosArray.push(nuevoProyecto);
     }
 
-    getProyectos(){
+    getProyectos() {
         return this.proyectosArray.map(proyecto => proyecto.getTitulo());
     }
 
     borrarProyecto(tituloProyecto) {
-        return this.proyectosArray = [];
+        this.proyectosArray = this.proyectosArray.filter(proyecto => proyecto.getTitulo() !== tituloProyecto);
+        return this.proyectosArray;
     }
 };
 

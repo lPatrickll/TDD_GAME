@@ -27,7 +27,15 @@ describe("Ingresar Proyectos", () => {
   // Segunda Historia de Usuario -> Patrick *********************************
   it("Se debe borrar un proyecto", () => {
     arrayProyectos.aniadirProyecto("Proyecto1");
-    expect(arrayProyectos.borrarProyecto()).toEqual([]);
+    arrayProyectos.borrarProyecto("Proyecto1");
+    expect(arrayProyectos.getProyectos()).toEqual([]);
+  });
+
+  it("Se debe borrar un proyecto", () => {
+    arrayProyectos.aniadirProyecto("Proyecto1");
+    arrayProyectos.aniadirProyecto("Proyecto2");
+    arrayProyectos.borrarProyecto("Proyecto1");
+    expect(arrayProyectos.getProyectos()).toEqual(["Proyecto2"]);
   });
   // ************************************************************************
 });
