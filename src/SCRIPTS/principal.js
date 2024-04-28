@@ -57,6 +57,19 @@ function actualizarProyectosEnPantalla() {
             if (confirmacion) {
                 arrayProyectos.borrarProyecto(proyecto);
                 actualizarProyectosEnPantalla();
+
+                const mensajeBorrado = document.createElement('div');
+                mensajeBorrado.textContent = `Proyecto borrado correctamente`;
+                mensajeBorrado.style.color = 'green';
+
+                const acceptButton = document.createElement('button');
+                acceptButton.textContent = 'Aceptar';
+                acceptButton.addEventListener('click', () => {
+                    mensajeBorrado.style.display = 'none';
+                });
+                mensajeBorrado.appendChild(acceptButton);
+                proyectoContainer.appendChild(mensajeBorrado);
+                mensajeBorrado.style.display = 'block';
             }
         });
         proyectoElement.appendChild(btnBorrar);
