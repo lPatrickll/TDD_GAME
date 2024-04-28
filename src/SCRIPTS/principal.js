@@ -47,7 +47,17 @@ function actualizarProyectosEnPantalla() {
     const proyectos = arrayProyectos.getProyectos();
     proyectos.forEach(proyecto => {
         const proyectoElement = document.createElement('div');
-        proyectoElement.textContent = proyecto; // No es necesario llamar a commit.getTitulo() aquí
+        proyectoElement.textContent = proyecto;
+
+        // Agregar botón de borrar y su evento click
+        const btnBorrar = document.createElement('button');
+        btnBorrar.textContent = 'Borrar';
+        btnBorrar.addEventListener('click', () => {
+            arrayProyectos.borrarProyecto(proyecto); // Aquí usamos el título del proyecto
+            actualizarProyectosEnPantalla(); // Actualizar la interfaz después de borrar
+        });
+        proyectoElement.appendChild(btnBorrar);
+
         proyectoContainer.appendChild(proyectoElement);
     });
 }
