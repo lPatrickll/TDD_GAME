@@ -57,4 +57,13 @@ describe("Ingresar Proyectos", () => {
     let commit2 = new Commit(cantPruebas, cantLineas);
     expect(commit2.getCantLineas()).toEqual(10);
   });
+
+  it("Se debe añadir un la cobertura para un commit", () => {
+    let cantPruebas = 1;
+    let cantLineas = 10;
+    let cobertura = 15;
+
+    let commit2 = new Commit(cantPruebas, cantLineas, cobertura);
+    expect(commit2.getCobertura()).toEqual(15);
+  });
 });

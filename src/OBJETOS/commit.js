@@ -12,6 +12,10 @@ class Commit {
     getCantLineas(){
         return this.cantLineas;
     }
+
+    getCobertura(){
+        return this.cobertura;
+    }
 }
 
 export default Commit;
