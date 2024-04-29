@@ -46,7 +46,15 @@ describe("Ingresar Proyectos", () => {
   it("Se debe añadir un la cantidad de prueba para un commit", () => {
     let cantPruebas = 1;
 
-    let commit2 = new Commit(cantPruebas)
+    let commit2 = new Commit(cantPruebas);
     expect(commit2.getCantPruebas()).toEqual(1);
+  });
+
+  it("Se debe añadir un la cantidad de prueba para un commit", () => {
+    let cantPruebas = 1;
+    let cantLineas = 10;
+
+    let commit2 = new Commit(cantPruebas, cantLineas);
+    expect(commit2.getCantLineas()).toEqual(10);
   });
 });

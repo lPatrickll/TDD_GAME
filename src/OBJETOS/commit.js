@@ -8,6 +8,10 @@ class Commit {
     getCantPruebas(){
         return this.cantPruebas;
     }
+
+    getCantLineas(){
+        return this.cantLineas;
+    }
 }
 
 export default Commit;
