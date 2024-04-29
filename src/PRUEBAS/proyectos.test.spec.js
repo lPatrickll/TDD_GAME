@@ -1,14 +1,17 @@
 import Commit from "../OBJETOS/commit";
+import ArrayCommit from "../OBJETOS/commitsArray";
 import ArrayProyectos from "../OBJETOS/proyectosArray";
 
 describe("Ingresar Proyectos", () => {
   // (INICIO PROYECTO) -> FABIO *************************************
   let arrayProyectos = new ArrayProyectos();
   let commit = new Commit();
+  let arrayCommit = new ArrayCommit();
 
   beforeEach(() => {
     arrayProyectos = new ArrayProyectos();
     commit = new Commit();
+    arrayCommit = new ArrayCommit();
   });
 
   it("Si no ingreso nada, deberia devolverme un array de proyectos vacio", () => {
@@ -65,5 +68,13 @@ describe("Ingresar Proyectos", () => {
 
     let commit2 = new Commit(cantPruebas, cantLineas, cobertura);
     expect(commit2.getCobertura()).toEqual(15);
+  });
+
+  it("Se debe añadir un commit a un array de commits", () => {
+    let cantPruebas = 1;
+    let cantLineas = 10;
+    let cobertura = 15;
+    // arrayCommit.añadirCommit(cantPruebas, cantLineas, cobertura);
+    expect(arrayCommit.mostrarCommit()).toEqual([]);
   });
 });
