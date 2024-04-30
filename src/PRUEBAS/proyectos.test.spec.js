@@ -9,6 +9,7 @@ describe("Ingresar Proyectos", () => {
   let commit = new Commit();
   let arrayCommit = new ArrayCommit();
   let proyecto;
+  let proyectoEliminarUnCommit;
 
   beforeEach(() => {
     arrayProyectos = new ArrayProyectos();
@@ -126,5 +127,14 @@ describe("Ingresar Proyectos", () => {
       { cantPruebas: 3, cantLineas: 100, cobertura: 80 }
     ]);
   });
+  // ********************************************************************
+  // 4ta HU -> Fabio ****************************************************
+  it("no debería hacer nada si no hay commits en el array", () => {
+    const arrayCommit = new ArrayCommit();
+    arrayCommit.eliminarUltimoCommit();
+    expect(arrayCommit.mostrarCommit()).toEqual([]);
+  });
 
+ 
+  // ********************************************************************
 });

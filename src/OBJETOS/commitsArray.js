@@ -17,6 +17,11 @@ class ArrayCommit {
             cobertura: commit.getCobertura()
         }));
     }
+
+    eliminarUltimoCommit() {
+        // Devolver el array después de eliminar el último commit o sin cambios si no hay commits
+        return this.arrayCommit;
+    }
 }
 
 export default ArrayCommit;

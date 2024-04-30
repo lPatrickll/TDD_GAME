@@ -17,6 +17,7 @@ class Proyecto {
     mostrarCommits() {
         return this.arrayCommit.mostrarCommit();
     }
+
 };
 
 export default Proyecto;

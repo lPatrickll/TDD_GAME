@@ -1,6 +1,5 @@
 // Importa las clases necesarias
 import ArrayProyectos from "../OBJETOS/proyectosArray";
-import Proyecto from "../OBJETOS/proyecto";
 
 // Crea una instancia de ArrayProyectos
 const arrayProyectos = new ArrayProyectos();
