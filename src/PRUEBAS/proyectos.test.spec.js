@@ -79,18 +79,40 @@ describe("Ingresar Proyectos", () => {
   });
 
   it("Se debe mostra un commit", () => {
-    // let arrayCommit = new ArrayCommit(); // Crea una instancia de ArrayCommit
     let cantPruebas = 1;
     let cantLineas = 10;
     let cobertura = 15;
 
-    arrayCommit.aniadirCommit(cantPruebas, cantLineas, cobertura); // Añade el commit al array
+    arrayCommit.aniadirCommit(cantPruebas, cantLineas, cobertura);
     let expectedArray = [{
       cantPruebas: 1,
       cantLineas: 10,
       cobertura: 15
     }];
 
-    expect(arrayCommit.mostrarCommit()).toEqual(expectedArray); // Verifica que el array devuelto sea el esperado
+    expect(arrayCommit.mostrarCommit()).toEqual(expectedArray);
+  });
+
+  it("Se debe mostra varios commits", () => {
+    arrayCommit.aniadirCommit(2, 20, 30);
+    arrayCommit.aniadirCommit(1, 15, 25);
+    arrayCommit.aniadirCommit(3, 30, 35);
+    let expectedArray = [{
+      cantPruebas: 2,
+      cantLineas: 20,
+      cobertura: 30
+    },
+    {
+      cantPruebas: 1,
+      cantLineas: 15,
+      cobertura: 25
+    },
+    {
+      cantPruebas: 3,
+      cantLineas: 30,
+      cobertura: 35
+    }];
+
+    expect(arrayCommit.mostrarCommit()).toEqual(expectedArray);
   });
 });
