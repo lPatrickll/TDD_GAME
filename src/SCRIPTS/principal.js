@@ -144,7 +144,7 @@ function ingresarAlProyecto(nombreProyecto) {
             const cantPruebas = parseInt(inputCantPruebas.value);
             const cantLineas = parseInt(inputCantLineas.value);
             const cobertura = parseInt(inputCobertura.value);
-            if (!isNaN(cantPruebas) && !isNaN(cantLineas) && !isNaN(cobertura)) {
+            if (!isNaN(cantPruebas) && !isNaN(cantLineas) && !isNaN(cobertura) && cantPruebas >= 0 && cantLineas >= 0 && cobertura >= 0) {
                 proyectoSeleccionado.aniadirCommit(cantPruebas, cantLineas, cobertura);
                 estilo = "block";
                 ingresarAlProyecto(nombreProyecto); // Actualiza la lista de commits en pantalla
