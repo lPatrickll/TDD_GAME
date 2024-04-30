@@ -13,6 +13,9 @@ const btnConfirmProyecto = document.getElementById('btnConfirmProyecto');
 const proyectoContainer = document.getElementById('proyectoContainer');
 const mensajeError = document.getElementById('mensajeError');
 
+
+let estilo = "none";
+
 // Evento al hacer clic en "Añadir Proyecto"
 btnAddProyecto.addEventListener('click', () => {
     btnAddProyecto.style.display = 'none'; // Ocultar el botón "Añadir proyecto"
@@ -62,6 +65,7 @@ function actualizarProyectosEnPantalla() {
         btnIngresarProyecto.textContent = 'Ingresar';
         btnIngresarProyecto.addEventListener('click', () => {
             // Aquí puedes agregar la lógica para ingresar al proyecto
+            estilo = "none";
             ingresarAlProyecto(proyecto);
         });
         proyectoElement.appendChild(btnIngresarProyecto);
@@ -81,8 +85,6 @@ function actualizarProyectosEnPantalla() {
         proyectoContainer.appendChild(proyectoElement);
     });
 }
-
-let estilo = "none";
 
 // Función para ingresar a un proyecto específico
 function ingresarAlProyecto(nombreProyecto) {
