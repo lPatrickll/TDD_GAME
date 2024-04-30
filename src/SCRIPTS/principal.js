@@ -82,6 +82,8 @@ function actualizarProyectosEnPantalla() {
     });
 }
 
+let estilo = "none";
+
 // Función para ingresar a un proyecto específico
 function ingresarAlProyecto(nombreProyecto) {
     // Encuentra el proyecto en el array de proyectos
@@ -124,12 +126,25 @@ function ingresarAlProyecto(nombreProyecto) {
         inputCobertura.placeholder = 'Cobertura (%)';
         const btnConfirmCommit = document.createElement('button');
         btnConfirmCommit.textContent = 'Agregar Commit';
+        // Mensaje de confirmacion
+        const successCommit = document.createElement('div');
+        successCommit.textContent = 'Commit añadido con exito';
+        const acceptCommit = document.createElement('button');
+        acceptCommit.textContent = 'Aceptar';
+        successCommit.style.display = estilo;
+        acceptCommit.addEventListener('click', () => {
+            proyectoContainer.removeChild(successCommit);
+        });
+        successCommit.appendChild(acceptCommit);
+        proyectoContainer.appendChild(successCommit);
+        // *************************************************
         btnConfirmCommit.addEventListener('click', () => {
             const cantPruebas = parseInt(inputCantPruebas.value);
             const cantLineas = parseInt(inputCantLineas.value);
             const cobertura = parseInt(inputCobertura.value);
             if (!isNaN(cantPruebas) && !isNaN(cantLineas) && !isNaN(cobertura)) {
                 proyectoSeleccionado.aniadirCommit(cantPruebas, cantLineas, cobertura);
+                estilo = "block";
                 ingresarAlProyecto(nombreProyecto); // Actualiza la lista de commits en pantalla
             } else {
                 // Muestra un mensaje de error si los campos no son números válidos
