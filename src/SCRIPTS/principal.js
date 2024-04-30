@@ -151,6 +151,8 @@ function ingresarAlProyecto(nombreProyecto) {
                 const errorMensaje = document.createElement('div');
                 errorMensaje.textContent = 'Por favor ingrese valores numéricos válidos.';
                 proyectoContainer.appendChild(errorMensaje);
+                estilo = "none";
+                ingresarAlProyecto(nombreProyecto); // Actualiza la lista de commits en pantalla
             }
         });
         formCommit.appendChild(inputCantPruebas);
