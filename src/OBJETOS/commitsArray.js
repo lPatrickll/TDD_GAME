@@ -19,6 +19,9 @@ class ArrayCommit {
     }
 
     eliminarUltimoCommit() {
+        if (this.arrayCommit.length > 0) {
+            this.arrayCommit.pop();
+        }
         // Devolver el array después de eliminar el último commit o sin cambios si no hay commits
         return this.arrayCommit;
     }

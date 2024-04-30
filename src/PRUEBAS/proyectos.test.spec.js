@@ -135,6 +135,12 @@ describe("Ingresar Proyectos", () => {
     expect(arrayCommit.mostrarCommit()).toEqual([]);
   });
 
+  it("debería eliminar el último commit si hay commits en el array", () => {
+    const arrayCommit = new ArrayCommit();
+    arrayCommit.aniadirCommit(4, 4, 4);
+    arrayCommit.eliminarUltimoCommit();
+    expect(arrayCommit.mostrarCommit()).toEqual([]);
+  });
  
   // ********************************************************************
 });
