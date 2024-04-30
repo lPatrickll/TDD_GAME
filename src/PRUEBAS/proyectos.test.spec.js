@@ -154,6 +154,17 @@ describe("Ingresar Proyectos", () => {
     }];
     expect(arrayCommit.mostrarCommit()).toEqual(expectedArray);
   });
+
+  it("Si añadi Tres commits debería eliminar el último commit", () => {
+    const arrayCommit = new ArrayCommit();
+    arrayCommit.aniadirCommit(4, 4, 4);
+    arrayCommit.aniadirCommit(10, 9, 10);
+    arrayCommit.aniadirCommit(5, 5, 5);
+    arrayCommit.eliminarUltimoCommit();
+    let expectedArray = [
+      { cantPruebas: 4, cantLineas: 4, cobertura: 4 }, { cantPruebas: 10, cantLineas: 9, cobertura: 10}];
+    expect(arrayCommit.mostrarCommit()).toEqual(expectedArray);
+  });
  
   // ********************************************************************
 });
