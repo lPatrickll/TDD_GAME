@@ -1,5 +1,6 @@
 import Commit from "../OBJETOS/commit";
 import ArrayCommit from "../OBJETOS/commitsArray";
+import Proyecto from "../OBJETOS/proyecto";
 import ArrayProyectos from "../OBJETOS/proyectosArray";
 
 describe("Ingresar Proyectos", () => {
@@ -7,11 +8,14 @@ describe("Ingresar Proyectos", () => {
   let arrayProyectos = new ArrayProyectos();
   let commit = new Commit();
   let arrayCommit = new ArrayCommit();
+  let proyecto;
 
   beforeEach(() => {
     arrayProyectos = new ArrayProyectos();
     commit = new Commit();
     arrayCommit = new ArrayCommit();
+
+    proyecto = new Proyecto("Proyecto 1");
   });
 
   it("Si no ingreso nada, deberia devolverme un array de proyectos vacio", () => {
@@ -115,4 +119,12 @@ describe("Ingresar Proyectos", () => {
 
     expect(arrayCommit.mostrarCommit()).toEqual(expectedArray);
   });
+
+  it("debería añadir un commit correctamente", () => {
+    proyecto.aniadirCommit(3, 100, 80);
+    expect(proyecto.mostrarCommits()).toEqual([
+      { cantPruebas: 3, cantLineas: 100, cobertura: 80 }
+    ]);
+  });
+
 });
