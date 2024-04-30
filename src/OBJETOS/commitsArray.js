@@ -1,12 +1,21 @@
 import Commit from "./commit";
 
-class ArrayCommit{
-    constructor(){
+class ArrayCommit {
+    constructor() {
         this.arrayCommit = [];
     }
 
-    mostrarCommit(){
-        return [];
+    aniadirCommit(cantPruebas, cantLineas, cobertura) {
+        const nuevoCommit = new Commit(cantPruebas, cantLineas, cobertura);
+        this.arrayCommit.push(nuevoCommit);
+    }
+
+    mostrarCommit() {
+        return this.arrayCommit.map(commit => ({
+            cantPruebas: commit.getCantPruebas(),
+            cantLineas: commit.getCantLineas(),
+            cobertura: commit.getCobertura()
+        }));
     }
 }
 

@@ -44,7 +44,7 @@ describe("Ingresar Proyectos", () => {
     expect(arrayProyectos.getProyectos()).toEqual(["Proyecto2"]);
   });
   // ************************************************************************
-  
+
   // Tercera Historia de Usuario -> Patrick *********************************
   it("Se debe añadir un la cantidad de prueba para un commit", () => {
     let cantPruebas = 1;
@@ -70,11 +70,27 @@ describe("Ingresar Proyectos", () => {
     expect(commit2.getCobertura()).toEqual(15);
   });
 
-  it("Se debe añadir un commit a un array de commits", () => {
+  it("Se debe mostrar un commit a un array de commits", () => {
     let cantPruebas = 1;
     let cantLineas = 10;
     let cobertura = 15;
     // arrayCommit.añadirCommit(cantPruebas, cantLineas, cobertura);
     expect(arrayCommit.mostrarCommit()).toEqual([]);
+  });
+
+  it("Se debe mostra un commit", () => {
+    // let arrayCommit = new ArrayCommit(); // Crea una instancia de ArrayCommit
+    let cantPruebas = 1;
+    let cantLineas = 10;
+    let cobertura = 15;
+
+    arrayCommit.aniadirCommit(cantPruebas, cantLineas, cobertura); // Añade el commit al array
+    let expectedArray = [{
+      cantPruebas: 1,
+      cantLineas: 10,
+      cobertura: 15
+    }];
+
+    expect(arrayCommit.mostrarCommit()).toEqual(expectedArray); // Verifica que el array devuelto sea el esperado
   });
 });

@@ -1,19 +1,19 @@
 class Commit {
-    constructor (cantPruebas, cantLineas, cobertura){
+    constructor(cantPruebas, cantLineas, cobertura) {
         this.cantPruebas = cantPruebas;
         this.cantLineas = cantLineas;
         this.cobertura = cobertura;
     }
 
-    getCantPruebas(){
+    getCantPruebas() {
         return this.cantPruebas;
     }
 
-    getCantLineas(){
+    getCantLineas() {
         return this.cantLineas;
     }
 
-    getCobertura(){
+    getCobertura() {
         return this.cobertura;
     }
 }
