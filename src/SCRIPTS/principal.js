@@ -1,7 +1,5 @@
-// Importa las clases necesarias
 import ArrayProyectos from "../OBJETOS/proyectosArray";
 
-// Crea una instancia de ArrayProyectos
 const arrayProyectos = new ArrayProyectos();
 
 // Obtiene referencias a los elementos HTML
@@ -61,7 +59,7 @@ function actualizarProyectosEnPantalla() {
 
         // Crea un botón para ingresar al proyecto
         const btnIngresarProyecto = document.createElement('button');
-        btnIngresarProyecto.textContent = 'Ingresar';
+        btnIngresarProyecto.textContent = 'Ver commits';
         btnIngresarProyecto.addEventListener('click', () => {
             // Aquí puedes agregar la lógica para ingresar al proyecto
             estilo = "none";
@@ -107,6 +105,35 @@ function ingresarAlProyecto(nombreProyecto) {
         // Mostrar los commits del proyecto
         const listaCommits = document.createElement('ul');
         const commitsProyecto = proyectoSeleccionado.mostrarCommits();
+
+        // Verifica si hay al menos un commit en el proyecto antes de mostrar el botón "Eliminar Último Commit"
+        if (commitsProyecto.length > 0) {
+            // Botón para eliminar el último commit
+            const btnEliminarUltimoCommit = document.createElement('button');
+            btnEliminarUltimoCommit.textContent = 'Eliminar Último Commit';
+            btnEliminarUltimoCommit.addEventListener('click', () => {
+                // Oculta el botón "Eliminar Último Commit"
+                btnEliminarUltimoCommit.style.display = 'none';
+                // Crea un mensaje de confirmación
+                const confirmMessage = document.createElement('div');
+                confirmMessage.style.color = 'red';
+                confirmMessage.textContent = '¿Está seguro de que desea eliminar el último commit?';
+                // Crea un botón de confirmación en rojo
+                const btnConfirmar = document.createElement('button');
+                btnConfirmar.textContent = 'Confirmar';
+                btnConfirmar.style.backgroundColor = 'red';
+                btnConfirmar.addEventListener('click', () => {
+                    estilo = 'none';
+                    proyectoSeleccionado.eliminarUltimoCommit(); // Elimina el último commit del proyecto
+                    ingresarAlProyecto(nombreProyecto); // Actualiza la lista de commits en pantalla
+                });
+                // Agrega el mensaje de confirmación y el botón de confirmación al contenedor de proyectos
+                proyectoContainer.appendChild(confirmMessage);
+                proyectoContainer.appendChild(btnConfirmar);
+            });
+            proyectoContainer.appendChild(btnEliminarUltimoCommit);
+        }
+
         commitsProyecto.forEach(commit => {
             const commitItem = document.createElement('li');
             commitItem.textContent = `Pruebas: ${commit.cantPruebas}, Líneas: ${commit.cantLineas}, Cobertura: ${commit.cobertura}%`;
@@ -115,6 +142,8 @@ function ingresarAlProyecto(nombreProyecto) {
         proyectoContainer.appendChild(listaCommits);
 
         // Formulario para ingresar un nuevo commit
+        const tituloCommit = document.createElement('h3');
+        tituloCommit.textContent = "Añadir commit";
         const formCommit = document.createElement('form');
         const inputCantPruebas = document.createElement('input');
         inputCantPruebas.type = 'number';
@@ -156,6 +185,7 @@ function ingresarAlProyecto(nombreProyecto) {
                 ingresarAlProyecto(nombreProyecto); // Actualiza la lista de commits en pantalla
             }
         });
+        formCommit.appendChild(tituloCommit);
         formCommit.appendChild(inputCantPruebas);
         formCommit.appendChild(inputCantLineas);
         formCommit.appendChild(inputCobertura);
@@ -163,6 +193,7 @@ function ingresarAlProyecto(nombreProyecto) {
         proyectoContainer.appendChild(formCommit);
     }
 }
+
 
 // Actualiza la lista de proyectos al cargar la página
 actualizarProyectosEnPantalla();

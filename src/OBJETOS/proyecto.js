@@ -18,6 +18,9 @@ class Proyecto {
         return this.arrayCommit.mostrarCommit();
     }
 
+    eliminarUltimoCommit(){
+        this.arrayCommit.eliminarUltimoCommit();
+    }
 };
 
 export default Proyecto;
