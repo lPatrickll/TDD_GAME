@@ -254,13 +254,24 @@ function ingresarPuntajeProyecto(nombreProyecto) {
     btnVolver.addEventListener('click', () => {
         actualizarProyectosEnPantalla(); // Vuelve a mostrar la lista de proyectos
     });
+    
     proyectoContainer.appendChild(btnVolver);
+    
     // Obtener el puntaje de pruebas del proyecto
     const puntaje = proyectoSeleccionado.getPuntajePruebas();
     // Mostrar el puntaje de pruebas del proyecto
     const tituloPuntaje = document.createElement('p');
     tituloPuntaje.textContent = `Puntaje de pruebas: ${puntaje}%`;
     proyectoContainer.appendChild(tituloPuntaje);
+
+    // Obtener el puntaje por líneas de código del proyecto
+    const puntajeLineasCodigo = proyectoSeleccionado.getPuntajeLineasCodigo();
+    // Mostrar el puntaje por líneas de código del proyecto
+    const tituloPuntajeLineasCodigo = document.createElement('p');
+    tituloPuntajeLineasCodigo.textContent = `Puntaje por líneas de código: ${puntajeLineasCodigo}%`;
+    proyectoContainer.appendChild(tituloPuntajeLineasCodigo);
+
+    
 }
 
 

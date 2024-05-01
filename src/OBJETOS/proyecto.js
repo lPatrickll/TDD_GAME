@@ -38,7 +38,7 @@ class Proyecto {
         return this.puntaje.getPuntajePruebas();
     }
 
-    getPuntajeLineasPruebas() {
+    getPuntajeLineasCodigo() {
         return this.puntaje.getPuntajeLineasCodigo();
     }
 
