@@ -15,6 +15,9 @@ class Puntaje {
     getPuntajeLineasCodigo() {
         return this.puntajeLineas;
     }
+    setPuntajeLineasCodigo(puntajel) {
+        this.puntajeLineas=puntajel;
+    }
 }
 
 export default Puntaje;

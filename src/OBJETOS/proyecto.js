@@ -39,9 +39,10 @@ class Proyecto {
     }
 
     getPuntajeLineasCodigo() {
-        return this.puntaje.getPuntajeLineasCodigo();
+        let puntajeLineasCodigo = this.calcularPuntajeLineasCodigo(); // Calcular el puntaje por líneas de código
+        this.puntaje.setPuntajeLineasCodigo(puntajeLineasCodigo); // Establecer el puntaje por líneas de código
+        return this.puntaje.getPuntajeLineasCodigo(); // Obtener y devolver el puntaje por líneas de código
     }
-
 
     calcularPorcentajePruebas() {
         let totalPruebas = 0;
@@ -59,6 +60,33 @@ class Proyecto {
         }
         console.log("-------------------------------------------------------------------",porcentaje);
         return porcentaje;
+    }
+
+    calcularPuntajeLineasCodigo() {
+        const commits = this.arrayCommit.getCommits();
+        let contadorDisminucion = 0;
+        let contadorIncremento = 0;
+        let lineasAnteriores = 0;
+
+        for (let i = 0; i < commits.length; i++) {
+            const commit = commits[i];
+            const lineasActuales = commit.getCantLineas();
+
+            if (i > 0 && lineasActuales < lineasAnteriores) {
+                contadorDisminucion++;
+                if (contadorDisminucion > 2) {
+                    contadorIncremento -= 20; // Reducir el puntaje en un 20%
+                }
+            } else {
+                contadorDisminucion = 0;
+            }
+
+            lineasAnteriores = lineasActuales;
+        }
+
+        const puntajeLineasCodigo = 100 + contadorIncremento; // Inicialmente, el puntaje es 100%
+        this.puntaje.setPuntajeLineasCodigo(puntajeLineasCodigo);
+        return puntajeLineasCodigo;
     }
 }
 
