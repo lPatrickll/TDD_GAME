@@ -16,6 +16,10 @@ class Proyecto {
         this.arrayCommit.aniadirCommit(cantPruebas, cantLineas, cobertura);
     }
 
+    aniadirCommitConPruebasAprob(cantPruebas, cantLineas, cobertura,cantPruebasAprob) {
+        this.arrayCommit.aniadirCommitConCantPruebAprob(cantPruebas, cantLineas, cobertura,cantPruebasAprob);
+    }
+
     mostrarCommits() {
         return this.arrayCommit.mostrarCommit();
     }
@@ -25,7 +29,27 @@ class Proyecto {
     }
 
     getPuntajePruebas() {
-        return this.puntaje.puntajePruebas;
+        let puntajePorcentaje = this.calcularPorcentajePruebas(); // Llamar a calcularDiferenciaPruebas() con this
+        this.puntaje.setPuntajePruebas(puntajePorcentaje); // Establecer el puntaje de pruebas con la diferencia calculada
+        return this.puntaje.getPuntajePruebas();
+    }
+
+    calcularPorcentajePruebas() {
+        let totalPruebas = 0;
+        let totalPruebasAprobadas = 0;
+        let porcentaje=0;
+        // Recorremos cada commit en el array de commits
+        if (this.arrayCommit.getCommits().length > 0)
+        {
+            for (let commit of this.arrayCommit.getCommits()) {
+                totalPruebas += commit.getCantPruebas();
+                totalPruebasAprobadas += commit.getCantPruebasAprob();
+            }
+            // Calculamos la diferencia
+            porcentaje = (totalPruebasAprobadas/totalPruebas)*100;
+        }
+        console.log("-------------------------------------------------------------------",porcentaje);
+        return porcentaje;
     }
 }
 

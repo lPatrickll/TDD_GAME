@@ -184,6 +184,16 @@ describe("Ingresar Proyectos", () => {
     expect(proyecto.getPuntajePruebas()).toEqual(0);
   });
 
+  it("El proyecto deberia de devolver el puntaje de 50% para la mitad de pruebas aprobadas", () => {
+
+    const proyecto = new Proyecto("Proyecto2");
+    proyecto.aniadirCommitConPruebasAprob(2, 4, 4,1);
+
+    expect(proyecto.getPuntajePruebas()).toEqual(50);
+  });
+
+
+
 
 
 

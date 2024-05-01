@@ -3,11 +3,12 @@ class Commit {
         this.cantPruebas = cantPruebas;
         this.cantLineas = cantLineas;
         this.cobertura = cobertura;
+        this.cantPruebasAprob=0;
     }
 
     getCantPruebas() {
         return this.cantPruebas;
-    }
+    }   
 
     getCantLineas() {
         return this.cantLineas;
@@ -16,6 +17,16 @@ class Commit {
     getCobertura() {
         return this.cobertura;
     }
+    setPruebasAprob(cantidad)
+    {
+        this.cantPruebasAprob=cantidad;
+    }
+    getCantPruebasAprob()
+    {
+        return this.cantPruebasAprob;
+    }
+
+    
 }
 
 export default Commit;
