@@ -202,7 +202,7 @@ function ingresarAlProyecto(nombreProyecto) {
             const cantPruebasAprob = parseInt(inputCantPruebasAprob.value);
             const cantLineas = parseInt(inputCantLineas.value);
             const cobertura = parseInt(inputCobertura.value);
-            if (!isNaN(cantPruebas) && !isNaN(cantLineas) && !isNaN(cobertura) && cantPruebas >= 0 && cantLineas >= 0 && cobertura >= 0) {
+            if (!isNaN(cantPruebas) && !isNaN(cantLineas) && !isNaN(cobertura) && cantPruebas >= 0 && cantLineas >= 0 && cobertura >= 0 && cantPruebasAprob<=cantPruebas) {
                 proyectoSeleccionado.aniadirCommitConPruebasAprob(cantPruebas, cantLineas, cobertura,cantPruebasAprob);
                 estilo = "block";
                 estiloCommit = "none";
