@@ -13,6 +13,7 @@ const mensajeError = document.getElementById('mensajeError');
 
 
 let estilo = "none";
+let estiloCommit = "none";
 
 // Evento al hacer clic en "Añadir Proyecto"
 btnAddProyecto.addEventListener('click', () => {
@@ -62,6 +63,7 @@ function actualizarProyectosEnPantalla() {
         btnIngresarProyecto.addEventListener('click', () => {
             // Aquí puedes agregar la lógica para ingresar al proyecto
             estilo = "none";
+            estiloCommit = "none";
             ingresarAlProyecto(proyecto);
         });
         proyectoElement.appendChild(btnIngresarProyecto);
@@ -94,6 +96,18 @@ function ingresarAlProyecto(nombreProyecto) {
         tituloProyectoElement.textContent = `Proyecto: ${nombreProyecto}`;
         proyectoContainer.appendChild(tituloProyectoElement);
 
+        // Mensaje de confirmacion
+        const ultimoCommitBorrado = document.createElement('div');
+        ultimoCommitBorrado.textContent = 'Ultimo commit borrado correctamente';
+        const acceptCommitBorrado = document.createElement('button');
+        acceptCommitBorrado.textContent = 'Aceptar';
+        ultimoCommitBorrado.style.display = estiloCommit;
+        acceptCommitBorrado.addEventListener('click', () => {
+            proyectoContainer.removeChild(ultimoCommitBorrado);
+        });
+        ultimoCommitBorrado.appendChild(acceptCommitBorrado);
+        proyectoContainer.appendChild(ultimoCommitBorrado);
+
         // Botón para volver a la lista de proyectos
         const btnVolver = document.createElement('button');
         btnVolver.textContent = 'Volver a la lista de proyectos';
@@ -125,6 +139,7 @@ function ingresarAlProyecto(nombreProyecto) {
                 btnConfirmar.addEventListener('click', () => {
                     estilo = 'none';
                     proyectoSeleccionado.eliminarUltimoCommit(); // Elimina el último commit del proyecto
+                    estiloCommit = "block"
                     ingresarAlProyecto(nombreProyecto); // Actualiza la lista de commits en pantalla
                 });
                 // Agrega el mensaje de confirmación y el botón de confirmación al contenedor de proyectos
@@ -175,6 +190,7 @@ function ingresarAlProyecto(nombreProyecto) {
             if (!isNaN(cantPruebas) && !isNaN(cantLineas) && !isNaN(cobertura) && cantPruebas >= 0 && cantLineas >= 0 && cobertura >= 0) {
                 proyectoSeleccionado.aniadirCommit(cantPruebas, cantLineas, cobertura);
                 estilo = "block";
+                estiloCommit = "none";
                 ingresarAlProyecto(nombreProyecto); // Actualiza la lista de commits en pantalla
             } else {
                 // Muestra un mensaje de error si los campos no son números válidos
@@ -182,6 +198,7 @@ function ingresarAlProyecto(nombreProyecto) {
                 errorMensaje.textContent = 'Por favor ingrese valores numéricos válidos.';
                 proyectoContainer.appendChild(errorMensaje);
                 estilo = "none";
+                estiloCommit = "none";
                 ingresarAlProyecto(nombreProyecto); // Actualiza la lista de commits en pantalla
             }
         });
