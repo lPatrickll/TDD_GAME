@@ -151,10 +151,10 @@ function ingresarAlProyecto(nombreProyecto) {
 
         commitsProyecto.forEach(commit => {
             const commitItem = document.createElement('li');
-            commitItem.textContent = `Pruebas: ${commit.cantPruebas}, Líneas: ${commit.cantLineas}, Cobertura: ${commit.cobertura}%`;
+            commitItem.textContent = `Pruebas: ${commit.cantPruebas},Pruebas Aprobadas: ${commit.cantPruebasAprob}, Líneas: ${commit.cantLineas}, Cobertura: ${commit.cobertura}%`;
             listaCommits.appendChild(commitItem);
         });
-        proyectoContainer.appendChild(listaCommits);
+        proyectoContainer.appendChild(listaCommits)
 
         // Formulario para ingresar un nuevo commit
         const tituloCommit = document.createElement('h3');
@@ -163,6 +163,9 @@ function ingresarAlProyecto(nombreProyecto) {
         const inputCantPruebas = document.createElement('input');
         inputCantPruebas.type = 'number';
         inputCantPruebas.placeholder = 'Cantidad de pruebas';
+        const inputCantPruebasAprob = document.createElement('input');
+        inputCantPruebasAprob.type = 'number';
+        inputCantPruebasAprob.placeholder = 'Cantidad de pruebas Aprobadas';
         const inputCantLineas = document.createElement('input');
         inputCantLineas.type = 'number';
         inputCantLineas.placeholder = 'Cantidad de líneas';
@@ -185,10 +188,11 @@ function ingresarAlProyecto(nombreProyecto) {
         // *************************************************
         btnConfirmCommit.addEventListener('click', () => {
             const cantPruebas = parseInt(inputCantPruebas.value);
+            const cantPruebasAprob = parseInt(inputCantPruebasAprob.value);
             const cantLineas = parseInt(inputCantLineas.value);
             const cobertura = parseInt(inputCobertura.value);
             if (!isNaN(cantPruebas) && !isNaN(cantLineas) && !isNaN(cobertura) && cantPruebas >= 0 && cantLineas >= 0 && cobertura >= 0) {
-                proyectoSeleccionado.aniadirCommit(cantPruebas, cantLineas, cobertura);
+                proyectoSeleccionado.aniadirCommitConPruebasAprob(cantPruebas, cantLineas, cobertura,cantPruebasAprob);
                 estilo = "block";
                 estiloCommit = "none";
                 ingresarAlProyecto(nombreProyecto); // Actualiza la lista de commits en pantalla
@@ -204,6 +208,7 @@ function ingresarAlProyecto(nombreProyecto) {
         });
         formCommit.appendChild(tituloCommit);
         formCommit.appendChild(inputCantPruebas);
+        formCommit.appendChild(inputCantPruebasAprob)
         formCommit.appendChild(inputCantLineas);
         formCommit.appendChild(inputCobertura);
         formCommit.appendChild(btnConfirmCommit);
