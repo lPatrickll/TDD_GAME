@@ -227,7 +227,6 @@ function ingresarAlProyecto(nombreProyecto) {
     }
 }
 
-
 function ingresarPuntajeProyecto(nombreProyecto) {
     proyectoContainer.innerHTML = ''; // Limpiar el contenedor de proyectos
     const proyectoSeleccionado = arrayProyectos.proyectosArray.find(proyecto => proyecto.getTitulo() === nombreProyecto);
@@ -245,12 +244,10 @@ function ingresarPuntajeProyecto(nombreProyecto) {
 
         return; // Terminar la función aquí si no se encontró el proyecto
     }
-
     // Mostrar el título del proyecto
     const tituloProyecto = document.createElement('h2');
     tituloProyecto.textContent = `Proyecto: ${nombreProyecto}`;
     proyectoContainer.appendChild(tituloProyecto);
-
     // Mostrar el botón para volver a la lista de proyectos
     const btnVolver = document.createElement('button');
     btnVolver.textContent = 'Volver a la lista de proyectos';
@@ -258,15 +255,12 @@ function ingresarPuntajeProyecto(nombreProyecto) {
         actualizarProyectosEnPantalla(); // Vuelve a mostrar la lista de proyectos
     });
     proyectoContainer.appendChild(btnVolver);
-
     // Obtener el puntaje de pruebas del proyecto
     const puntaje = proyectoSeleccionado.getPuntajePruebas();
-
     // Mostrar el puntaje de pruebas del proyecto
     const tituloPuntaje = document.createElement('p');
     tituloPuntaje.textContent = `Puntaje de pruebas: ${puntaje}%`;
     proyectoContainer.appendChild(tituloPuntaje);
-
 }
 
 

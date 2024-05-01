@@ -200,9 +200,32 @@ describe("Ingresar Proyectos", () => {
       cantLineas: 20,
       cobertura: 30
     }];
-
     expect(arrayCommit.mostrarCommitConPruebasAprob()).toEqual(expectedArray);
   });
+
+  it("El proyecto deberia de mostrar commits con pruebas aprobadas", () => {
+    const proyecto = new Proyecto("Proyecto2");
+    proyecto.aniadirCommitConPruebasAprob(2, 20, 30,2);
+    let expectedArray = [{
+      cantPruebas: 2,
+      cantPruebasAprob:2,
+      cantLineas: 20,
+      cobertura: 30
+    }];
+    expect(proyecto.mostrarCommitsConPruebasAprob()).toEqual(expectedArray);
+  });
+
+  it("El proyecto deberia de devolver el puntaje de 100% todas las pruebas aprobadas", () => {
+
+    const proyecto = new Proyecto("Proyecto2");
+    proyecto.aniadirCommitConPruebasAprob(2, 4, 4,2);
+    proyecto.aniadirCommitConPruebasAprob(2, 4, 4,2);
+    proyecto.aniadirCommitConPruebasAprob(2, 4, 4,2);
+    proyecto.aniadirCommitConPruebasAprob(2, 4, 4,2);
+
+    expect(proyecto.getPuntajePruebas()).toEqual(100);
+  });
+
 
 
 
