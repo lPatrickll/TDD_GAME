@@ -226,12 +226,12 @@ describe("Ingresar Proyectos", () => {
     expect(proyecto.getPuntajePruebas()).toEqual(100);
   });
 
-
-
-
-
-
-
+  // ********************************************************************
+  // 6ta HU Salvador
+  it("El proyecto deberia de devolver el puntaje de 0 en base a la cantidad de lineas", () => {
+    const proyecto = new Proyecto("Proyecto1");
+    expect(proyecto.getPuntajeLineasPruebas()).toEqual(0);
+  });
 
   // ********************************************************************
 });

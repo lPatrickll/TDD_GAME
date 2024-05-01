@@ -1,6 +1,7 @@
 class Puntaje {
     constructor() {
         this.puntajePruebas = 0;
+        this.puntajeLineas = 0;
     }
 
     getPuntajePruebas()
@@ -11,7 +12,9 @@ class Puntaje {
     {
         this.puntajePruebas=puntaje;
     }
-
+    getPuntajeLineasPruebas(){
+        return this.puntajeLineas;
+    }
 }
 
 export default Puntaje;

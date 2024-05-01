@@ -38,6 +38,11 @@ class Proyecto {
         return this.puntaje.getPuntajePruebas();
     }
 
+    getPuntajeLineasPruebas() {
+        return this.puntaje.getPuntajeLineasPruebas();
+    }
+
+
     calcularPorcentajePruebas() {
         let totalPruebas = 0;
         let totalPruebasAprobadas = 0;
