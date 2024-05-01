@@ -250,6 +250,14 @@ function ingresarPuntajeProyecto(nombreProyecto) {
     const tituloProyecto = document.createElement('h2');
     tituloProyecto.textContent = `Proyecto: ${nombreProyecto}`;
     proyectoContainer.appendChild(tituloProyecto);
+
+    // Mostrar el botón para volver a la lista de proyectos
+    const btnVolver = document.createElement('button');
+    btnVolver.textContent = 'Volver a la lista de proyectos';
+    btnVolver.addEventListener('click', () => {
+        actualizarProyectosEnPantalla(); // Vuelve a mostrar la lista de proyectos
+    });
+    proyectoContainer.appendChild(btnVolver);
 }
 
 
