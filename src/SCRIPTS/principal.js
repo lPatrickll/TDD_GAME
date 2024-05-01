@@ -68,6 +68,17 @@ function actualizarProyectosEnPantalla() {
         });
         proyectoElement.appendChild(btnIngresarProyecto);
 
+        // Botón para ver puntaje de el proyecto
+
+        const btnPuntajeProyecto = crearElemento("button", "Puntaje Proyecto");
+        btnPuntajeProyecto.addEventListener('click', () => {
+            // Aquí puedes agregar la lógica para ingresar al proyecto
+            estilo = "none";
+            estiloCommit = "none";
+            ingresarPuntajeProyecto(proyecto);
+        });
+        proyectoElement.appendChild(btnPuntajeProyecto);
+
         // Botón para borrar el proyecto
 
         const btnBorrarProyecto = crearElemento("button", "Borrar Proyecto");
@@ -214,6 +225,12 @@ function ingresarAlProyecto(nombreProyecto) {
         formCommit.appendChild(btnConfirmCommit);
         proyectoContainer.appendChild(formCommit);
     }
+}
+
+
+function ingresarPuntajeProyecto()
+{
+
 }
 
 
