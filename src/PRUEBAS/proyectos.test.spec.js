@@ -192,6 +192,18 @@ describe("Ingresar Proyectos", () => {
     expect(proyecto.getPuntajePruebas()).toEqual(50);
   });
 
+  it("Se debe mostrar un commit con pruebas aprobadas", () => {
+    arrayCommit.aniadirCommitConCantPruebAprob(2, 20, 30,2);
+    let expectedArray = [{
+      cantPruebas: 2,
+      cantPruebasAprob:2,
+      cantLineas: 20,
+      cobertura: 30
+    }];
+
+    expect(arrayCommit.mostrarCommitConPruebasAprob()).toEqual(expectedArray);
+  });
+
 
 
 

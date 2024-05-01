@@ -24,6 +24,10 @@ class Proyecto {
         return this.arrayCommit.mostrarCommit();
     }
 
+    mostrarCommitsConPruebasAprob() {
+        return this.arrayCommit.mostrarCommitConPruebasAprob();
+    }
+
     eliminarUltimoCommit() {
         this.arrayCommit.eliminarUltimoCommit();
     }

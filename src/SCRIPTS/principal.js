@@ -129,7 +129,7 @@ function ingresarAlProyecto(nombreProyecto) {
 
         // Mostrar los commits del proyecto
         const listaCommits = document.createElement('ul');
-        const commitsProyecto = proyectoSeleccionado.mostrarCommits();
+        const commitsProyecto = proyectoSeleccionado.mostrarCommitsConPruebasAprob();
 
         // Verifica si hay al menos un commit en el proyecto antes de mostrar el botón "Eliminar Último Commit"
         if (commitsProyecto.length > 0) {
@@ -228,10 +228,12 @@ function ingresarAlProyecto(nombreProyecto) {
 }
 
 
-function ingresarPuntajeProyecto()
-{
+function ingresarPuntajeProyecto() {
 
 }
+
+
+
 
 
 // Actualiza la lista de proyectos al cargar la página
