@@ -1,9 +1,11 @@
 import ArrayCommit from "./commitsArray";
+import Puntaje from "./puntaje";
 
 class Proyecto {
     constructor(titulo) {
         this.titulo = titulo;
         this.arrayCommit = new ArrayCommit();
+        this.puntaje = new Puntaje(); 
     }
 
     getTitulo() {
@@ -18,9 +20,13 @@ class Proyecto {
         return this.arrayCommit.mostrarCommit();
     }
 
-    eliminarUltimoCommit(){
+    eliminarUltimoCommit() {
         this.arrayCommit.eliminarUltimoCommit();
     }
-};
+
+    getPuntajePruebas() {
+        return this.puntaje.puntajePruebas;
+    }
+}
 
 export default Proyecto;

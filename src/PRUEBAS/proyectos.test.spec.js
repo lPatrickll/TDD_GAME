@@ -176,4 +176,17 @@ describe("Ingresar Proyectos", () => {
   });
  
   // ********************************************************************
+  // 5ta HU Arturo
+
+  it("El proyecto deberia de devolver el puntaje de 0", () => {
+
+    const proyecto = new Proyecto("Proyecto1");
+    expect(proyecto.getPuntajePruebas()).toEqual(0);
+  });
+
+
+
+
+
+  // ********************************************************************
 });
