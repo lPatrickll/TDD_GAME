@@ -259,10 +259,12 @@ function ingresarPuntajeProyecto(nombreProyecto) {
     });
     proyectoContainer.appendChild(btnVolver);
 
+    // Obtener el puntaje de pruebas del proyecto
+    const puntaje = proyectoSeleccionado.getPuntajePruebas();
 
     // Mostrar el puntaje de pruebas del proyecto
     const tituloPuntaje = document.createElement('p');
-    tituloPuntaje.textContent = `Puntaje de pruebas: ${0}%`;
+    tituloPuntaje.textContent = `Puntaje de pruebas: ${puntaje}%`;
     proyectoContainer.appendChild(tituloPuntaje);
 
 }
