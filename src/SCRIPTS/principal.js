@@ -228,8 +228,28 @@ function ingresarAlProyecto(nombreProyecto) {
 }
 
 
-function ingresarPuntajeProyecto() {
+function ingresarPuntajeProyecto(nombreProyecto) {
+    proyectoContainer.innerHTML = ''; // Limpiar el contenedor de proyectos
+    const proyectoSeleccionado = arrayProyectos.proyectosArray.find(proyecto => proyecto.getTitulo() === nombreProyecto);
+    if (!proyectoSeleccionado) {
+        const mensajeError = document.createElement('p');
+        mensajeError.textContent = 'No se encontró el proyecto seleccionado.';
+        proyectoContainer.appendChild(mensajeError);
 
+        const btnVolver = document.createElement('button');
+        btnVolver.textContent = 'Volver a la lista de proyectos';
+        btnVolver.addEventListener('click', () => {
+            actualizarProyectosEnPantalla(); // Vuelve a mostrar la lista de proyectos
+        });
+        proyectoContainer.appendChild(btnVolver);
+
+        return; // Terminar la función aquí si no se encontró el proyecto
+    }
+
+    // Mostrar el título del proyecto
+    const tituloProyecto = document.createElement('h2');
+    tituloProyecto.textContent = `Proyecto: ${nombreProyecto}`;
+    proyectoContainer.appendChild(tituloProyecto);
 }
 
 
