@@ -1,4 +1,5 @@
 import ArrayProyectos from "../OBJETOS/proyectosArray";
+import crearElemento from "./crearElemento";
 
 const arrayProyectos = new ArrayProyectos();
 
@@ -27,16 +28,17 @@ btnConfirmProyecto.addEventListener('click', () => {
         inputTitulo.value = '';
         proyectoForm.style.display = 'none';
         actualizarProyectosEnPantalla();
+
         // Mostrar mensaje de éxito y botón "Aceptar"
-        const successMessage = document.createElement('div');
-        successMessage.textContent = 'Proyecto añadido con éxito';
-        const acceptButton = document.createElement('button');
-        acceptButton.textContent = 'Aceptar';
+        let successMessage = crearElemento("div", "Proyecto añadido con éxito");
+        let acceptButton = crearElemento("button", "Aceptar")
+
         acceptButton.addEventListener('click', () => {
             proyectoContainer.removeChild(successMessage);
         });
         successMessage.appendChild(acceptButton);
         proyectoContainer.appendChild(successMessage);
+
         // Restaurar la visibilidad del botón "Añadir proyectos"
         btnAddProyecto.style.display = 'block';
         // Ocultar y restablecer el mensaje de error
@@ -54,12 +56,9 @@ function actualizarProyectosEnPantalla() {
     const proyectos = arrayProyectos.getProyectos();
     proyectos.forEach(proyecto => {
         // Crea un elemento div para mostrar el nombre del proyecto
-        const proyectoElement = document.createElement('div');
-        proyectoElement.textContent = proyecto;
 
-        // Crea un botón para ingresar al proyecto
-        const btnIngresarProyecto = document.createElement('button');
-        btnIngresarProyecto.textContent = 'Ver commits';
+        const proyectoElement = crearElemento("div", proyecto);
+        const btnIngresarProyecto = crearElemento("button", "Ver Commits");
         btnIngresarProyecto.addEventListener('click', () => {
             // Aquí puedes agregar la lógica para ingresar al proyecto
             estilo = "none";
@@ -68,8 +67,8 @@ function actualizarProyectosEnPantalla() {
         proyectoElement.appendChild(btnIngresarProyecto);
 
         // Botón para borrar el proyecto
-        const btnBorrarProyecto = document.createElement('button');
-        btnBorrarProyecto.textContent = 'Borrar Proyecto';
+
+        const btnBorrarProyecto = crearElemento("button", "Borrar Proyecto");
         btnBorrarProyecto.addEventListener('click', () => {
             const confirmacion = window.confirm('¿Estás seguro de que deseas borrar este proyecto?');
             if (confirmacion) {
@@ -83,6 +82,7 @@ function actualizarProyectosEnPantalla() {
     });
 }
 
+// ****************************************************************************************************************************************************
 // Función para ingresar a un proyecto específico
 function ingresarAlProyecto(nombreProyecto) {
     // Encuentra el proyecto en el array de proyectos
