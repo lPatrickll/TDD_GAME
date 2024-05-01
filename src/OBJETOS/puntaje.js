@@ -12,8 +12,8 @@ class Puntaje {
     {
         this.puntajePruebas=puntaje;
     }
-    getPuntajeLineasPruebas(){
-        return this.puntajeLineas;
+    getPuntajeLineasCodigo() {
+        return this.puntajel.getPuntajeLineasCodigo();
     }
 }
 
