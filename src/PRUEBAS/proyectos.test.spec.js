@@ -375,7 +375,12 @@ describe("Ingresar Proyectos", () => {
 
   // ********************************************************************
   // 8tavo Salvador
-
+  it("El commit debería generar una recomendación positiva si las pruebas aprobadas, líneas de código y cobertura son buenas", () => {
+    let commitrec = new Commit(4, 100, 100);
+    commitrec.setPruebasAprob(4);
+    let texto = "";
+    expect(commitrec.getRecomendacion()).toEqual(texto);
+});
 
 
 

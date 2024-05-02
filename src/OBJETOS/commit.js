@@ -5,6 +5,7 @@ class Commit {
         this.cobertura = cobertura;
         this.cantPruebasAprob=0;
         this.cantLinCober=0;
+        this.recomendacion="";
     }
 
     getCantPruebas() {
@@ -45,7 +46,10 @@ class Commit {
         this.cobertura=this.calcularCobertura();
         return this.cobertura;
     }
-
+    getRecomendacion()
+    {
+        return this.recomendacion;
+    }
     
 }
 
