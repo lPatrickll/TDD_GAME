@@ -426,6 +426,15 @@ describe("Ingresar Proyectos", () => {
 
   // Examen2_PatrickGonzales ************************************************************************
   it("Buscar un proyecto", () => {
+    arrayProyectos.aniadirProyecto("Proyecto1");
     expect(arrayProyectos.buscarProyectos("Proyecto1")).toEqual("Proyecto1");
+  });
+
+  it("Buscar un proyecto", () => {
+    arrayProyectos.aniadirProyecto("Proyecto1");
+    arrayProyectos.aniadirProyecto("Proyecto2");
+    arrayProyectos.aniadirProyecto("Proyecto3");
+    arrayProyectos.aniadirProyecto("Proyecto4");
+    expect(arrayProyectos.buscarProyectos("Proyecto3")).toEqual("Proyecto3");
   });
 });

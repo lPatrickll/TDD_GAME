@@ -19,7 +19,8 @@ class ArrayProyectos {
         return this.proyectosArray;
     }
     buscarProyectos(tituloProyecto) {
-        return "Proyecto1";
+        let proyectoEncontrado = this.proyectosArray.find(proyecto => proyecto.getTitulo() === tituloProyecto);
+        return proyectoEncontrado.getTitulo();
     }
 };
 
