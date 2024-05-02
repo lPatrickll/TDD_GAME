@@ -62,12 +62,16 @@ class Commit {
     }
     generarRecomendacion()
     {
-        
         let recomendacion = "";
-        if (this.cantPruebasAprob / this.cantPruebas < 1) {
-            recomendacion = "Se recomienda mejorar la cantidad de pruebas aprobadas.";
-        } else {
+        let puntaje_provisional = this.cantPruebasAprob / this.cantPruebas;
+        if (puntaje_provisional == 1) {
             recomendacion = "Buen trabajo en las pruebas aprobadas.";
+        } else {
+            if(puntaje_provisional >= 0.6){
+                recomendacion = "Esta bien, pero podrias mejorar con la cantidad de pruebas aprobadas";
+            } else {
+                recomendacion = "Se recomienda mejorar la cantidad de pruebas aprobadas.";
+            }
         }
         return recomendacion;
     }
