@@ -66,11 +66,15 @@ class Commit {
         }
 
         if (this.cantLineas > 500) {
-            recomendacion += "El commit tiene muchas líneas de código, considera refactorizar para mejorar la legibilidad.";
+            recomendacion += "El commit tiene muchas líneas de código, considera refactorizar para mejorar la legibilidad. ";
         } else {
             if(this.cantLineas > 100){
-                recomendacion += "Buen manejo de la cantidad de líneas de código.";
+                recomendacion += "Buen manejo de la cantidad de líneas de código. ";
             }
+        }
+
+        if (this.cobertura < 70) {
+            recomendacion += "La cobertura de código es baja, considera añadir más pruebas.";
         }
         return recomendacion;
     }
