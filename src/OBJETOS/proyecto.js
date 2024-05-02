@@ -79,9 +79,13 @@ class Proyecto {
                 contadorDisminucion = 0;
             }
     
-            // Si las líneas actuales son mayores que las líneas anteriores, incrementamos el puntaje en 5
-            if (lineasActuales > lineasAnteriores &&  i != 0) {
-                puntaje += 5;
+            if (lineasActuales - lineasAnteriores > 30 && i != 0) {
+                puntaje -= 20;
+            } else{
+                // Si las líneas actuales son mayores que las líneas anteriores, incrementamos el puntaje en 5
+                if (lineasActuales > lineasAnteriores &&  i != 0) {
+                    puntaje += 5;
+                }
             }
     
             // Si hay una disminución en las líneas de código durante tres commits seguidos, reducimos el puntaje en 30
@@ -92,7 +96,7 @@ class Proyecto {
     
             lineasAnteriores = lineasActuales; // Actualizamos las líneas anteriores para la próxima iteración
         }
-    
+        puntaje = Math.max(Math.min(puntaje, 100), 0);
         return puntaje; // Devolvemos el puntaje
     }
     

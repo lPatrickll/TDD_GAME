@@ -264,5 +264,12 @@ describe("Ingresar Proyectos", () => {
     proyecto.aniadirCommit(5, 5, 1);
     expect(proyecto.getPuntajeLineasCodigo()).toEqual(95);
   });
+
+  it("El proyecto deberia de devolver el puntaje de 80 si aumenta de golpe la cantidad de lineas de codigo", () => {
+    const proyecto = new Proyecto("Proyecto2");
+    proyecto.aniadirCommit(5, 10, 1);
+    proyecto.aniadirCommit(5, 100, 1);
+    expect(proyecto.getPuntajeLineasCodigo()).toEqual(80);
+  });
   // ********************************************************************
 });
