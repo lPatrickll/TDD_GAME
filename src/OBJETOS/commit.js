@@ -46,9 +46,30 @@ class Commit {
         this.cobertura=this.calcularCobertura();
         return this.cobertura;
     }
+
+    /*getPuntajePruebas()
+    {
+        this.puntaje.setPuntajePruebas(this.calcularPuntajePruebas());
+        return this.puntaje.getPuntajePruebas();
+    }
+    calcularPuntajePruebas()
+    {
+        return (this.cantPruebasAprob/this.cantPruebas)*100;
+    }*/
     getRecomendacion()
     {
         return this.recomendacion;
+    }
+    generarRecomendacion()
+    {
+        
+        let recomendacion = "";
+        if (this.cantPruebasAprob / this.cantPruebas < 1) {
+            recomendacion = "Se recomienda mejorar la cantidad de pruebas aprobadas.";
+        } else {
+            recomendacion = "Buen trabajo en las pruebas aprobadas.";
+        }
+        return recomendacion;
     }
     
 }
