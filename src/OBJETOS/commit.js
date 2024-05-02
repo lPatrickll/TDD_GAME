@@ -30,6 +30,10 @@ class Commit {
     {
         return this.cantLinCober;
     }
+    setCantLinCober(cantLineas)
+    {
+        this.cantLinCober=cantLineas;
+    }
 
     
 }

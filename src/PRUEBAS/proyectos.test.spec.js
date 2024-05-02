@@ -281,4 +281,13 @@ describe("Ingresar Proyectos", () => {
     
     expect(commit2.getcantLinCober()).toEqual(0);
   });
+
+  it("Deberia devolver 2 para cantidad de lineas de cobertura en commit", () => {
+    let commit2=new Commit(4,2,100);
+    commit2.setPruebasAprob(2)
+    commit2.setCantLinCober(2);
+    expect(commit2.getcantLinCober()).toEqual(2);
+  });
+
+
 });
