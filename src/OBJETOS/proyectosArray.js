@@ -19,8 +19,8 @@ class ArrayProyectos {
         return this.proyectosArray;
     }
 
-    buscarProyectos(){
-        return [];
+    buscarProyectos(titulo){
+        return [titulo];
     }
 };
 
