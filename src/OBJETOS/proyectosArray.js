@@ -20,10 +20,11 @@ class ArrayProyectos {
     }
 
     buscarProyectoPorNombre(titulo_buscado){
-        titulo = this.proyectosArray.map(proyecto => proyecto.getTitulo());
         if(titulo_buscado === titulo){
-            return "este es el titulo que estuviste buscando";
-        }
+            this.proyectosArray = this.proyectosArray.filter(proyecto => proyecto.getTitulo() === titulo_buscado);
+            // Estos son los proyectos que estuviste buscando
+            this.proyectosArray;
+        } 
     }
 };
 
