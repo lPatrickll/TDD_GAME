@@ -20,7 +20,19 @@ class ArrayProyectos {
     }
     buscarProyecto(titulo)
     {
-        return "EL PROYECTO TDD NO EXISTE";
+
+        let proyectoSeleccionado=this.proyectosArray.find(proyecto => proyecto.getTitulo() === titulo);
+        let nombreProyecto;
+        if(proyectoSeleccionado)
+        {
+            nombreProyecto=proyectoSeleccionado.getTitulo();
+        }
+        else
+        {
+            return "EL PROYECTO TDD NO EXISTE";
+        }
+        return nombreProyecto;
+       
     }
 };
 

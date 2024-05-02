@@ -424,8 +424,16 @@ describe("Ingresar Proyectos", () => {
     expect(commitrec.generarRecomendacion()).toEqual(texto);
   });
 
+
   it("El buscador debe de devolver una cadena de EL PROYECTO TDD NO EXISTE al enviar una cadena vacia en el buscador de proyectos", () => {
     let arrayProyectosNuevo = new ArrayProyectos();
-    expect(arrayProyectosNuevo.buscarProyecto()).toEqual("EL PROYECTO TDD NO EXISTE");
+    arrayProyectosNuevo.aniadirProyecto("proyecto1");
+    expect(arrayProyectosNuevo.buscarProyecto("")).toEqual("EL PROYECTO TDD NO EXISTE");
+  });
+
+  it("El buscador debe de devolver el nombre dle proyecto al enviar una cadena con un titulo existente", () => {
+    let arrayProyectosNuevo = new ArrayProyectos();
+    arrayProyectosNuevo.aniadirProyecto("proyecto1");
+    expect(arrayProyectosNuevo.buscarProyecto("proyecto1")).toEqual("proyecto1");
   });
 });
