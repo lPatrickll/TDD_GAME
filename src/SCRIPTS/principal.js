@@ -271,6 +271,13 @@ function ingresarPuntajeProyecto(nombreProyecto) {
     tituloPuntajeLineasCodigo.textContent = `Puntaje por líneas de código: ${puntajeLineasCodigo}%`;
     proyectoContainer.appendChild(tituloPuntajeLineasCodigo);
 
+
+     // Obtener el porcentaje cobertura del proyecto
+     const porcentajeCobertura = proyectoSeleccionado.getPorcentajeCobertura();
+     // Mostrar el puntaje de pruebas del proyecto
+     const parrafoPorcentaje = document.createElement('p');
+     parrafoPorcentaje.textContent = `Porcentaje de cobertura: ${porcentajeCobertura}%`;
+     proyectoContainer.appendChild(parrafoPorcentaje);
     
 }
 
