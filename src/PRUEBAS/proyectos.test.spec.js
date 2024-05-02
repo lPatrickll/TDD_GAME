@@ -324,5 +324,19 @@ describe("Ingresar Proyectos", () => {
     expect(commit2.getCoberturaCalculada()).toEqual(87);
   });
 
+  it("El Array de commits deberia de devolver todos sus datos del commit con porcentajeCober CALCULADO", () => {
+    let commit2=new Commit(4,100,0);
+    commit2.setPruebasAprob(2);
+    commit2.setCantLinCober(87);
+    arrayCommit.aniadirCommitObj(commit2);
+    let expectedArray = [{
+      cantPruebas: 4,
+      cantPruebasAprob:2,
+      cantLineas: 100,
+      cobertura: 87
+    }];
+    expect(arrayCommit.mostrarCommitCompleto()).toEqual(expectedArray);
+  });
+
 
 });

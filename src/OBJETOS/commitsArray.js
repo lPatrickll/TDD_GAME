@@ -15,7 +15,10 @@ class ArrayCommit {
         nuevoCommit.setPruebasAprob(cantPruebasAprob);
         this.arrayCommit.push(nuevoCommit);
     }
-
+    aniadirCommitObj(Commit)
+    {
+        this.arrayCommit.push(Commit);
+    }
     mostrarCommitConPruebasAprob() {
         return this.arrayCommit.map(commit => ({
             cantPruebas: commit.getCantPruebas(),
@@ -30,6 +33,15 @@ class ArrayCommit {
             cantPruebas: commit.getCantPruebas(),
             cantLineas: commit.getCantLineas(),
             cobertura: commit.getCobertura()
+        }));
+    }
+    mostrarCommitCompleto()
+    {
+        return this.arrayCommit.map(commit => ({
+            cantPruebas: commit.getCantPruebas(),
+            cantPruebasAprob: commit.getCantPruebasAprob(),
+            cantLineas: commit.getCantLineas(),
+            cobertura: commit.getCoberturaCalculada()
         }));
     }
 

@@ -30,9 +30,9 @@ class Commit {
     {
         return this.cantLinCober;
     }
-    setCantLinCober(cantLineas)
+    setCantLinCober(cantLineas2)
     {
-        this.cantLinCober=cantLineas;
+        this.cantLinCober=cantLineas2;
     }
     calcularCobertura()
     {
