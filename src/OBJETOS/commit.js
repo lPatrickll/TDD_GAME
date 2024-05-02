@@ -34,6 +34,10 @@ class Commit {
     {
         this.cantLinCober=cantLineas;
     }
+    calcularCobertura()
+    {
+        return 0;
+    }
 
     
 }
