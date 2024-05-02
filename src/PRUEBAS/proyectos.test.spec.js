@@ -242,7 +242,6 @@ describe("Ingresar Proyectos", () => {
     expect(proyecto.getPuntajeLineasCodigo()).toEqual(80);
   });
 
-
   it("El proyecto deberia de devolver el puntaje de 80 para 3 commits reducidos consecutivamente", () => {
     const proyecto = new Proyecto("Proyecto2");
     proyecto.aniadirCommit(5, 10, 1);
@@ -251,7 +250,19 @@ describe("Ingresar Proyectos", () => {
     proyecto.aniadirCommit(5, 2, 1);
     proyecto.aniadirCommit(5, 4, 1);
     proyecto.aniadirCommit(5, 3, 1);
-    expect(proyecto.getPuntajeLineasCodigo()).toEqual(80);
+    expect(proyecto.getPuntajeLineasCodigo()).toEqual(85);
+  });
+
+  it("El proyecto deberia devolver 95 debido al incremento de las lineas de codigo", () => {
+    const proyecto = new Proyecto("Proyecto2");
+    proyecto.aniadirCommit(5, 10, 1);
+    proyecto.aniadirCommit(5, 7, 1);
+    proyecto.aniadirCommit(5, 6, 1);
+    proyecto.aniadirCommit(5, 2, 1);
+    proyecto.aniadirCommit(5, 3, 1);
+    proyecto.aniadirCommit(5, 4, 1);
+    proyecto.aniadirCommit(5, 5, 1);
+    expect(proyecto.getPuntajeLineasCodigo()).toEqual(95);
   });
   // ********************************************************************
 });
