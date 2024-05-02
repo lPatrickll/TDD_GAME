@@ -12,6 +12,10 @@ class Proyecto {
         return this.titulo;
     }
 
+    aniadirCommitFinal(cantPruebas,cantPruebasAprob,cantLineas,cantLineasCober)
+    {
+        this.arrayCommit.aniadirCommitFinal(cantPruebas,cantPruebasAprob,cantLineas,cantLineasCober);
+    }
     aniadirCommit(cantPruebas, cantLineas, cobertura) {
         this.arrayCommit.aniadirCommit(cantPruebas, cantLineas, cobertura);
     }
@@ -26,6 +30,9 @@ class Proyecto {
 
     mostrarCommitsConPruebasAprob() {
         return this.arrayCommit.mostrarCommitConPruebasAprob();
+    }
+    mostrarCommitCompleto() {
+        return this.arrayCommit.mostrarCommitCompleto();
     }
 
     eliminarUltimoCommit() {

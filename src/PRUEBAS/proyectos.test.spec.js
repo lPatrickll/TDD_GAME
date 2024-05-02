@@ -338,5 +338,34 @@ describe("Ingresar Proyectos", () => {
     expect(arrayCommit.mostrarCommitCompleto()).toEqual(expectedArray);
   });
 
+  it("El Array de commits deberia de devolver todos sus datos del commit con porcentajeCober CALCULADO", () => {
+    const proyecto = new Proyecto("Proyecto2");
+    proyecto.aniadirCommitFinal(10,10,10,10);
+    let expectedArray = [{
+      cantPruebas: 10,
+      cantPruebasAprob:10,
+      cantLineas: 10,
+      cobertura: 100
+    }];
+    expect(proyecto.mostrarCommitCompleto()).toEqual(expectedArray);
+  });
+
+  it("Añadir Commit a array de commit aniadiendo lineas de cobertura", () => {
+    arrayCommit.aniadirCommitFinal(10,10,10,10);
+    let expectedArray = [{
+      cantPruebas: 10,
+      cantPruebasAprob:10,
+      cantLineas: 10,
+      cobertura: 100
+    }];
+    expect(arrayCommit.mostrarCommitCompleto()).toEqual(expectedArray);
+  });
+
+  it("Añadir commit a proyecto aniadiendo lineas de cobertura", () => {
+    const proyecto = new Proyecto("Proyecto2");
+    proyecto.aniadirCommitFinal(10,10,10,10);
+    expect(proyecto.getPuntajePruebas()).toEqual(100);
+  });
+
 
 });
