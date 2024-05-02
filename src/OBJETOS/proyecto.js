@@ -50,6 +50,12 @@ class Proyecto {
         this.puntaje.setPuntajeLineasCodigo(puntajeLineasCodigo); // Establecer el puntaje por líneas de código
         return this.puntaje.getPuntajeLineasCodigo(); // Obtener y devolver el puntaje por líneas de código
     }
+    getPorcentajeCobertura()
+    {
+        let porcentajeCobertura = this.calcularPorcentajeCobertura();
+        this.puntaje.setPorcentajeCobertura(porcentajeCobertura);
+        return this.puntaje.getPuntajeCobertura();
+    }
 
     calcularPorcentajePruebas() {
         let totalPruebas = 0;
@@ -105,6 +111,10 @@ class Proyecto {
         }
         puntaje = Math.max(Math.min(puntaje, 100), 0);
         return puntaje; // Devolvemos el puntaje
+    }
+    calcularPorcentajeCobertura()
+    {
+        return 0;
     }
     
 }

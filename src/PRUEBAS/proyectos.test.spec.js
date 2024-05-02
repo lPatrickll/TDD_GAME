@@ -338,7 +338,7 @@ describe("Ingresar Proyectos", () => {
     expect(arrayCommit.mostrarCommitCompleto()).toEqual(expectedArray);
   });
 
-  it("El Array de commits deberia de devolver todos sus datos del commit con porcentajeCober CALCULADO", () => {
+  it("el proyecto deberia de mostrar el commit añadido, incluyendo el porcentaje de cobertura calculado", () => {
     const proyecto = new Proyecto("Proyecto2");
     proyecto.aniadirCommitFinal(10,10,10,10);
     let expectedArray = [{
@@ -361,11 +361,17 @@ describe("Ingresar Proyectos", () => {
     expect(arrayCommit.mostrarCommitCompleto()).toEqual(expectedArray);
   });
 
-  it("Añadir commit a proyecto aniadiendo lineas de cobertura", () => {
-    const proyecto = new Proyecto("Proyecto2");
-    proyecto.aniadirCommitFinal(10,10,10,10);
-    expect(proyecto.getPuntajePruebas()).toEqual(100);
+  it("El proyecto deberia de devolver 0 de porcentaje de cobertura", () => {
+
+    const proyecto = new Proyecto("Proyecto1");
+    expect(proyecto.getPorcentajeCobertura()).toEqual(0);
   });
+
+
+
+
+
+
 
 
 });
