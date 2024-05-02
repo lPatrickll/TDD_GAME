@@ -8,7 +8,7 @@ describe("Ingresar Proyectos", () => {
   let arrayProyectos = new ArrayProyectos();
   let commit = new Commit();
   let arrayCommit = new ArrayCommit();
-  let proyecto;
+  let proyecto = new Proyecto();
   let proyectoEliminarUnCommit;
 
   beforeEach(() => {
@@ -422,5 +422,10 @@ describe("Ingresar Proyectos", () => {
     commitrec.setPruebasAprob(3);
     let texto = "Esta bien, pero podrias mejorar con la cantidad de pruebas aprobadas. Buen manejo de la cantidad de líneas de código. La cobertura de código es baja, considera añadir más pruebas.";
     expect(commitrec.generarRecomendacion()).toEqual(texto);
+  });
+
+  // Examen2_PatrickGonzales ************************************************************************
+  it("Buscar un proyecto", () => {
+    expect(arrayProyectos.buscarProyectos("Proyecto1")).toEqual("Proyecto1");
   });
 });
