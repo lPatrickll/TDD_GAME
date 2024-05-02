@@ -75,11 +75,14 @@ class Proyecto {
             // Si las líneas actuales son menores que las líneas anteriores, incrementamos el contador de disminución
             if (lineasActuales < lineasAnteriores) {
                 contadorDisminucion++;
+            } else {
+                contadorDisminucion = 0;
             }
     
-            // Si hay una disminución en las líneas de código durante tres commits, reducimos el puntaje en 30
+            // Si hay una disminución en las líneas de código durante tres commits seguidos, reducimos el puntaje en 30
             if (contadorDisminucion >= 3) {
                 puntaje -= 20;
+                contadorDisminucion = 0; // Reiniciamos el contador de disminución
             }
     
             lineasAnteriores = lineasActuales; // Actualizamos las líneas anteriores para la próxima iteración

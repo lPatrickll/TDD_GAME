@@ -242,5 +242,16 @@ describe("Ingresar Proyectos", () => {
     expect(proyecto.getPuntajeLineasCodigo()).toEqual(80);
   });
 
+
+  it("El proyecto deberia de devolver el puntaje de 80 para 3 commits reducidos consecutivamente", () => {
+    const proyecto = new Proyecto("Proyecto2");
+    proyecto.aniadirCommit(5, 10, 1);
+    proyecto.aniadirCommit(5, 7, 1);
+    proyecto.aniadirCommit(5, 6, 1);
+    proyecto.aniadirCommit(5, 2, 1);
+    proyecto.aniadirCommit(5, 4, 1);
+    proyecto.aniadirCommit(5, 3, 1);
+    expect(proyecto.getPuntajeLineasCodigo()).toEqual(80);
+  });
   // ********************************************************************
 });
