@@ -162,8 +162,11 @@ function ingresarAlProyecto(nombreProyecto) {
 
         commitsProyecto.forEach(commit => {
             const commitItem = document.createElement('li');
-            commitItem.textContent = `Pruebas: ${commit.cantPruebas},Pruebas Aprobadas: ${commit.cantPruebasAprob}, Líneas: ${commit.cantLineas}, Cobertura: ${commit.cobertura}%`;
+            commitItem.textContent = `Pruebas: ${commit.cantPruebas}, Pruebas Aprobadas: ${commit.cantPruebasAprob}, Líneas: ${commit.cantLineas}, Cobertura: ${commit.cobertura}%`;
+            
+            const proyectoSeleccionado = arrayProyectos.proyectosArray.find(proyecto => proyecto.getTitulo() === nombreProyecto);
 
+            const recomendacion = proyectoSeleccionado.mostrarRecomendaciones();
             const button = document.createElement('button');
             button.textContent = 'Ver recomendación';
             let paragraph; // Declaramos la variable paragraph aquí para poder acceder a ella en ambos eventos de click
@@ -171,18 +174,19 @@ function ingresarAlProyecto(nombreProyecto) {
             button.addEventListener('click', () => {
                 if (!paragraph) {
                     paragraph = document.createElement('p');
-                    paragraph.textContent = 'Aquí va la recomendación para este commit...';
+                    // Aquí llamamos a la función generarRecomendacion para obtener la recomendación para este commit
+                    paragraph.textContent = recomendacion;
                     commitItem.appendChild(paragraph);
                     button.textContent = 'Ocultar recomendación';
                 } else {
                     paragraph.remove(); // Eliminamos el párrafo
-                    paragraph = null; // Limpiamos la referencia al párrafo para indicar que ya no está presente
+                    paragraph = null; // Limpiamos la referencia al párrafos para indicar que ya no está presente
                     button.textContent = 'Ver recomendación';
                 }
             });
         
             commitItem.appendChild(button);
-
+        
             listaCommits.appendChild(commitItem);
         });
         proyectoContainer.appendChild(listaCommits)

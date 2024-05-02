@@ -53,30 +53,30 @@ class Commit {
     }
     generarRecomendacion()
     {
-        let recomendacion = "";
+        let _recomendacion = "";
         let puntaje_provisional = this.cantPruebasAprob / this.cantPruebas;
         if (puntaje_provisional == 1) {
-            recomendacion += "Buen trabajo en las pruebas aprobadas. ";
+            _recomendacion += "Buen trabajo en las pruebas aprobadas. ";
         } else {
             if(puntaje_provisional >= 0.6){
-                recomendacion += "Esta bien, pero podrias mejorar con la cantidad de pruebas aprobadas. ";
+                _recomendacion += "Esta bien, pero podrias mejorar con la cantidad de pruebas aprobadas. ";
             } else {
-                recomendacion += "Se recomienda mejorar la cantidad de pruebas aprobadas. ";
+                _recomendacion += "Se recomienda mejorar la cantidad de pruebas aprobadas. ";
             }
         }
 
         if (this.cantLineas > 500) {
-            recomendacion += "El commit tiene muchas líneas de código, considera refactorizar para mejorar la legibilidad. ";
+            _recomendacion += "El commit tiene muchas líneas de código, considera refactorizar para mejorar la legibilidad. ";
         } else {
             if(this.cantLineas > 100){
-                recomendacion += "Buen manejo de la cantidad de líneas de código. ";
+                _recomendacion += "Buen manejo de la cantidad de líneas de código. ";
             }
         }
 
         if (this.cobertura < 70) {
-            recomendacion += "La cobertura de código es baja, considera añadir más pruebas.";
+            _recomendacion += "La cobertura de código es baja, considera añadir más pruebas.";
         }
-        return recomendacion;
+        return _recomendacion;
     }
     
 }

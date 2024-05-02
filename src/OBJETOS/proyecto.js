@@ -1,11 +1,13 @@
 import ArrayCommit from "./commitsArray";
 import Puntaje from "./puntaje";
+import Commit from "./commit";
 
 class Proyecto {
     constructor(titulo) {
         this.titulo = titulo;
         this.arrayCommit = new ArrayCommit();
         this.puntaje = new Puntaje(); 
+        this.ccommit = new Commit();
     }
 
     getTitulo() {
@@ -22,6 +24,10 @@ class Proyecto {
 
     aniadirCommitConPruebasAprob(cantPruebas, cantLineas, cobertura,cantPruebasAprob) {
         this.arrayCommit.aniadirCommitConCantPruebAprob(cantPruebas, cantLineas, cobertura,cantPruebasAprob);
+    }
+    mostrarRecomendaciones()
+    {
+        return this.ccommit.generarRecomendacion();
     }
 
     mostrarCommits() {
