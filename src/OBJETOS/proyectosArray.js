@@ -21,14 +21,33 @@ class ArrayProyectos {
     buscarProyecto(titulo)
     {
 
-        let proyectoSeleccionado=this.proyectosArray.find(proyecto => proyecto.getTitulo() === titulo);
+
         let nombreProyecto;
         let mensajeNoEncontrado="EL PROYECTO TDD NO EXISTE";
+        let NombresProyectosArray = [];
         let variableDeRetorno;
-        if(proyectoSeleccionado)
+
+        let contador=0;
+        let nroLetrasCoincidentes=0;
+
+        for (let proyecto of this.proyectosArray) {
+            for (let letra of proyecto.getTitulo()) {
+                if(titulo[contador]==letra)
+                {
+                    nroLetrasCoincidentes+=1;
+                }
+                contador=contador+1;
+            }
+            if(nroLetrasCoincidentes>2)
+            {
+                NombresProyectosArray.push(proyecto.getTitulo());
+            }
+        }
+
+        //let proyectoSeleccionado=this.proyectosArray.find(proyecto => proyecto.getTitulo() === titulo);
+        if(NombresProyectosArray.length>0)
         {
-            nombreProyecto=proyectoSeleccionado.getTitulo();
-            variableDeRetorno=nombreProyecto;
+            variableDeRetorno=NombresProyectosArray;
         }
         else
         {
