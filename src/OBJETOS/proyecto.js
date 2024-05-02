@@ -114,7 +114,20 @@ class Proyecto {
     }
     calcularPorcentajeCobertura()
     {
-        return 0;
+        let totalPorcentajes = 0;
+        let porcentaje=0;
+        let cantPorcentajes=0;
+        // Recorremos cada commit en el array de commits
+        if (this.arrayCommit.getCommits().length > 0)
+        {
+            for (let commit of this.arrayCommit.getCommits()) {
+                totalPorcentajes += commit.getCoberturaCalculada();
+                cantPorcentajes =cantPorcentajes+1;
+            }
+            // Calculamos la diferencia
+            porcentaje = (totalPorcentajes/cantPorcentajes);
+        }
+        return porcentaje;
     }
     
 }

@@ -367,6 +367,19 @@ describe("Ingresar Proyectos", () => {
     expect(proyecto.getPorcentajeCobertura()).toEqual(0);
   });
 
+  
+
+  it("El proyecto deberia de devolver 50 de porcentaje de cobertura para dos commits con 50% de cobertura", () => {
+    const proyecto = new Proyecto("Proyecto2");
+    proyecto.aniadirCommitFinal(10,10,10,5);
+    proyecto.aniadirCommitFinal(10,10,10,5);
+    expect(proyecto.getPorcentajeCobertura()).toEqual(50);
+  });
+
+
+
+
+
 
 
 
