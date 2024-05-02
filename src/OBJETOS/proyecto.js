@@ -64,30 +64,30 @@ class Proyecto {
 
     calcularPuntajeLineasCodigo() {
         const commits = this.arrayCommit.getCommits();
-        let contadorDisminucion = 0;
-        let contadorIncremento = 0;
+        let puntaje = 100; // Iniciamos el puntaje en 100
         let lineasAnteriores = 0;
-
+        let contadorDisminucion = 0;
+    
         for (let i = 0; i < commits.length; i++) {
             const commit = commits[i];
             const lineasActuales = commit.getCantLineas();
-
-            if (i > 0 && lineasActuales < lineasAnteriores) {
+    
+            // Si las líneas actuales son menores que las líneas anteriores, incrementamos el contador de disminución
+            if (lineasActuales < lineasAnteriores) {
                 contadorDisminucion++;
-                if (contadorDisminucion > 2) {
-                    contadorIncremento -= 20; // Reducir el puntaje en un 20%
-                }
-            } else {
-                contadorDisminucion = 0;
             }
-
-            lineasAnteriores = lineasActuales;
+    
+            // Si hay una disminución en las líneas de código durante tres commits, reducimos el puntaje en 30
+            if (contadorDisminucion >= 3) {
+                puntaje -= 20;
+            }
+    
+            lineasAnteriores = lineasActuales; // Actualizamos las líneas anteriores para la próxima iteración
         }
-
-        const puntajeLineasCodigo = 100 + contadorIncremento; // Inicialmente, el puntaje es 100%
-        this.puntaje.setPuntajeLineasCodigo(puntajeLineasCodigo);
-        return puntajeLineasCodigo;
+    
+        return puntaje; // Devolvemos el puntaje
     }
+    
 }
 
 export default Proyecto;

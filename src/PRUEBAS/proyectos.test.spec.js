@@ -228,9 +228,18 @@ describe("Ingresar Proyectos", () => {
 
   // ********************************************************************
   // 6ta HU Salvador
-  it("El proyecto deberia de devolver el puntaje de 0 en base a la cantidad de lineas", () => {
+  it("El proyecto deberia de devolver el puntaje de 100 en base a la cantidad de lineas", () => {
     const proyecto = new Proyecto("Proyecto1");
-    expect(proyecto.getPuntajeLineasPruebas()).toEqual(0);
+    expect(proyecto.getPuntajeLineasCodigo()).toEqual(100);
+  });
+
+  it("El proyecto deberia de devolver el puntaje de 80 para 3 commits reducidos", () => {
+    const proyecto = new Proyecto("Proyecto2");
+    proyecto.aniadirCommit(5, 10, 1);
+    proyecto.aniadirCommit(5, 7, 1);
+    proyecto.aniadirCommit(5, 6, 1);
+    proyecto.aniadirCommit(5, 2, 1);
+    expect(proyecto.getPuntajeLineasCodigo()).toEqual(80);
   });
 
   // ********************************************************************
