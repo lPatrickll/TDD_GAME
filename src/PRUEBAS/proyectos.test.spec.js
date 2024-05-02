@@ -443,4 +443,11 @@ describe("Ingresar Proyectos", () => {
     arrayProyectosNuevo.aniadirProyecto("proyecto2");
     expect(arrayProyectosNuevo.buscarProyecto("proyecto")).toEqual(["proyecto1","proyecto2"]);
   });
+
+  it("El buscador debe de devolver una lista de nombres de proyectos coincidentes al parametro enviado", () => {
+    let arrayProyectosNuevo = new ArrayProyectos();
+    arrayProyectosNuevo.aniadirProyecto("proyecto1");
+    arrayProyectosNuevo.aniadirProyecto("proyecto2");
+    expect(arrayProyectosNuevo.buscarProyecto("p")).toEqual(["proyecto1","proyecto2"]);
+  });
 });
