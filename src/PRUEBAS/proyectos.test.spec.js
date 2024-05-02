@@ -318,5 +318,11 @@ describe("Ingresar Proyectos", () => {
     expect(commit2.calcularCobertura()).toEqual(87);
   });
 
+  it("El commit deberia de devolver un porcentaje de cobertura calculado", () => {
+    let commit2=new Commit(4,100,100);
+    commit2.setCantLinCober(87);
+    expect(commit2.getCoberturaCalculada()).toEqual(87);
+  });
+
 
 });

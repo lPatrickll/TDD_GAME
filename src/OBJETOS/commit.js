@@ -40,6 +40,11 @@ class Commit {
         porcentajeCober=(this.cantLinCober/this.cantLineas)*100
         return porcentajeCober;
     }
+    getCoberturaCalculada()
+    {
+        this.cobertura=this.calcularCobertura();
+        return this.cobertura;
+    }
 
     
 }
