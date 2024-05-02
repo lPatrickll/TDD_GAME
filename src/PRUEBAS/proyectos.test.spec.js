@@ -423,4 +423,11 @@ describe("Ingresar Proyectos", () => {
     let texto = "Esta bien, pero podrias mejorar con la cantidad de pruebas aprobadas. Buen manejo de la cantidad de líneas de código. La cobertura de código es baja, considera añadir más pruebas.";
     expect(commitrec.generarRecomendacion()).toEqual(texto);
   });
+
+  /* EXAMEN 2 FABIO MOJICA */
+  it("Deberia llamar a la funcion buscar proyectos y esta debe devolverme un array vacio", () => {
+    let proyectos = new ArrayProyectos();
+    expect(proyectos.buscarProyectos()).toEqual([]);
+  });
+
 });
