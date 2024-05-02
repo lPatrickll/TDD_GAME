@@ -20,7 +20,8 @@ class ArrayProyectos {
     }
 
     buscarProyectos(titulo){
-        return [titulo];
+        const proyectosEncontrados = this.proyectosArray.filter(proyecto => proyecto.getTitulo() === titulo);
+        return proyectosEncontrados.map(proyecto => proyecto.getTitulo());
     }
 };
 

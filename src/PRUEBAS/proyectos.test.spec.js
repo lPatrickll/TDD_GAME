@@ -435,6 +435,15 @@ describe("Buscar Proyectos", () => {
 
   it("Deberia poder ingresar un titulo a la funcion y esta devolverme un array con ese titulo", () =>{
     let proyectos = new ArrayProyectos();
+    proyectos.aniadirProyecto("buscar");
     expect(proyectos.buscarProyectos("buscar")).toEqual(["buscar"]);
   });
+
+  it("Deberia cargar de 2 proyectos a mi array luego llamar a la funcion para buscar proyectos con un titulo que coincida con uno de ellos y devolverme la coincidencia", () =>{
+    let proyectos = new ArrayProyectos();
+    proyectos.aniadirProyecto("P1");
+    proyectos.aniadirProyecto("P2");
+    expect(proyectos.buscarProyectos("P2")).toEqual(["P2"]);
+  });
+
 });
