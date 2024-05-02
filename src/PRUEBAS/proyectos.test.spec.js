@@ -423,4 +423,9 @@ describe("Ingresar Proyectos", () => {
     let texto = "Esta bien, pero podrias mejorar con la cantidad de pruebas aprobadas. Buen manejo de la cantidad de líneas de código. La cobertura de código es baja, considera añadir más pruebas.";
     expect(commitrec.generarRecomendacion()).toEqual(texto);
   });
+
+  it("El buscador debe de devolver una cadena de EL PROYECTO TDD NO EXISTE al enviar una cadena vacia en el buscador de proyectos", () => {
+    let arrayProyectosNuevo = new ArrayProyectos();
+    expect(arrayProyectosNuevo.buscarProyecto()).toEqual("EL PROYECTO TDD NO EXISTE");
+  });
 });

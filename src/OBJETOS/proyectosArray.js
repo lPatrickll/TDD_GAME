@@ -18,6 +18,10 @@ class ArrayProyectos {
         this.proyectosArray = this.proyectosArray.filter(proyecto => proyecto.getTitulo() !== tituloProyecto);
         return this.proyectosArray;
     }
+    buscarProyecto(titulo)
+    {
+        return "EL PROYECTO TDD NO EXISTE";
+    }
 };
 
 export default ArrayProyectos;
