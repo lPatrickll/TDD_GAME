@@ -23,15 +23,18 @@ class ArrayProyectos {
 
         let proyectoSeleccionado=this.proyectosArray.find(proyecto => proyecto.getTitulo() === titulo);
         let nombreProyecto;
+        let mensajeNoEncontrado="EL PROYECTO TDD NO EXISTE";
+        let variableDeRetorno;
         if(proyectoSeleccionado)
         {
             nombreProyecto=proyectoSeleccionado.getTitulo();
+            variableDeRetorno=nombreProyecto;
         }
         else
         {
-            return "EL PROYECTO TDD NO EXISTE";
+            variableDeRetorno=mensajeNoEncontrado;
         }
-        return nombreProyecto;
+        return variableDeRetorno;
        
     }
 };
