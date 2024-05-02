@@ -272,8 +272,7 @@ describe("Ingresar Proyectos", () => {
     expect(proyecto.getPuntajeLineasCodigo()).toEqual(80);
   });
   // ********************************************************************
-    // ********************************************************************
-  // 6ta HU Arturo
+  // 7ta HU Arturo
 
   it("Deberia devolver cero para cantidad de lineas de cobertura", () => {
     let commit2=new Commit(4,2,100);
@@ -367,8 +366,6 @@ describe("Ingresar Proyectos", () => {
     expect(proyecto.getPorcentajeCobertura()).toEqual(0);
   });
 
-  
-
   it("El proyecto deberia de devolver 50 de porcentaje de cobertura para dos commits con 50% de cobertura", () => {
     const proyecto = new Proyecto("Proyecto2");
     proyecto.aniadirCommitFinal(10,10,10,5);
@@ -376,13 +373,8 @@ describe("Ingresar Proyectos", () => {
     expect(proyecto.getPorcentajeCobertura()).toEqual(50);
   });
 
-
-
-
-
-
-
-
+  // ********************************************************************
+  // 8tavo Salvador
 
 
 
