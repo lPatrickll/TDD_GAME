@@ -437,4 +437,10 @@ describe("Ingresar Proyectos", () => {
     arrayProyectos.aniadirProyecto("Proyecto4");
     expect(arrayProyectos.buscarProyectos("Proyecto3")).toEqual("Proyecto3");
   });
+  
+  it("Buscar un proyecto que no existe", () => {
+    arrayProyectos.aniadirProyecto("Proyecto1");
+    arrayProyectos.aniadirProyecto("Proyecto2");
+    expect(arrayProyectos.buscarProyectos("Proyecto3")).toEqual("El proyecto no existe");
+  });
 });

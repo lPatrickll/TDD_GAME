@@ -20,7 +20,10 @@ class ArrayProyectos {
     }
     buscarProyectos(tituloProyecto) {
         let proyectoEncontrado = this.proyectosArray.find(proyecto => proyecto.getTitulo() === tituloProyecto);
-        return proyectoEncontrado.getTitulo();
+        if (!proyectoEncontrado)
+            return "El proyecto no existe";
+        else
+            return proyectoEncontrado.getTitulo();
     }
 };
 
