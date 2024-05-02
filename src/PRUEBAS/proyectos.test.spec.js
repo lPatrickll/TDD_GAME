@@ -272,4 +272,13 @@ describe("Ingresar Proyectos", () => {
     expect(proyecto.getPuntajeLineasCodigo()).toEqual(80);
   });
   // ********************************************************************
+    // ********************************************************************
+  // 6ta HU Arturo
+
+  it("Deberia devolver cero para cantidad de lineas de cobertura", () => {
+    let commit2=new Commit(4,2,100);
+    commit2.setPruebasAprob(2)
+    
+    expect(commit2.getcantLinCober()).toEqual(0);
+  });
 });

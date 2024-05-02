@@ -4,6 +4,7 @@ class Commit {
         this.cantLineas = cantLineas;
         this.cobertura = cobertura;
         this.cantPruebasAprob=0;
+        this.cantLinCober=0;
     }
 
     getCantPruebas() {
@@ -24,6 +25,10 @@ class Commit {
     getCantPruebasAprob()
     {
         return this.cantPruebasAprob;
+    }
+    getcantLinCober()
+    {
+        return this.cantLinCober;
     }
 
     
