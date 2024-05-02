@@ -294,10 +294,16 @@ describe("Ingresar Proyectos", () => {
     expect(commit2.calcularCobertura()).toEqual(0);
   });
 
-  it("El commit deberia de devolver 100 de porcentaje de cobertura en metodo calcularCobertura()", () => {
+  it("El commit deberia de devolver 100% de porcentaje de cobertura en metodo calcularCobertura()", () => {
     let commit2=new Commit(4,2,100);
     commit2.setCantLinCober(2);
     expect(commit2.calcularCobertura()).toEqual(100);
+  });
+
+  it("El commit deberia de devolver 50% de porcentaje de cobertura en metodo calcularCobertura() si cantLinCobertura/2==cantLineas", () => {
+    let commit2=new Commit(4,2,100);
+    commit2.setCantLinCober(1);
+    expect(commit2.calcularCobertura()).toEqual(50);
   });
 
 

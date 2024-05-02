@@ -37,9 +37,13 @@ class Commit {
     calcularCobertura()
     {
         let porcentajeCober=0
-        if(this.cantLineas=this.cantLinCober)
+        if(this.cantLineas==this.cantLinCober)
         {
             porcentajeCober=100
+        }
+        if(this.cantLinCober==this.cantLineas/2)
+        {
+            porcentajeCober=50;
         }
         return porcentajeCober;
     }
