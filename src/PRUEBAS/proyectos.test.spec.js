@@ -446,4 +446,12 @@ describe("Buscar Proyectos", () => {
     expect(proyectos.buscarProyectos("P2")).toEqual(["P2"]);
   });
 
+  it("Deberia cargar 4 proyectos a mi array luego llamar a la funcion para buscar proyectos con un titulo que coincida con 2 de ellos y devolverme las coincidencias", () =>{
+    let proyectos = new ArrayProyectos();
+    proyectos.aniadirProyecto("P1");
+    proyectos.aniadirProyecto("P1");
+    proyectos.aniadirProyecto("P3");
+    proyectos.aniadirProyecto("P4");
+    expect(proyectos.buscarProyectos("P1")).toEqual(["P1", "P1"]);
+  });
 });
