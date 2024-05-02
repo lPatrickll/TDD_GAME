@@ -47,15 +47,6 @@ class Commit {
         return this.cobertura;
     }
 
-    /*getPuntajePruebas()
-    {
-        this.puntaje.setPuntajePruebas(this.calcularPuntajePruebas());
-        return this.puntaje.getPuntajePruebas();
-    }
-    calcularPuntajePruebas()
-    {
-        return (this.cantPruebasAprob/this.cantPruebas)*100;
-    }*/
     getRecomendacion()
     {
         return this.recomendacion;
@@ -65,13 +56,17 @@ class Commit {
         let recomendacion = "";
         let puntaje_provisional = this.cantPruebasAprob / this.cantPruebas;
         if (puntaje_provisional == 1) {
-            recomendacion = "Buen trabajo en las pruebas aprobadas.";
+            recomendacion += "Buen trabajo en las pruebas aprobadas. ";
         } else {
             if(puntaje_provisional >= 0.6){
-                recomendacion = "Esta bien, pero podrias mejorar con la cantidad de pruebas aprobadas";
+                recomendacion += "Esta bien, pero podrias mejorar con la cantidad de pruebas aprobadas. ";
             } else {
-                recomendacion = "Se recomienda mejorar la cantidad de pruebas aprobadas.";
+                recomendacion += "Se recomienda mejorar la cantidad de pruebas aprobadas. ";
             }
+        }
+
+        if (this.cantLineas > 500) {
+            recomendacion += "El commit tiene muchas líneas de código, considera refactorizar para mejorar la legibilidad.";
         }
         return recomendacion;
     }

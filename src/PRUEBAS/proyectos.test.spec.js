@@ -385,21 +385,28 @@ describe("Ingresar Proyectos", () => {
   it("El commit debería generar una recomendación positiva debido a las pruebas aprobadas", () => {
     let commitrec = new Commit(4, 100, 100);
     commitrec.setPruebasAprob(4);
-    let texto = "Buen trabajo en las pruebas aprobadas.";
+    let texto = "Buen trabajo en las pruebas aprobadas. ";
     expect(commitrec.generarRecomendacion()).toEqual(texto);
   });
 
   it("El commit debería generar una recomendación para mejorar debido a la poca cantidad de pruebas aprobadas", () => {
     let commitrec = new Commit(4, 100, 100);
     commitrec.setPruebasAprob(2);
-    let texto = "Se recomienda mejorar la cantidad de pruebas aprobadas.";
+    let texto = "Se recomienda mejorar la cantidad de pruebas aprobadas. ";
     expect(commitrec.generarRecomendacion()).toEqual(texto);
   });
 
   it("El commit debería generar una recomendación debido a la cantidad regular de pruebas aprobadas", () => {
     let commitrec = new Commit(4, 100, 100);
     commitrec.setPruebasAprob(3);
-    let texto = "Esta bien, pero podrias mejorar con la cantidad de pruebas aprobadas";
+    let texto = "Esta bien, pero podrias mejorar con la cantidad de pruebas aprobadas. ";
+    expect(commitrec.generarRecomendacion()).toEqual(texto);
+  });
+
+  it("El commit debería generar una recomendación debido a la cantidad regular de pruebas aprobadas", () => {
+    let commitrec = new Commit(4, 501, 100);
+    commitrec.setPruebasAprob(3);
+    let texto = "Esta bien, pero podrias mejorar con la cantidad de pruebas aprobadas. El commit tiene muchas líneas de código, considera refactorizar para mejorar la legibilidad.";
     expect(commitrec.generarRecomendacion()).toEqual(texto);
   });
 });
