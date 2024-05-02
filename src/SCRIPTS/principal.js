@@ -11,9 +11,20 @@ const btnConfirmProyecto = document.getElementById('btnConfirmProyecto');
 const proyectoContainer = document.getElementById('proyectoContainer');
 const mensajeError = document.getElementById('mensajeError');
 
+const btnBuscarProyecto = document.getElementById('btnBuscar');
+const buscarForm = document.getElementById('buscarProy');
+const inputBuscarTitulo = document.getElementById('inputBuscarProy');
 
 let estilo = "none";
 let estiloCommit = "none";
+
+btnBuscarProyecto.addEventListener('click', () => {
+    let proyectoBuscado = arrayProyectos.buscarProyectos(inputBuscarTitulo.value);
+    let contenedorBuscador = crearElemento('div', proyectoBuscado);
+    let MensajeBuscador = crearElemento('h2', 'Busqueda')
+    proyectoContainer.appendChild(MensajeBuscador);
+    proyectoContainer.appendChild(contenedorBuscador);
+});
 
 // Evento al hacer clic en "Añadir Proyecto"
 btnAddProyecto.addEventListener('click', () => {
