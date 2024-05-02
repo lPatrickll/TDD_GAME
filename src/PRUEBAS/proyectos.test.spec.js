@@ -306,5 +306,17 @@ describe("Ingresar Proyectos", () => {
     expect(commit2.calcularCobertura()).toEqual(50);
   });
 
+  it("El commit deberia de devolver un de porcentaje de cobertura en metodo calcularCobertura() segun la cantidad de lineas de cobertura", () => {
+    let commit2=new Commit(4,4,100);
+    commit2.setCantLinCober(3);
+    expect(commit2.calcularCobertura()).toEqual(75);
+  });
+
+  it("El commit deberia de devolver un de porcentaje de cobertura en metodo calcularCobertura() segun la cantidad de lineas de cobertura", () => {
+    let commit2=new Commit(4,100,100);
+    commit2.setCantLinCober(87);
+    expect(commit2.calcularCobertura()).toEqual(87);
+  });
+
 
 });
