@@ -79,6 +79,17 @@ function actualizarProyectosEnPantalla() {
         });
         proyectoElement.appendChild(btnPuntajeProyecto);
 
+        // Boton para buscar proyecto
+        const btnBuscarProyecto = crearElemento("button", "Buscar Proyecto");
+        btnBuscarProyecto.addEventListener('click', () => {
+            // Aquí puedes agregar la lógica para ingresar al proyecto
+            estilo = "none";
+            estiloCommit = "none";
+            ingresarPuntajeProyecto(proyecto);
+        });
+        proyectoElement.appendChild(btnBuscarProyecto);
+
+
         // Botón para borrar el proyecto
 
         const btnBorrarProyecto = crearElemento("button", "Borrar Proyecto");
