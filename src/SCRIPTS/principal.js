@@ -79,16 +79,21 @@ function actualizarProyectosEnPantalla() {
         });
         proyectoElement.appendChild(btnPuntajeProyecto);
 
+        // Input para ingresar nombre del proyecto
+        const inputBuscarProyecto = document.createElement('input');
+        inputBuscarProyecto.type = 'string'; //tipo de variable cadena
+        inputBuscarProyecto.placeholder = 'Nombre del Proyecto';
         // Boton para buscar proyecto
         const btnBuscarProyecto = crearElemento("button", "Buscar Proyecto");
         btnBuscarProyecto.addEventListener('click', () => {
             // Aquí puedes agregar la lógica para ingresar al proyecto
+            const encontrado = arrayProyectos.buscarProyectoPorNombre(inputBuscarProyecto.value);
             estilo = "none";
             estiloCommit = "none";
-            ingresarPuntajeProyecto(proyecto);
+            actualizarProyectosEnPantalla();
+            // Mostrar proyectos por el nombre
         });
         proyectoElement.appendChild(btnBuscarProyecto);
-
 
         // Botón para borrar el proyecto
 
