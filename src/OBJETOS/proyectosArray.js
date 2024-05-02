@@ -23,8 +23,12 @@ class ArrayProyectos {
         if(titulo_buscado === titulo){
             this.proyectosArray = this.proyectosArray.filter(proyecto => proyecto.getTitulo() === titulo_buscado);
             // Estos son los proyectos que estuviste buscando
-            this.proyectosArray;
-        } 
+            return this.proyectosArray;
+        } else{
+            // retornar ningun proyecto para añadir condicional en el principal
+            return [];
+            print("El proyecto TDD no existe");
+        }
     }
 };
 

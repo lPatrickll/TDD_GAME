@@ -81,6 +81,7 @@ function actualizarProyectosEnPantalla() {
 
         // Input para ingresar nombre del proyecto
         const inputBuscarProyecto = document.createElement('input');
+        const vacio = [];
         inputBuscarProyecto.type = 'string'; //tipo de variable cadena
         inputBuscarProyecto.placeholder = 'Nombre del Proyecto';
         // Boton para buscar proyecto
@@ -90,8 +91,12 @@ function actualizarProyectosEnPantalla() {
             const encontrado = arrayProyectos.buscarProyectoPorNombre(inputBuscarProyecto.value);
             estilo = "none";
             estiloCommit = "none";
-            actualizarProyectosEnPantalla();
-            // Mostrar proyectos por el nombre
+            // Confirmacion del array de proyectos vacia
+            if(encontrado === vacio){
+                window.confirm('El proyecto TDD no existe');
+            }else{
+                actualizarProyectosEnPantalla();
+            }
         });
         proyectoElement.appendChild(btnBuscarProyecto);
 
