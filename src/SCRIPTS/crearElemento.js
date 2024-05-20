@@ -1,4 +1,4 @@
-function crearElemento(_elemento, _textContent) {
+function crearElemento(_elemento, _textContent = "") {
     const elemento = document.createElement(_elemento);
     elemento.textContent = _textContent;
     return elemento;
