@@ -195,9 +195,9 @@ function ingresarAlProyecto(nombreProyecto) {
         const inputCantLineas = crearElemento('input', '');
         inputCantLineas.type = 'number';
         inputCantLineas.placeholder = 'Cantidad de líneas';
-        const inputCantLineasCober = crearElemento('input', '');
-        inputCantLineasCober.type = 'number';
-        inputCantLineasCober.placeholder = 'Cantidad de líneas Cobertura';
+        const inputCobertura = crearElemento('input', '');
+        inputCobertura.type = 'number';
+        inputCobertura.placeholder = 'Porcentaje de Cobertura';
         const btnConfirmCommit = crearElemento('button', 'Agregar Commit');
         // Mensaje de confirmacion
         const successCommit = crearElemento('div', 'Commit añadido con exito');
@@ -213,9 +213,9 @@ function ingresarAlProyecto(nombreProyecto) {
             const cantPruebas = parseInt(inputCantPruebas.value);
             const cantPruebasAprob = parseInt(inputCantPruebasAprob.value);
             const cantLineas = parseInt(inputCantLineas.value);
-            const cantLineasCober = parseInt(inputCantLineasCober.value);
+            const cobertura = parseInt(inputCobertura.value);
             if (!isNaN(cantPruebas) && !isNaN(cantLineas) && cantPruebas >= 0 && cantLineas >= 0 && cantPruebasAprob <= cantPruebas) {
-                proyectoSeleccionado.aniadirCommitFinal(cantPruebas, cantPruebasAprob, cantLineas, cantLineasCober);
+                proyectoSeleccionado.aniadirCommitFinal(cantPruebas, cantLineas,cobertura,cantPruebasAprob);
                 estilo = "block";
                 estiloCommit = "none";
                 ingresarAlProyecto(nombreProyecto); // Actualiza la lista de commits en pantalla
@@ -232,7 +232,7 @@ function ingresarAlProyecto(nombreProyecto) {
         formCommit.appendChild(inputCantPruebas);
         formCommit.appendChild(inputCantPruebasAprob)
         formCommit.appendChild(inputCantLineas);
-        formCommit.appendChild(inputCantLineasCober);
+        formCommit.appendChild(inputCobertura);
         formCommit.appendChild(btnConfirmCommit);
         proyectoContainer.appendChild(formCommit);
     }
