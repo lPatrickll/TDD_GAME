@@ -74,6 +74,10 @@ class Commit {
     editarCantPruebas(newCantPruebas) {
         this.cantPruebas = newCantPruebas;
     }
+
+    editarCantLineas(newCantLineas) {
+        this.cantLineas = newCantLineas;
+    }
 }
 
 export default Commit;
