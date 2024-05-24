@@ -187,41 +187,41 @@ describe("Ingresar Proyectos", () => {
   it("El proyecto deberia de devolver el puntaje de 50% para la mitad de pruebas aprobadas", () => {
 
     const proyecto = new Proyecto("Proyecto2");
-    proyecto.aniadirCommitConPruebasAprob(2, 4, 4,1);
+    proyecto.aniadirCommitFinal(2, 4, 4,1);
 
     expect(proyecto.getPuntajePruebas()).toEqual(50);
   });
 
   it("Se debe mostrar un commit con pruebas aprobadas", () => {
-    arrayCommit.aniadirCommitConCantPruebAprob(2, 20, 30,2);
+    arrayCommit.aniadirCommitFinal(2, 2, 2,30);
     let expectedArray = [{
       cantPruebas: 2,
       cantPruebasAprob:2,
-      cantLineas: 20,
+      cantLineas: 2,
       cobertura: 30
     }];
-    expect(arrayCommit.mostrarCommitConPruebasAprob()).toEqual(expectedArray);
+    expect(arrayCommit.mostrarCommitCompleto()).toEqual(expectedArray);
   });
 
   it("El proyecto deberia de mostrar commits con pruebas aprobadas", () => {
     const proyecto = new Proyecto("Proyecto2");
-    proyecto.aniadirCommitConPruebasAprob(2, 20, 30,2);
+    proyecto.aniadirCommitFinal(2, 2, 30,2);
     let expectedArray = [{
       cantPruebas: 2,
       cantPruebasAprob:2,
-      cantLineas: 20,
+      cantLineas: 2,
       cobertura: 30
     }];
-    expect(proyecto.mostrarCommitsConPruebasAprob()).toEqual(expectedArray);
+    expect(proyecto.mostrarCommitCompleto()).toEqual(expectedArray);
   });
 
   it("El proyecto deberia de devolver el puntaje de 100% todas las pruebas aprobadas", () => {
 
     const proyecto = new Proyecto("Proyecto2");
-    proyecto.aniadirCommitConPruebasAprob(2, 4, 4,2);
-    proyecto.aniadirCommitConPruebasAprob(2, 4, 4,2);
-    proyecto.aniadirCommitConPruebasAprob(2, 4, 4,2);
-    proyecto.aniadirCommitConPruebasAprob(2, 4, 4,2);
+    proyecto.aniadirCommitFinal(2, 4, 4,2);
+    proyecto.aniadirCommitFinal(2, 4, 4,2);
+    proyecto.aniadirCommitFinal(2, 4, 4,2);
+    proyecto.aniadirCommitFinal(2, 4, 4,2);
 
     expect(proyecto.getPuntajePruebas()).toEqual(100);
   });
@@ -275,58 +275,49 @@ describe("Ingresar Proyectos", () => {
   // 7ta HU Arturo
 
   it("Deberia devolver cero para cantidad de lineas de cobertura", () => {
-    let commit2=new Commit(4,2,100);
-    commit2.setPruebasAprob(2)
+    let commit2=new Commit(4,2,0);
     
-    expect(commit2.getcantLinCober()).toEqual(0);
+    expect(commit2.getCobertura()).toEqual(0);
   });
 
-  it("Deberia devolver 2 para cantidad de lineas de cobertura en commit", () => {
+  it("Deberia devolver 0 para cobertura igual a 0", () => {
+    let commit2=new Commit(4,2,0);
+    expect(commit2.getCobertura()).toEqual(0);
+  });
+
+  it("El commit deberia de devolver 10 de porcentaje de cobertura", () => {
+    let commit2=new Commit(4,2,10);
+    expect(commit2.getCobertura()).toEqual(10);
+  });
+
+  it("El commit deberia de devolver 100% de porcentaje de cobertura", () => {
     let commit2=new Commit(4,2,100);
-    commit2.setPruebasAprob(2)
-    commit2.setCantLinCober(2);
-    expect(commit2.getcantLinCober()).toEqual(2);
+    expect(commit2.getCobertura()).toEqual(100);
   });
 
-  it("El commit deberia de devolver 0 de porcentaje de cobertura en metodo calcularCobertura()", () => {
-    let commit2=new Commit(4,2,100);
-    expect(commit2.calcularCobertura()).toEqual(0);
+  it("El commit deberia de devolver 50% de porcentaje de cobertura enviado como parametro", () => {
+    let commit2=new Commit(4,2,50);
+    expect(commit2.getCobertura()).toEqual(50);
   });
 
-  it("El commit deberia de devolver 100% de porcentaje de cobertura en metodo calcularCobertura()", () => {
-    let commit2=new Commit(4,2,100);
-    commit2.setCantLinCober(2);
-    expect(commit2.calcularCobertura()).toEqual(100);
-  });
-
-  it("El commit deberia de devolver 50% de porcentaje de cobertura en metodo calcularCobertura() si cantLinCobertura/2==cantLineas", () => {
-    let commit2=new Commit(4,2,100);
-    commit2.setCantLinCober(1);
-    expect(commit2.calcularCobertura()).toEqual(50);
-  });
-
-  it("El commit deberia de devolver un de porcentaje de cobertura en metodo calcularCobertura() segun la cantidad de lineas de cobertura", () => {
+  it("El commit deberia de devolver un de porcentaje de cobertura enviado por parametro", () => {
     let commit2=new Commit(4,4,100);
-    commit2.setCantLinCober(3);
-    expect(commit2.calcularCobertura()).toEqual(75);
+    expect(commit2.getCobertura()).toEqual(100);
   });
 
-  it("El commit deberia de devolver un de porcentaje de cobertura en metodo calcularCobertura() segun la cantidad de lineas de cobertura", () => {
+  it("El commit deberia de devolver un de porcentaje de cobertura como entrada", () => {
     let commit2=new Commit(4,100,100);
-    commit2.setCantLinCober(87);
-    expect(commit2.calcularCobertura()).toEqual(87);
+    expect(commit2.getCobertura()).toEqual(100);
   });
 
-  it("El commit deberia de devolver un porcentaje de cobertura calculado", () => {
-    let commit2=new Commit(4,100,100);
-    commit2.setCantLinCober(87);
-    expect(commit2.getCoberturaCalculada()).toEqual(87);
+  it("El commit deberia de devolver un porcentaje de cobertura enviado como parametro", () => {
+    let commit2=new Commit(4,100,5);
+    expect(commit2.getCobertura()).toEqual(5);
   });
 
   it("El Array de commits deberia de devolver todos sus datos del commit con porcentajeCober CALCULADO", () => {
-    let commit2=new Commit(4,100,0);
+    let commit2=new Commit(4,100,87);
     commit2.setPruebasAprob(2);
-    commit2.setCantLinCober(87);
     arrayCommit.aniadirCommitObj(commit2);
     let expectedArray = [{
       cantPruebas: 4,
@@ -344,13 +335,13 @@ describe("Ingresar Proyectos", () => {
       cantPruebas: 10,
       cantPruebasAprob:10,
       cantLineas: 10,
-      cobertura: 100
+      cobertura: 10
     }];
     expect(proyecto.mostrarCommitCompleto()).toEqual(expectedArray);
   });
 
   it("Añadir Commit a array de commit aniadiendo lineas de cobertura", () => {
-    arrayCommit.aniadirCommitFinal(10,10,10,10);
+    arrayCommit.aniadirCommitFinal(10,10,10,100);
     let expectedArray = [{
       cantPruebas: 10,
       cantPruebasAprob:10,
@@ -368,11 +359,11 @@ describe("Ingresar Proyectos", () => {
 
   it("El proyecto deberia de devolver 50 de porcentaje de cobertura para dos commits con 50% de cobertura", () => {
     const proyecto = new Proyecto("Proyecto2");
-    proyecto.aniadirCommitFinal(10,10,10,5);
-    proyecto.aniadirCommitFinal(10,10,10,5);
+    proyecto.aniadirCommitFinal(10,10,50,50);
+    proyecto.aniadirCommitFinal(10,10,50,50);
     expect(proyecto.getPorcentajeCobertura()).toEqual(50);
   });
-
+  
   // ********************************************************************
   // 8tavo Salvador
   it("El commit debería generar la recomendacion por defecto", () => {

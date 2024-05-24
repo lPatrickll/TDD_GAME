@@ -5,10 +5,9 @@ class ArrayCommit {
         this.arrayCommit = [];
     }
 
-    aniadirCommitFinal(cantPruebas,cantPruebasAprob,cantLineas,cantLineasCober)
+    aniadirCommitFinal(cantPruebas,cantPruebasAprob,cantLineas,cobertura)
     {
-        const nuevoCommit = new Commit(cantPruebas, cantLineas, 0);
-        nuevoCommit.setCantLinCober(cantLineasCober);
+        const nuevoCommit = new Commit(cantPruebas, cantLineas, cobertura);
         nuevoCommit.setPruebasAprob(cantPruebasAprob);
         this.arrayCommit.push(nuevoCommit);
     }
@@ -16,24 +15,11 @@ class ArrayCommit {
         const nuevoCommit = new Commit(cantPruebas, cantLineas, cobertura);
         this.arrayCommit.push(nuevoCommit);
     }
-
-    aniadirCommitConCantPruebAprob(cantPruebas, cantLineas, cobertura,cantPruebasAprob) {
-        const nuevoCommit = new Commit(cantPruebas, cantLineas, cobertura);
-        nuevoCommit.setPruebasAprob(cantPruebasAprob);
-        this.arrayCommit.push(nuevoCommit);
-    }
     aniadirCommitObj(Commit)
     {
         this.arrayCommit.push(Commit);
     }
-    mostrarCommitConPruebasAprob() {
-        return this.arrayCommit.map(commit => ({
-            cantPruebas: commit.getCantPruebas(),
-            cantPruebasAprob: commit.getCantPruebasAprob(),
-            cantLineas: commit.getCantLineas(),
-            cobertura: commit.getCobertura()
-        }));
-    }
+
 
     mostrarCommit() {
         return this.arrayCommit.map(commit => ({
@@ -48,7 +34,7 @@ class ArrayCommit {
             cantPruebas: commit.getCantPruebas(),
             cantPruebasAprob: commit.getCantPruebasAprob(),
             cantLineas: commit.getCantLineas(),
-            cobertura: commit.getCoberturaCalculada()
+            cobertura: commit.getCobertura()
         }));
     }
 

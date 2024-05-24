@@ -14,16 +14,12 @@ class Proyecto {
         return this.titulo;
     }
 
-    aniadirCommitFinal(cantPruebas,cantPruebasAprob,cantLineas,cantLineasCober)
-    {
-        this.arrayCommit.aniadirCommitFinal(cantPruebas,cantPruebasAprob,cantLineas,cantLineasCober);
-    }
     aniadirCommit(cantPruebas, cantLineas, cobertura) {
         this.arrayCommit.aniadirCommit(cantPruebas, cantLineas, cobertura);
     }
 
-    aniadirCommitConPruebasAprob(cantPruebas, cantLineas, cobertura,cantPruebasAprob) {
-        this.arrayCommit.aniadirCommitConCantPruebAprob(cantPruebas, cantLineas, cobertura,cantPruebasAprob);
+    aniadirCommitFinal(cantPruebas, cantLineas, cobertura,cantPruebasAprob) {
+        this.arrayCommit.aniadirCommitFinal(cantPruebas,cantPruebasAprob,cantLineas,cobertura);
     }
     mostrarRecomendaciones()
     {
@@ -34,9 +30,6 @@ class Proyecto {
         return this.arrayCommit.mostrarCommit();
     }
 
-    mostrarCommitsConPruebasAprob() {
-        return this.arrayCommit.mostrarCommitConPruebasAprob();
-    }
     mostrarCommitCompleto() {
         return this.arrayCommit.mostrarCommitCompleto();
     }
@@ -127,7 +120,7 @@ class Proyecto {
         if (this.arrayCommit.getCommits().length > 0)
         {
             for (let commit of this.arrayCommit.getCommits()) {
-                totalPorcentajes += commit.getCoberturaCalculada();
+                totalPorcentajes += commit.getCobertura();
                 cantPorcentajes =cantPorcentajes+1;
             }
             // Calculamos la diferencia
