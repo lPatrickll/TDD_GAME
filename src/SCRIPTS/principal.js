@@ -12,14 +12,7 @@ const btnConfirmProyecto = document.getElementById('btnConfirmProyecto');
 const proyectoContainer = document.getElementById('proyectoContainer');
 const mensajeError = document.getElementById('mensajeError');
 
-let estilo = "none";
-let estiloCommit = "none";
-
-// Evento al hacer clic en "Añadir Proyecto"
-btnAddProyecto.addEventListener('click', () => {
-    btnAddProyecto.style.display = 'none'; // Ocultar el botón "Añadir proyecto"
-    proyectoForm.style.display = 'block';
-});
+btnAddProyecto.addEventListener('click', mostrarFormularioProyecto);
 
 // Evento al hacer clic en "Confirmar Proyecto"
 btnConfirmProyecto.addEventListener('click', () => {
@@ -50,6 +43,11 @@ btnConfirmProyecto.addEventListener('click', () => {
         mensajeError.style.display = 'block';
     }
 });
+
+function mostrarFormularioProyecto() {
+    btnAddProyecto.style.display = 'none';
+    proyectoForm.style.display = 'block';
+}
 
 // Función para actualizar la lista de proyectos en pantalla
 function actualizarProyectosEnPantalla() {

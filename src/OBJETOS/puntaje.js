@@ -5,12 +5,10 @@ class Puntaje {
         this.puntajeCobertura=0;
     }
 
-    getPuntajePruebas()
-    {
+    getPuntajePruebas() {
         return this.puntajePruebas;
     }
-    setPuntajePruebas(puntaje)
-    {
+    setPuntajePruebas(puntaje) {
         this.puntajePruebas=puntaje;
     }
     getPuntajeLineasCodigo() {
@@ -19,12 +17,10 @@ class Puntaje {
     setPuntajeLineasCodigo(puntajel) {
         this.puntajeLineas=puntajel;
     }
-    setPorcentajeCobertura(porcentaje)
-    {
+    setPorcentajeCobertura(porcentaje) {
         this.puntajeCobertura=porcentaje;
     }
-    getPuntajeCobertura()
-    {
+    getPuntajeCobertura() {
         return this.puntajeCobertura;
     }
 }
