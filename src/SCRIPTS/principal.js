@@ -59,35 +59,40 @@ function actualizarListaProyectos() {
     proyectoContainer.innerHTML = '';
     const proyectos = arrayProyectos.getProyectos();
     proyectos.forEach(proyecto => {
-        const proyectoElement = crearElemento("div", proyecto);
-        const btnIngresarProyecto = crearElemento("button", "Ver Commits");
-        btnIngresarProyecto.addEventListener('click', () => {
-            estilo = "none";
-            estiloCommit = "none";
-            ingresarAlProyecto(proyecto);
-        });
-        proyectoElement.appendChild(btnIngresarProyecto);
-
-        const btnPuntajeProyecto = crearElemento("button", "Ver Puntaje del Proyecto");
-        btnPuntajeProyecto.addEventListener('click', () => {
-            estilo = "none";
-            estiloCommit = "none";
-            ingresarPuntajeProyecto(proyecto);
-        });
-        proyectoElement.appendChild(btnPuntajeProyecto);
-
-        const btnBorrarProyecto = crearElemento("button", "Eliminar Proyecto");
-        btnBorrarProyecto.addEventListener('click', () => {
-            const confirmacion = window.confirm('¿Estás seguro de que deseas borrar este proyecto?');
-            if (confirmacion) {
-                arrayProyectos.borrarProyecto(proyecto);
-                actualizarListaProyectos();
-            }
-        });
-        proyectoElement.appendChild(btnBorrarProyecto);
-
+        const proyectoElement = crearElementoProyecto(proyecto);
         proyectoContainer.appendChild(proyectoElement);
     });
+}
+
+function crearElementoProyecto(proyecto) {
+    const proyectoElement = crearElemento("div", proyecto);
+    const btnIngresarProyecto = crearElemento("button", "Ver Commits");
+    btnIngresarProyecto.addEventListener('click', () => {
+        estilo = "none";
+        estiloCommit = "none";
+        ingresarAlProyecto(proyecto);
+    });
+    proyectoElement.appendChild(btnIngresarProyecto);
+
+    const btnPuntajeProyecto = crearElemento("button", "Ver Puntaje del Proyecto");
+    btnPuntajeProyecto.addEventListener('click', () => {
+        estilo = "none";
+        estiloCommit = "none";
+        ingresarPuntajeProyecto(proyecto);
+    });
+    proyectoElement.appendChild(btnPuntajeProyecto);
+
+    const btnBorrarProyecto = crearElemento("button", "Eliminar Proyecto");
+    btnBorrarProyecto.addEventListener('click', () => {
+        const confirmacion = window.confirm('¿Estás seguro de que deseas borrar este proyecto?');
+        if (confirmacion) {
+            arrayProyectos.borrarProyecto(proyecto);
+            actualizarListaProyectos();
+        }
+    });
+    proyectoElement.appendChild(btnBorrarProyecto);
+
+    return proyectoElement;
 }
 
 // Función para ingresar a un proyecto específico
