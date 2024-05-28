@@ -198,7 +198,8 @@ describe("Ingresar Proyectos", () => {
       cantPruebas: 2,
       cantPruebasAprob:2,
       cantLineas: 2,
-      cobertura: 30
+      cobertura: 30,
+      recomendacion: ""
     }];
     expect(arrayCommit.mostrarCommitCompleto()).toEqual(expectedArray);
   });
@@ -210,7 +211,8 @@ describe("Ingresar Proyectos", () => {
       cantPruebas: 2,
       cantPruebasAprob:2,
       cantLineas: 2,
-      cobertura: 30
+      cobertura: 30,
+      recomendacion: ""
     }];
     expect(proyecto.mostrarCommitCompleto()).toEqual(expectedArray);
   });
@@ -323,7 +325,8 @@ describe("Ingresar Proyectos", () => {
       cantPruebas: 4,
       cantPruebasAprob:2,
       cantLineas: 100,
-      cobertura: 87
+      cobertura: 87,
+      recomendacion: ""
     }];
     expect(arrayCommit.mostrarCommitCompleto()).toEqual(expectedArray);
   });
@@ -335,7 +338,8 @@ describe("Ingresar Proyectos", () => {
       cantPruebas: 10,
       cantPruebasAprob:10,
       cantLineas: 10,
-      cobertura: 10
+      cobertura: 10,
+      recomendacion: ""
     }];
     expect(proyecto.mostrarCommitCompleto()).toEqual(expectedArray);
   });
@@ -346,7 +350,8 @@ describe("Ingresar Proyectos", () => {
       cantPruebas: 10,
       cantPruebasAprob:10,
       cantLineas: 10,
-      cobertura: 100
+      cobertura: 100,
+      recomendacion: ""
     }];
     expect(arrayCommit.mostrarCommitCompleto()).toEqual(expectedArray);
   });

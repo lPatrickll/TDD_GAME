@@ -1,3 +1,4 @@
+import ArrayCommit from "../OBJETOS/commitsArray";
 import ArrayProyectos from "../OBJETOS/proyectosArray";
 import crearElemento from "./crearElemento";
 
@@ -10,7 +11,6 @@ const inputTitulo = document.getElementById('inputTitulo');
 const btnConfirmProyecto = document.getElementById('btnConfirmProyecto');
 const proyectoContainer = document.getElementById('proyectoContainer');
 const mensajeError = document.getElementById('mensajeError');
-
 
 let estilo = "none";
 let estiloCommit = "none";
@@ -95,7 +95,7 @@ function actualizarProyectosEnPantalla() {
     });
 }
 
-// ****************************************************************************************************************************************************
+//**************************************************************************************************************************************************
 // Función para ingresar a un proyecto específico
 function ingresarAlProyecto(nombreProyecto) {
     // Encuentra el proyecto en el array de proyectos
@@ -157,31 +157,30 @@ function ingresarAlProyecto(nombreProyecto) {
         }
 
         commitsProyecto.forEach(commit => {
-            const commitItem = crearElemento('li', `Pruebas: ${commit.cantPruebas}, Pruebas Aprobadas: ${commit.cantPruebasAprob}, Líneas: ${commit.cantLineas}, Cobertura: ${commit.cobertura}%`);
-
-            const proyectoSeleccionado = arrayProyectos.proyectosArray.find(proyecto => proyecto.getTitulo() === nombreProyecto);
-
-            const recomendacion = proyectoSeleccionado.mostrarRecomendaciones();
-            const button = crearElemento('button', 'Ver recomendación');
-            let paragraph; // Declaramos la variable paragraph aquí para poder acceder a ella en ambos eventos de click
-
-            button.addEventListener('click', () => {
+            const commitItem = document.createElement('li');
+            commitItem.textContent = `Pruebas: ${commit.cantPruebas},Pruebas Aprobadas: ${commit.cantPruebasAprob}, Líneas: ${commit.cantLineas}, Cobertura: ${commit.cobertura}%`;
+            
+            let recomendacion = commit.recomendacion;
+            const btnMostrarRecomendacion = crearElemento('button', 'Ver Recomendación');
+            let paragraph;
+            btnMostrarRecomendacion.addEventListener('click', () => {
                 if (!paragraph) {
-                    paragraph = crearElemento('p', recomendacion);
+                    paragraph = document.createElement('p');
+                    // Aquí llamamos a la función generarRecomendacion para obtener la recomendación para este commit
+                    paragraph.textContent = recomendacion;
                     commitItem.appendChild(paragraph);
                     button.textContent = 'Ocultar recomendación';
                 } else {
-                    paragraph.remove();
-                    paragraph = null;
+                    paragraph.remove(); // Eliminamos el párrafo
+                    paragraph = null; // Limpiamos la referencia al párrafos para indicar que ya no está presente
                     button.textContent = 'Ver recomendación';
                 }
             });
-
-            commitItem.appendChild(button);
-
+            commitItem.appendChild(btnMostrarRecomendacion);
+            
             listaCommits.appendChild(commitItem);
         });
-        proyectoContainer.appendChild(listaCommits)
+        proyectoContainer.appendChild(listaCommits);
 
         // Formulario para ingresar un nuevo commit
         const tituloCommit = crearElemento('h3', 'Añadir commit');
@@ -215,7 +214,7 @@ function ingresarAlProyecto(nombreProyecto) {
             const cantLineas = parseInt(inputCantLineas.value);
             const cobertura = parseInt(inputCobertura.value);
             if (!isNaN(cantPruebas) && !isNaN(cantLineas) && cantPruebas >= 0 && cantLineas >= 0 && cantPruebasAprob <= cantPruebas) {
-                proyectoSeleccionado.aniadirCommitFinal(cantPruebas, cantLineas,cobertura,cantPruebasAprob);
+                proyectoSeleccionado.aniadirCommitFinal(cantPruebas, cantLineas, cobertura, cantPruebasAprob);
                 estilo = "block";
                 estiloCommit = "none";
                 ingresarAlProyecto(nombreProyecto); // Actualiza la lista de commits en pantalla
@@ -230,11 +229,12 @@ function ingresarAlProyecto(nombreProyecto) {
         });
         formCommit.appendChild(tituloCommit);
         formCommit.appendChild(inputCantPruebas);
-        formCommit.appendChild(inputCantPruebasAprob)
+        formCommit.appendChild(inputCantPruebasAprob);
         formCommit.appendChild(inputCantLineas);
         formCommit.appendChild(inputCobertura);
         formCommit.appendChild(btnConfirmCommit);
         proyectoContainer.appendChild(formCommit);
+
     }
 }
 

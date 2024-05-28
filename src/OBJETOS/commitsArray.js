@@ -20,7 +20,6 @@ class ArrayCommit {
         this.arrayCommit.push(Commit);
     }
 
-
     mostrarCommit() {
         return this.arrayCommit.map(commit => ({
             cantPruebas: commit.getCantPruebas(),
@@ -34,7 +33,8 @@ class ArrayCommit {
             cantPruebas: commit.getCantPruebas(),
             cantPruebasAprob: commit.getCantPruebasAprob(),
             cantLineas: commit.getCantLineas(),
-            cobertura: commit.getCobertura()
+            cobertura: commit.getCobertura(),
+            recomendacion: commit.getRecomendacion()
         }));
     }
 
@@ -46,11 +46,9 @@ class ArrayCommit {
         return this.arrayCommit;
     }
 
-    getCommits()
-    {
+    getCommits() {
         return this.arrayCommit;
     }
-
 }
 
 export default ArrayCommit;
