@@ -426,5 +426,16 @@ describe("Ingresar Proyectos", () => {
     let commit = new Commit(4, 100, 100, "Excelente");
     expect(commit.getComplejidad()).toEqual("Excelente");
   });
-  
+
+  it("El array de commits debería mostrar la complejidad correctamente", () => {
+    arrayCommit.aniadirCommit(4, 100, 100, "Excelente");
+    let expectedArray = [{
+      cantPruebas: 4,
+      cantLineas: 100,
+      cobertura: 100,
+      complejidad: "Excelente"
+    }];
+    expect(arrayCommit.mostrarCommit()).toEqual(expectedArray);
+  });
+
 });
