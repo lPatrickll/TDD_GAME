@@ -144,7 +144,7 @@ function mostrarCommits(proyectoSeleccionado) {
     }
 
     commitsProyecto.forEach(commit => {
-        const commitItem = crearElemento('li', `Pruebas: ${commit.cantPruebas}, Pruebas Aprobadas: ${commit.cantPruebasAprob}, Líneas: ${commit.cantLineas}, Cobertura: ${commit.cobertura}%`);
+        const commitItem = crearElemento('li', `Pruebas: ${commit.cantPruebas}, Pruebas Aprobadas: ${commit.cantPruebasAprob}, Líneas: ${commit.cantLineas}, Cobertura: ${commit.cobertura}%, Complejidad: ${commit.complejidad}`);
         const btnMostrarRecomendacion = crearElemento('button', 'Ver recomendación');
         let paragraph;
         btnMostrarRecomendacion.addEventListener('click', () => {
@@ -171,6 +171,9 @@ function crearFormularioCommit(proyectoSeleccionado, nombreProyecto) {
     const inputCantPruebasAprob = crearInputNumerico('Cantidad de pruebas aprobadas');
     const inputCantLineas = crearInputNumerico('Cantidad de líneas');
     const inputCobertura = crearInputNumerico('Porcentaje de cobertura');
+    const inputComplejidad = crearElemento('input', '');
+    inputComplejidad.type = 'text';
+    inputComplejidad.placeholder = 'Complejidad (Excelente, Bueno, Regular, Deficiente)';
     const btnConfirmarCommit = crearElemento('button', 'Agregar Commit');
 
     const commitExito = crearElemento('div', 'Commit añadido con éxito');
@@ -187,8 +190,9 @@ function crearFormularioCommit(proyectoSeleccionado, nombreProyecto) {
         const cantPruebasAprob = parseInt(inputCantPruebasAprob.value);
         const cantLineas = parseInt(inputCantLineas.value);
         const cobertura = parseInt(inputCobertura.value);
+        const complejidad = inputComplejidad.value;
         if (!isNaN(cantPruebas) && !isNaN(cantLineas) && cantPruebas >= 0 && cantLineas >= 0 && cantPruebasAprob <= cantPruebas) {
-            proyectoSeleccionado.aniadirCommitFinal(cantPruebas, cantLineas, cobertura, cantPruebasAprob);
+            proyectoSeleccionado.aniadirCommitFinal(cantPruebas, cantLineas, cobertura, cantPruebasAprob, complejidad);
             estilo = "block";
             estiloCommit = "none";
             ingresarAlProyecto(nombreProyecto);
@@ -205,6 +209,7 @@ function crearFormularioCommit(proyectoSeleccionado, nombreProyecto) {
     formularioCommit.appendChild(inputCantPruebasAprob);
     formularioCommit.appendChild(inputCantLineas);
     formularioCommit.appendChild(inputCobertura);
+    formularioCommit.appendChild(inputComplejidad);
     formularioCommit.appendChild(btnConfirmarCommit);
     return formularioCommit;
 }
