@@ -161,7 +161,7 @@ function ingresarAlProyecto(nombreProyecto) {
             commitItem.textContent = `Pruebas: ${commit.cantPruebas},Pruebas Aprobadas: ${commit.cantPruebasAprob}, Líneas: ${commit.cantLineas}, Cobertura: ${commit.cobertura}%`;
             
             let recomendacion = commit.recomendacion;
-            const btnMostrarRecomendacion = crearElemento('button', 'Ver Recomendación');
+            const btnMostrarRecomendacion = crearElemento('button', 'Ver recomendación');
             let paragraph;
             btnMostrarRecomendacion.addEventListener('click', () => {
                 if (!paragraph) {
@@ -169,11 +169,11 @@ function ingresarAlProyecto(nombreProyecto) {
                     // Aquí llamamos a la función generarRecomendacion para obtener la recomendación para este commit
                     paragraph.textContent = recomendacion;
                     commitItem.appendChild(paragraph);
-                    button.textContent = 'Ocultar recomendación';
+                    btnMostrarRecomendacion.textContent = 'Ocultar recomendación';
                 } else {
                     paragraph.remove(); // Eliminamos el párrafo
                     paragraph = null; // Limpiamos la referencia al párrafos para indicar que ya no está presente
-                    button.textContent = 'Ver recomendación';
+                    btnMostrarRecomendacion.textContent = 'Ver recomendación';
                 }
             });
             commitItem.appendChild(btnMostrarRecomendacion);
