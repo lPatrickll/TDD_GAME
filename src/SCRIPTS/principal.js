@@ -32,7 +32,7 @@ function confirmarProyecto() {
         arrayProyectos.aniadirProyecto(tituloProyecto);
         inputTitulo.value = '';
         proyectoForm.style.display = 'none';
-        actualizarProyectosEnPantalla();
+        actualizarListaProyectos();
 
         // Mostrar mensaje de éxito y botón "Aceptar"
         let successMessage = crearElemento("div", "Proyecto añadido con éxito");
@@ -55,8 +55,7 @@ function confirmarProyecto() {
     }
 }
 
-// Función para actualizar la lista de proyectos en pantalla
-function actualizarProyectosEnPantalla() {
+function actualizarListaProyectos() {
     proyectoContainer.innerHTML = '';
     const proyectos = arrayProyectos.getProyectos();
     proyectos.forEach(proyecto => {
@@ -82,7 +81,7 @@ function actualizarProyectosEnPantalla() {
             const confirmacion = window.confirm('¿Estás seguro de que deseas borrar este proyecto?');
             if (confirmacion) {
                 arrayProyectos.borrarProyecto(proyecto);
-                actualizarProyectosEnPantalla();
+                actualizarListaProyectos();
             }
         });
         proyectoElement.appendChild(btnBorrarProyecto);
@@ -100,7 +99,7 @@ function ingresarAlProyecto(nombreProyecto) {
         proyectoContainer.appendChild(tituloProyectoElement);
 
         const btnVolver = crearElemento('button', 'Volver a la lista de proyectos');
-        btnVolver.addEventListener('click', actualizarProyectosEnPantalla);
+        btnVolver.addEventListener('click', actualizarListaProyectos);
         proyectoContainer.appendChild(btnVolver);
 
         const ultimoCommitBorrado = crearElemento('div', 'Último commit borrado correctamente');
@@ -217,7 +216,7 @@ function ingresarPuntajeProyecto(nombreProyecto) {
         proyectoContainer.appendChild(mensajeError);
 
         const btnVolver = crearElemento('button', 'Volver a la lista de proyectos');
-        btnVolver.addEventListener('click', actualizarProyectosEnPantalla);
+        btnVolver.addEventListener('click', actualizarListaProyectos);
         proyectoContainer.appendChild(btnVolver);
 
         return;
@@ -226,7 +225,7 @@ function ingresarPuntajeProyecto(nombreProyecto) {
     proyectoContainer.appendChild(tituloProyecto);
 
     const btnVolver = crearElemento('button', 'Volver a la lista de proyectos');
-    btnVolver.addEventListener('click', actualizarProyectosEnPantalla);
+    btnVolver.addEventListener('click', actualizarListaProyectos);
     proyectoContainer.appendChild(btnVolver);
 
     const puntajePruebas = proyectoSeleccionado.getPuntajePruebas();
@@ -242,4 +241,4 @@ function ingresarPuntajeProyecto(nombreProyecto) {
     proyectoContainer.appendChild(tituloPorcentajeCobertura);
 }
 
-actualizarProyectosEnPantalla();
+actualizarListaProyectos();
