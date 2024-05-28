@@ -35,16 +35,8 @@ function confirmarProyecto() {
         actualizarListaProyectos();
 
         // Mostrar mensaje de éxito y botón "Aceptar"
-        let successMessage = crearElemento("div", "Proyecto añadido con éxito");
-        let acceptButton = crearElemento("button", "Aceptar");
+        mostrarMensajeExito("Proyecto añadido con éxito");
 
-        acceptButton.addEventListener('click', () => {
-            proyectoContainer.removeChild(successMessage);
-        });
-        successMessage.appendChild(acceptButton);
-        proyectoContainer.appendChild(successMessage);
-
-        // Restaurar la visibilidad del botón "Añadir proyectos"
         btnAddProyecto.style.display = 'block';
         clearErrorMessage();
     } else {
@@ -100,6 +92,17 @@ function mostrarErrorMessage(mensaje) {
 function clearErrorMessage() {
     mensajeError.textContent = '';
     mensajeError.style.display = 'none';
+}
+
+function mostrarMensajeExito(mensaje) {
+    let successMessage = crearElemento("div", mensaje);
+    let acceptButton = crearElemento("button", "Aceptar");
+
+    acceptButton.addEventListener('click', () => {
+        proyectoContainer.removeChild(successMessage);
+    });
+    successMessage.appendChild(acceptButton);
+    proyectoContainer.appendChild(successMessage);
 }
 
 // Función para ingresar a un proyecto específico
