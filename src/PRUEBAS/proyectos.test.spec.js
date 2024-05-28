@@ -426,5 +426,5 @@ describe("Ingresar Proyectos", () => {
     let commit = new Commit(4, 100, 100, "Excelente");
     expect(commit.getComplejidad()).toEqual("Excelente");
   });
-
+  
 });
