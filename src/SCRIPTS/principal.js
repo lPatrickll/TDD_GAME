@@ -46,12 +46,9 @@ function confirmarProyecto() {
 
         // Restaurar la visibilidad del botón "Añadir proyectos"
         btnAddProyecto.style.display = 'block';
-        // Ocultar y restablecer el mensaje de error
-        mensajeError.textContent = '';
-        mensajeError.style.display = 'none';
+        clearErrorMessage();
     } else {
-        mensajeError.textContent = 'Por favor ingrese un título para el proyecto.';
-        mensajeError.style.display = 'block';
+        mostrarErrorMessage('Por favor ingrese un título para el proyecto.');
     }
 }
 
@@ -93,6 +90,16 @@ function crearElementoProyecto(proyecto) {
     proyectoElement.appendChild(btnBorrarProyecto);
 
     return proyectoElement;
+}
+
+function mostrarErrorMessage(mensaje) {
+    mensajeError.textContent = mensaje;
+    mensajeError.style.display = 'block';
+}
+
+function clearErrorMessage() {
+    mensajeError.textContent = '';
+    mensajeError.style.display = 'none';
 }
 
 // Función para ingresar a un proyecto específico
