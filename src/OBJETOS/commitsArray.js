@@ -5,18 +5,18 @@ class ArrayCommit {
         this.arrayCommit = [];
     }
 
-    aniadirCommitFinal(cantPruebas,cantPruebasAprob,cantLineas,cobertura)
-    {
-        const nuevoCommit = new Commit(cantPruebas, cantLineas, cobertura);
+    aniadirCommitFinal(cantPruebas, cantPruebasAprob, cantLineas, cobertura, complejidad) {
+        const nuevoCommit = new Commit(cantPruebas, cantLineas, cobertura, complejidad);
         nuevoCommit.setPruebasAprob(cantPruebasAprob);
         this.arrayCommit.push(nuevoCommit);
     }
-    aniadirCommit(cantPruebas, cantLineas, cobertura) {
-        const nuevoCommit = new Commit(cantPruebas, cantLineas, cobertura);
+
+    aniadirCommit(cantPruebas, cantLineas, cobertura, complejidad) {
+        const nuevoCommit = new Commit(cantPruebas, cantLineas, cobertura, complejidad);
         this.arrayCommit.push(nuevoCommit);
     }
-    aniadirCommitObj(Commit)
-    {
+
+    aniadirCommitObj(Commit) {
         this.arrayCommit.push(Commit);
     }
 
@@ -24,16 +24,18 @@ class ArrayCommit {
         return this.arrayCommit.map(commit => ({
             cantPruebas: commit.getCantPruebas(),
             cantLineas: commit.getCantLineas(),
-            cobertura: commit.getCobertura()
+            cobertura: commit.getCobertura(),
+            complejidad: commit.getComplejidad()
         }));
     }
-    mostrarCommitCompleto()
-    {
+
+    mostrarCommitCompleto() {
         return this.arrayCommit.map(commit => ({
             cantPruebas: commit.getCantPruebas(),
             cantPruebasAprob: commit.getCantPruebasAprob(),
             cantLineas: commit.getCantLineas(),
             cobertura: commit.getCobertura(),
+            complejidad: commit.getComplejidad(),
             recomendacion: commit.getRecomendacion()
         }));
     }
@@ -42,7 +44,6 @@ class ArrayCommit {
         if (this.arrayCommit.length > 0) {
             this.arrayCommit.pop();
         }
-        // Devolver el array después de eliminar el último commit o sin cambios si no hay commits
         return this.arrayCommit;
     }
 
@@ -50,5 +51,4 @@ class ArrayCommit {
         return this.arrayCommit;
     }
 }
-
 export default ArrayCommit;

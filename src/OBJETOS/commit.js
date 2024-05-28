@@ -1,8 +1,9 @@
 class Commit {
-    constructor(cantPruebas, cantLineas, cobertura) {
+    constructor(cantPruebas, cantLineas, cobertura, complejidad) {
         this.cantPruebas = cantPruebas;
         this.cantLineas = cantLineas;
         this.cobertura = cobertura;
+        this.complejidad = complejidad;
         this.cantPruebasAprob = 0;
         this.recomendacion = "";
     }
@@ -19,9 +20,14 @@ class Commit {
         return this.cobertura;
     }
     
+    getComplejidad() {
+        return this.complejidad;
+    }
+    
     setPruebasAprob(cantidad) {
         this.cantPruebasAprob = cantidad;
     }
+    
     getCantPruebasAprob() {
         return this.cantPruebasAprob;
     }
@@ -29,6 +35,7 @@ class Commit {
     getRecomendacion() {
         return this.generarRecomendacion();
     }
+
     generarRecomendacion() {
         let puntaje_provisional = this.cantPruebasAprob / this.cantPruebas;
         if (puntaje_provisional == 1) {
@@ -52,9 +59,10 @@ class Commit {
         if (this.cobertura < 70) {
             this.recomendacion += "La cobertura de código es baja, considera añadir más pruebas.";
         }
+
         return this.recomendacion;
     }
-    // SEGUNDA ITERACION
+
     editarCantPruebas(newCantPruebas) {
         this.cantPruebas = newCantPruebas;
     }
@@ -63,5 +71,4 @@ class Commit {
         this.cantLineas = newCantLineas;
     }
 }
-
 export default Commit;

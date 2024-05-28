@@ -419,4 +419,12 @@ describe("Ingresar Proyectos", () => {
     let texto = "Esta bien, pero podrias mejorar con la cantidad de pruebas aprobadas. Buen manejo de la cantidad de líneas de código. La cobertura de código es baja, considera añadir más pruebas.";
     expect(commitrec.generarRecomendacion()).toEqual(texto);
   });
+  
+  // ********************************************************************
+  // 2do Salvador
+  it("El commit debería almacenar y devolver correctamente la complejidad", () => {
+    let commit = new Commit(4, 100, 100, "Excelente");
+    expect(commit.getComplejidad()).toEqual("Excelente");
+  });
+
 });
