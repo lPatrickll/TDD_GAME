@@ -199,7 +199,7 @@ describe("Ingresar Proyectos", () => {
       cantPruebasAprob:2,
       cantLineas: 2,
       cobertura: 30,
-      recomendacion: ""
+      recomendacion: "Buen trabajo en las pruebas aprobadas. La cobertura de código es baja, considera añadir más pruebas."
     }];
     expect(arrayCommit.mostrarCommitCompleto()).toEqual(expectedArray);
   });
@@ -212,7 +212,7 @@ describe("Ingresar Proyectos", () => {
       cantPruebasAprob:2,
       cantLineas: 2,
       cobertura: 30,
-      recomendacion: ""
+      recomendacion: "Buen trabajo en las pruebas aprobadas. La cobertura de código es baja, considera añadir más pruebas."
     }];
     expect(proyecto.mostrarCommitCompleto()).toEqual(expectedArray);
   });
@@ -326,7 +326,7 @@ describe("Ingresar Proyectos", () => {
       cantPruebasAprob:2,
       cantLineas: 100,
       cobertura: 87,
-      recomendacion: ""
+      recomendacion: "Se recomienda mejorar la cantidad de pruebas aprobadas. "
     }];
     expect(arrayCommit.mostrarCommitCompleto()).toEqual(expectedArray);
   });
@@ -339,7 +339,7 @@ describe("Ingresar Proyectos", () => {
       cantPruebasAprob:10,
       cantLineas: 10,
       cobertura: 10,
-      recomendacion: ""
+      recomendacion: "Buen trabajo en las pruebas aprobadas. La cobertura de código es baja, considera añadir más pruebas."
     }];
     expect(proyecto.mostrarCommitCompleto()).toEqual(expectedArray);
   });
@@ -351,7 +351,7 @@ describe("Ingresar Proyectos", () => {
       cantPruebasAprob:10,
       cantLineas: 10,
       cobertura: 100,
-      recomendacion: ""
+      recomendacion: "Buen trabajo en las pruebas aprobadas. "
     }];
     expect(arrayCommit.mostrarCommitCompleto()).toEqual(expectedArray);
   });
@@ -374,7 +374,7 @@ describe("Ingresar Proyectos", () => {
   it("El commit debería generar la recomendacion por defecto", () => {
     let commitrec = new Commit(4, 100, 100);
     commitrec.setPruebasAprob(4);
-    let texto = "";
+    let texto = "Buen trabajo en las pruebas aprobadas. ";
     expect(commitrec.getRecomendacion()).toEqual(texto);
   });
 
