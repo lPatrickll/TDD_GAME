@@ -12,10 +12,21 @@ const btnConfirmProyecto = document.getElementById('btnConfirmProyecto');
 const proyectoContainer = document.getElementById('proyectoContainer');
 const mensajeError = document.getElementById('mensajeError');
 
+let estilo = "none";
+let estiloCommit = "none";
+
+// Evento al hacer clic en "Añadir Proyecto"
 btnAddProyecto.addEventListener('click', mostrarFormularioProyecto);
 
+function mostrarFormularioProyecto() {
+    btnAddProyecto.style.display = 'none';
+    proyectoForm.style.display = 'block';
+}
+
 // Evento al hacer clic en "Confirmar Proyecto"
-btnConfirmProyecto.addEventListener('click', () => {
+btnConfirmProyecto.addEventListener('click', confirmarProyecto);
+
+function confirmarProyecto() {
     const tituloProyecto = inputTitulo.value;
     if (tituloProyecto) {
         arrayProyectos.aniadirProyecto(tituloProyecto);
@@ -25,7 +36,7 @@ btnConfirmProyecto.addEventListener('click', () => {
 
         // Mostrar mensaje de éxito y botón "Aceptar"
         let successMessage = crearElemento("div", "Proyecto añadido con éxito");
-        let acceptButton = crearElemento("button", "Aceptar")
+        let acceptButton = crearElemento("button", "Aceptar");
 
         acceptButton.addEventListener('click', () => {
             proyectoContainer.removeChild(successMessage);
@@ -42,11 +53,6 @@ btnConfirmProyecto.addEventListener('click', () => {
         mensajeError.textContent = 'Por favor ingrese un título para el proyecto.';
         mensajeError.style.display = 'block';
     }
-});
-
-function mostrarFormularioProyecto() {
-    btnAddProyecto.style.display = 'none';
-    proyectoForm.style.display = 'block';
 }
 
 // Función para actualizar la lista de proyectos en pantalla
@@ -54,7 +60,6 @@ function actualizarProyectosEnPantalla() {
     proyectoContainer.innerHTML = '';
     const proyectos = arrayProyectos.getProyectos();
     proyectos.forEach(proyecto => {
-        // Crea un elemento div para mostrar el nombre del proyecto
         const proyectoElement = crearElemento("div", proyecto);
         const btnIngresarProyecto = crearElemento("button", "Ver Commits");
         btnIngresarProyecto.addEventListener('click', () => {
@@ -64,7 +69,6 @@ function actualizarProyectosEnPantalla() {
         });
         proyectoElement.appendChild(btnIngresarProyecto);
 
-        // Botón para ver puntaje del proyecto
         const btnPuntajeProyecto = crearElemento("button", "Ver Puntaje del Proyecto");
         btnPuntajeProyecto.addEventListener('click', () => {
             estilo = "none";
@@ -73,7 +77,6 @@ function actualizarProyectosEnPantalla() {
         });
         proyectoElement.appendChild(btnPuntajeProyecto);
 
-        // Botón para borrar el proyecto
         const btnBorrarProyecto = crearElemento("button", "Eliminar Proyecto");
         btnBorrarProyecto.addEventListener('click', () => {
             const confirmacion = window.confirm('¿Estás seguro de que deseas borrar este proyecto?');
@@ -96,16 +99,13 @@ function ingresarAlProyecto(nombreProyecto) {
         const tituloProyectoElement = crearElemento('h2', `Proyecto: ${nombreProyecto}`);
         proyectoContainer.appendChild(tituloProyectoElement);
 
-        // Botón para volver a la lista de proyectos
-        const btnVolver = crearElemento('button', 'Regresar a la lista de proyectos');
-        btnVolver.addEventListener('click', () => {
-            actualizarProyectosEnPantalla();
-        });
+        const btnVolver = crearElemento('button', 'Volver a la lista de proyectos');
+        btnVolver.addEventListener('click', actualizarProyectosEnPantalla);
         proyectoContainer.appendChild(btnVolver);
 
-        // Mensaje de confirmación
         const ultimoCommitBorrado = crearElemento('div', 'Último commit borrado correctamente');
         const acceptCommitBorrado = crearElemento('button', 'Aceptar');
+
         ultimoCommitBorrado.style.display = estiloCommit;
         acceptCommitBorrado.addEventListener('click', () => {
             proyectoContainer.removeChild(ultimoCommitBorrado);
@@ -113,12 +113,10 @@ function ingresarAlProyecto(nombreProyecto) {
         ultimoCommitBorrado.appendChild(acceptCommitBorrado);
         proyectoContainer.appendChild(ultimoCommitBorrado);
 
-        // Mostrar los commits del proyecto
         const commitsProyecto = proyectoSeleccionado.mostrarCommitCompleto();
         const listaCommits = crearElemento('ul');
 
         if (commitsProyecto.length > 0) {
-            // Botón para eliminar el último commit
             const btnEliminarUltimoCommit = crearElemento('button', 'Eliminar Último Commit');
             btnEliminarUltimoCommit.addEventListener('click', () => {
                 btnEliminarUltimoCommit.style.display = 'none';
@@ -129,7 +127,7 @@ function ingresarAlProyecto(nombreProyecto) {
                 btnConfirmar.addEventListener('click', () => {
                     estilo = 'none';
                     proyectoSeleccionado.eliminarUltimoCommit();
-                    estiloCommit = "block"
+                    estiloCommit = "block";
                     ingresarAlProyecto(nombreProyecto);
                 });
                 proyectoContainer.appendChild(confirmMessage);
@@ -139,33 +137,27 @@ function ingresarAlProyecto(nombreProyecto) {
         }
 
         commitsProyecto.forEach(commit => {
-            const commitItem = document.createElement('li');
-            commitItem.textContent = `Pruebas: ${commit.cantPruebas}, Pruebas Aprobadas: ${commit.cantPruebasAprob}, Líneas: ${commit.cantLineas}, Cobertura: ${commit.cobertura}%`;
-
-            let recomendacion = commit.recomendacion;
+            const commitItem = crearElemento('li', `Pruebas: ${commit.cantPruebas}, Pruebas Aprobadas: ${commit.cantPruebasAprob}, Líneas: ${commit.cantLineas}, Cobertura: ${commit.cobertura}%`);
             const btnMostrarRecomendacion = crearElemento('button', 'Ver recomendación');
             let paragraph;
             btnMostrarRecomendacion.addEventListener('click', () => {
                 if (!paragraph) {
-                    paragraph = document.createElement('p');
-                    paragraph.textContent = recomendacion;
+                    paragraph = crearElemento('p', commit.recomendacion);
                     commitItem.appendChild(paragraph);
                     btnMostrarRecomendacion.textContent = 'Ocultar recomendación';
                 } else {
-                    paragraph.remove();
+                    commitItem.removeChild(paragraph);
                     paragraph = null;
                     btnMostrarRecomendacion.textContent = 'Ver recomendación';
                 }
             });
             commitItem.appendChild(btnMostrarRecomendacion);
-
             listaCommits.appendChild(commitItem);
         });
         proyectoContainer.appendChild(listaCommits);
 
-        // Formulario para ingresar un nuevo commit
         const tituloCommit = crearElemento('h3', 'Añadir commit');
-        const formCommit = document.createElement('form');
+        const formCommit = crearElemento('form');
         const inputCantPruebas = crearElemento('input', '');
         inputCantPruebas.type = 'number';
         inputCantPruebas.placeholder = 'Cantidad de pruebas';
@@ -178,7 +170,7 @@ function ingresarAlProyecto(nombreProyecto) {
         const inputCobertura = crearElemento('input', '');
         inputCobertura.type = 'number';
         inputCobertura.placeholder = 'Porcentaje de cobertura';
-        const btnConfirmCommit = crearElemento('button', 'Agregar Commit');
+        const btnConfirmarCommit = crearElemento('button', 'Agregar Commit');
 
         const successCommit = crearElemento('div', 'Commit añadido con éxito');
         const acceptCommit = crearElemento('button', 'Aceptar');
@@ -189,7 +181,7 @@ function ingresarAlProyecto(nombreProyecto) {
         successCommit.appendChild(acceptCommit);
         proyectoContainer.appendChild(successCommit);
 
-        btnConfirmCommit.addEventListener('click', () => {
+        btnConfirmarCommit.addEventListener('click', () => {
             const cantPruebas = parseInt(inputCantPruebas.value);
             const cantPruebasAprob = parseInt(inputCantPruebasAprob.value);
             const cantLineas = parseInt(inputCantLineas.value);
@@ -207,13 +199,12 @@ function ingresarAlProyecto(nombreProyecto) {
                 ingresarAlProyecto(nombreProyecto);
             }
         });
-
         formCommit.appendChild(tituloCommit);
         formCommit.appendChild(inputCantPruebas);
         formCommit.appendChild(inputCantPruebasAprob);
         formCommit.appendChild(inputCantLineas);
         formCommit.appendChild(inputCobertura);
-        formCommit.appendChild(btnConfirmCommit);
+        formCommit.appendChild(btnConfirmarCommit);
         proyectoContainer.appendChild(formCommit);
     }
 }
@@ -225,10 +216,8 @@ function ingresarPuntajeProyecto(nombreProyecto) {
         const mensajeError = crearElemento('p', 'No se encontró el proyecto seleccionado.');
         proyectoContainer.appendChild(mensajeError);
 
-        const btnVolver = crearElemento('button', 'Regresar a la lista de proyectos');
-        btnVolver.addEventListener('click', () => {
-            actualizarProyectosEnPantalla();
-        });
+        const btnVolver = crearElemento('button', 'Volver a la lista de proyectos');
+        btnVolver.addEventListener('click', actualizarProyectosEnPantalla);
         proyectoContainer.appendChild(btnVolver);
 
         return;
@@ -236,24 +225,21 @@ function ingresarPuntajeProyecto(nombreProyecto) {
     const tituloProyecto = crearElemento('h2', `Proyecto: ${nombreProyecto}`);
     proyectoContainer.appendChild(tituloProyecto);
 
-    const btnVolver = crearElemento('button', 'Regresar a la lista de proyectos');
-    btnVolver.addEventListener('click', () => {
-        actualizarProyectosEnPantalla();
-    });
+    const btnVolver = crearElemento('button', 'Volver a la lista de proyectos');
+    btnVolver.addEventListener('click', actualizarProyectosEnPantalla);
     proyectoContainer.appendChild(btnVolver);
 
-    const puntaje = proyectoSeleccionado.getPuntajePruebas();
-    const tituloPuntaje = crearElemento('p', `Puntaje de pruebas: ${puntaje}%`);
-    proyectoContainer.appendChild(tituloPuntaje);
+    const puntajePruebas = proyectoSeleccionado.getPuntajePruebas();
+    const tituloPuntajePruebas = crearElemento('p', `Puntaje de pruebas: ${puntajePruebas}%`);
+    proyectoContainer.appendChild(tituloPuntajePruebas);
 
     const puntajeLineasCodigo = proyectoSeleccionado.getPuntajeLineasCodigo();
     const tituloPuntajeLineasCodigo = crearElemento('p', `Puntaje por líneas de código: ${puntajeLineasCodigo}%`);
     proyectoContainer.appendChild(tituloPuntajeLineasCodigo);
 
     const porcentajeCobertura = proyectoSeleccionado.getPorcentajeCobertura();
-    const parrafoPorcentaje = crearElemento('p', `Porcentaje de cobertura: ${porcentajeCobertura}%`);
-    proyectoContainer.appendChild(parrafoPorcentaje);
+    const tituloPorcentajeCobertura = crearElemento('p', `Porcentaje de cobertura: ${porcentajeCobertura}%`);
+    proyectoContainer.appendChild(tituloPorcentajeCobertura);
 }
 
-// Actualiza la lista de proyectos al cargar la página
 actualizarProyectosEnPantalla();
