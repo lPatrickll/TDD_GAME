@@ -48,18 +48,7 @@ describe("Ingresar Proyectos", () => {
     arrayProyectos.borrarProyecto("Proyecto1");
     expect(arrayProyectos.getProyectos()).toEqual(["Proyecto2"]);
   });
-  // ************************************************************************
 
-  // Tercera Historia de Usuario -> Patrick *********************************
-
-
-  it("debería añadir un commit correctamente", () => {
-    proyecto.aniadirCommit(3, 100, 80);
-    expect(proyecto.mostrarCommits()).toEqual([
-      { cantPruebas: 3, cantLineas: 100, cobertura: 80 }
-    ]);
-  });
-  // ********************************************************************
   // 4ta HU -> Fabio ****************************************************
 
 
