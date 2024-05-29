@@ -120,7 +120,7 @@ function ingresarAlProyecto(nombreProyecto) {
 }
 
 function mostrarCommits(proyectoSeleccionado) {
-    const commitsProyecto = proyectoSeleccionado.mostrarCommitCompleto();
+    const commitsProyecto = proyectoSeleccionado.mostrarCommits();
     const listaCommits = crearElemento('ul');
 
     if (commitsProyecto.length > 0) {
