@@ -154,11 +154,17 @@ describe("Prueba Lista de commits", () => {
     });
 
 // 4ta HU 2do SPRINT
-it("El array de commits debería mostrar la complejidad correctamente", () => {
+it("El array de commits deberia de mostrar el ultimo commit como frecuencia excelente", () => {
   const arrayCommit = new ArrayCommit();
   arrayCommit.aniadirCommit(4, 100, 100, "Excelente", "2024-04-10");
   arrayCommit.aniadirCommit(4, 100, 100, "Excelente", "2024-04-11");
   expect(arrayCommit.calcularFrecuenciaCommits()).toEqual("Excelente");
+});
+
+it("El array de commits debería mostrar el ultimo commit como frecuencia Regular al ser el unico commit", () => {
+  const arrayCommit = new ArrayCommit();
+  arrayCommit.aniadirCommit(4, 100, 100, "Excelente", "2024-04-10");
+  expect(arrayCommit.calcularFrecuenciaCommits()).toEqual("Regular");
 });
 
 

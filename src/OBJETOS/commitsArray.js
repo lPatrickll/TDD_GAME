@@ -36,9 +36,11 @@ class ArrayCommit {
         return this.arrayCommit;
     }
 
+
     calcularFrecuenciaCommits() {
-        if (this.arrayCommit.length < 1) {
-            return null;
+        if (this.arrayCommit.length < 2) {
+            this.arrayCommit[0].setFrecuencia("Regular");
+            return this.arrayCommit[0].getFrecuencia();
         }
 
         for (let i = 1; i < this.arrayCommit.length; i++) {
