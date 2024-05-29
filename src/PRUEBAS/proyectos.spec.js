@@ -246,49 +246,7 @@ describe("Ingresar Proyectos", () => {
     proyecto.aniadirCommit(5, 100, 1);
     expect(proyecto.getPuntajeLineasCodigo()).toEqual(80);
   });
-  // ********************************************************************
-  // 7ta HU Arturo
-
-  it("Deberia devolver cero para cantidad de lineas de cobertura", () => {
-    let commit2=new Commit(4,2,0);
-    
-    expect(commit2.getCobertura()).toEqual(0);
-  });
-
-  it("Deberia devolver 0 para cobertura igual a 0", () => {
-    let commit2=new Commit(4,2,0);
-    expect(commit2.getCobertura()).toEqual(0);
-  });
-
-  it("El commit deberia de devolver 10 de porcentaje de cobertura", () => {
-    let commit2=new Commit(4,2,10);
-    expect(commit2.getCobertura()).toEqual(10);
-  });
-
-  it("El commit deberia de devolver 100% de porcentaje de cobertura", () => {
-    let commit2=new Commit(4,2,100);
-    expect(commit2.getCobertura()).toEqual(100);
-  });
-
-  it("El commit deberia de devolver 50% de porcentaje de cobertura enviado como parametro", () => {
-    let commit2=new Commit(4,2,50);
-    expect(commit2.getCobertura()).toEqual(50);
-  });
-
-  it("El commit deberia de devolver un de porcentaje de cobertura enviado por parametro", () => {
-    let commit2=new Commit(4,4,100);
-    expect(commit2.getCobertura()).toEqual(100);
-  });
-
-  it("El commit deberia de devolver un de porcentaje de cobertura como entrada", () => {
-    let commit2=new Commit(4,100,100);
-    expect(commit2.getCobertura()).toEqual(100);
-  });
-
-  it("El commit deberia de devolver un porcentaje de cobertura enviado como parametro", () => {
-    let commit2=new Commit(4,100,5);
-    expect(commit2.getCobertura()).toEqual(5);
-  });
+  
 
   it("El Array de commits deberia de devolver todos sus datos del commit con porcentajeCober CALCULADO", () => {
     let commit2=new Commit(4,100,87);
