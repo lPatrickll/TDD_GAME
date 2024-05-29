@@ -481,4 +481,22 @@ describe("Ingresar Proyectos", () => {
     expect(ranking).toEqual(["Proyecto 1", "Proyecto 2", "Proyecto 3"]);
   });
 
+  it('debería devolver la puntuación general correcta', () => {
+    // Configuración de la prueba
+    const proyecto = new Proyecto('Proyecto de ejemplo');
+    // Supongamos algunos valores de puntaje para las pruebas
+    jest.spyOn(proyecto, 'getPuntajePruebas').mockReturnValue(90);
+    // Supongamos algunos valores de puntaje para las líneas de código
+    jest.spyOn(proyecto, 'getPuntajeLineasCodigo').mockReturnValue(80);
+    // Supongamos algunos valores de puntaje para la cobertura
+    jest.spyOn(proyecto, 'getPorcentajeCobertura').mockReturnValue(85);
+
+    // Ejecutar el método que estamos probando
+    const puntuacionGeneral = proyecto.calcularPuntuacionGeneral();
+
+    // Comprobar si la puntuación general es la esperada
+    expect(puntuacionGeneral).toBeCloseTo((90 + 80 + 85) / 3, 2);
+    // Tenga en cuenta que toBeCloseTo se utiliza para comparar números de punto flotante con una cierta precisión.
+    // 2 indica que queremos que los valores sean iguales dentro de dos lugares decimales.
+  });
 });
