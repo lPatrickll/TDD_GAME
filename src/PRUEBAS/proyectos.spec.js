@@ -1,22 +1,15 @@
-import Commit from "../OBJETOS/commit";
-import ArrayCommit from "../OBJETOS/commitsArray";
+
 import Proyecto from "../OBJETOS/proyecto";
 import ArrayProyectos from "../OBJETOS/proyectosArray";
 
 describe("Ingresar Proyectos", () => {
   // (INICIO PROYECTO) -> FABIO *************************************
   let arrayProyectos = new ArrayProyectos();
-  let commit = new Commit();
-  let arrayCommit = new ArrayCommit();
-  let proyecto;
-  let proyectoEliminarUnCommit;
+
 
   beforeEach(() => {
     arrayProyectos = new ArrayProyectos();
-    commit = new Commit();
-    arrayCommit = new ArrayCommit();
 
-    proyecto = new Proyecto("Proyecto 1");
   });
 
   it("Si no ingreso nada, deberia devolverme un array de proyectos vacio", () => {
@@ -33,7 +26,6 @@ describe("Ingresar Proyectos", () => {
     arrayProyectos.aniadirProyecto("Proyecto2");
     expect(arrayProyectos.getProyectos()).toEqual(["Proyecto1", "Proyecto2"]);
   });
-  // ************************************************************************
 
   // Segunda Historia de Usuario -> Patrick *********************************
   it("Se debe borrar un proyecto", () => {
@@ -48,9 +40,6 @@ describe("Ingresar Proyectos", () => {
     arrayProyectos.borrarProyecto("Proyecto1");
     expect(arrayProyectos.getProyectos()).toEqual(["Proyecto2"]);
   });
-
-
-  
 
   // ********************************************************************
   // 6ta HU Salvador
