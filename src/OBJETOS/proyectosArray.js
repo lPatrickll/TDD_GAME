@@ -18,6 +18,16 @@ class ArrayProyectos {
         this.proyectosArray = this.proyectosArray.filter(proyecto => proyecto.getTitulo() !== tituloProyecto);
         return this.proyectosArray;
     }
+
+    rankingProyectos() {
+        // Crear una copia del array original
+        const proyectosCopia = [...this.proyectosArray];
+        
+        // Ordenar los proyectos en función de la puntuación general de forma descendente
+        proyectosCopia.sort((a, b) => b.calcularPuntuacionGeneral() - a.calcularPuntuacionGeneral());
+        
+        return proyectosCopia;
+    }
 };
 
 export default ArrayProyectos;

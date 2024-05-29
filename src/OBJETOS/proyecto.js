@@ -115,5 +115,14 @@ class Proyecto {
         }
         return porcentaje;
     }
+
+    calcularPuntuacionGeneral() {
+        const puntajePruebas = this.getPuntajePruebas();
+        const puntajeLineasCodigo = this.getPuntajeLineasCodigo();
+        const puntajeCobertura = this.getPorcentajeCobertura();
+
+        // Aquí puedes ajustar cómo se combinan estas puntuaciones para obtener una puntuación general
+        return (puntajePruebas + puntajeLineasCodigo + puntajeCobertura) / 3;
+    }
 }
 export default Proyecto;

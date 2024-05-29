@@ -449,4 +449,36 @@ describe("Ingresar Proyectos", () => {
     }];
     expect(proyecto.mostrarCommits()).toEqual(expectedArray);
   });
+
+
+  it("Debería mostrar un ranking de proyectos ordenado por puntuación general", () => {
+    arrayProyectos.aniadirProyecto("Proyecto 1");
+    arrayProyectos.aniadirProyecto("Proyecto 2");
+    arrayProyectos.aniadirProyecto("Proyecto 3");
+
+    // Supongamos que Proyecto 1 tiene mayor puntuación, luego Proyecto 2, y finalmente Proyecto 3
+    arrayProyectos.proyectosArray[0].calcularPuntuacionGeneral = jest.fn(() => 90);
+    arrayProyectos.proyectosArray[1].calcularPuntuacionGeneral = jest.fn(() => 80);
+    arrayProyectos.proyectosArray[2].calcularPuntuacionGeneral = jest.fn(() => 70);
+
+    const ranking = arrayProyectos.rankingProyectos().map(proyecto => proyecto.getTitulo());
+
+    expect(ranking).toEqual(["Proyecto 1", "Proyecto 2", "Proyecto 3"]);
+  });
+
+  it("Debería mostrar un ranking de proyectos ordenado por puntuación general", () => {
+    arrayProyectos.aniadirProyecto("Proyecto 1");
+    arrayProyectos.aniadirProyecto("Proyecto 2");
+    arrayProyectos.aniadirProyecto("Proyecto 3");
+
+    // Supongamos que Proyecto 1 tiene mayor puntuación, luego Proyecto 2, y finalmente Proyecto 3
+    arrayProyectos.proyectosArray[0].calcularPuntuacionGeneral = jest.fn(() => 90);
+    arrayProyectos.proyectosArray[1].calcularPuntuacionGeneral = jest.fn(() => 80);
+    arrayProyectos.proyectosArray[2].calcularPuntuacionGeneral = jest.fn(() => 70);
+
+    const ranking = arrayProyectos.rankingProyectos().map(proyecto => proyecto.getTitulo());
+
+    expect(ranking).toEqual(["Proyecto 1", "Proyecto 2", "Proyecto 3"]);
+  });
+
 });
