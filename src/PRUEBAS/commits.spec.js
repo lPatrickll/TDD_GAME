@@ -103,6 +103,47 @@ describe("Prueba Lista de commits", () => {
     });
 
 
+      // ********************************************************************
+  // 6ta HU Salvador
+
+    it("El Array de commits deberia de devolver todos sus datos del commit con porcentajeCober CALCULADO", () => {
+        let commit2=new Commit(4,100,87);
+        commit2.setPruebasAprob(2);
+        arrayCommit.aniadirCommitObj(commit2);
+        let expectedArray = [{
+        cantPruebas: 4,
+        cantPruebasAprob:2,
+        cantLineas: 100,
+        cobertura: 87,
+        recomendacion: "Se recomienda mejorar la cantidad de pruebas aprobadas. "
+        }];
+        expect(arrayCommit.mostrarCommitCompleto()).toEqual(expectedArray);
+    });
+
+    it("Añadir Commit a array de commit aniadiendo lineas de cobertura", () => {
+        arrayCommit.aniadirCommitFinal(10,10,10,100);
+        let expectedArray = [{
+          cantPruebas: 10,
+          cantPruebasAprob:10,
+          cantLineas: 10,
+          cobertura: 100,
+          recomendacion: "Buen trabajo en las pruebas aprobadas. "
+        }];
+        expect(arrayCommit.mostrarCommitCompleto()).toEqual(expectedArray);
+    });
+
+    it("El array de commits debería mostrar la complejidad correctamente", () => {
+        arrayCommit.aniadirCommit(4, 100, 100, "Excelente");
+        let expectedArray = [{
+          cantPruebas: 4,
+          cantLineas: 100,
+          cobertura: 100,
+          complejidad: "Excelente"
+        }];
+        expect(arrayCommit.mostrarCommit()).toEqual(expectedArray);
+    });
+
+
 
 
 
