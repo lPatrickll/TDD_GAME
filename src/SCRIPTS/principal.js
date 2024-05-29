@@ -167,8 +167,11 @@ function mostrarCommits(proyectoSeleccionado) {
 function crearFormularioCommit(proyectoSeleccionado, nombreProyecto) {
     const tituloCommit = crearElemento('h3', 'Añadir commit');
     const formularioCommit = crearElemento('form');
+    const inputFecha = crearElemento('input', '');
+    inputFecha.type = 'text';
+    inputFecha.placeholder = 'Fecha en formato 2020-05-05';
     const inputCantPruebas = crearInputNumerico('Cantidad de pruebas');
-    const inputCantPruebasAprob = crearInputNumerico('Cantidad de pruebas aprobadas');
+
     const inputCantLineas = crearInputNumerico('Cantidad de líneas');
     const inputCobertura = crearInputNumerico('Porcentaje de cobertura');
     const inputComplejidad = crearElemento('input', '');
@@ -187,12 +190,12 @@ function crearFormularioCommit(proyectoSeleccionado, nombreProyecto) {
 
     btnConfirmarCommit.addEventListener('click', () => {
         const cantPruebas = parseInt(inputCantPruebas.value);
-        const cantPruebasAprob = parseInt(inputCantPruebasAprob.value);
+        const Fecha = inputFecha.value;
         const cantLineas = parseInt(inputCantLineas.value);
         const cobertura = parseInt(inputCobertura.value);
         const complejidad = inputComplejidad.value;
-        if (!isNaN(cantPruebas) && !isNaN(cantLineas) && cantPruebas >= 0 && cantLineas >= 0 && cantPruebasAprob <= cantPruebas) {
-            proyectoSeleccionado.aniadirCommit(cantPruebas, cantLineas, cobertura, cantPruebasAprob, complejidad);
+        if (!isNaN(cantPruebas) && !isNaN(cantLineas) && cantPruebas >= 0 && cantLineas >= 0) {
+            proyectoSeleccionado.aniadirCommit(cantPruebas, cantLineas, cobertura, complejidad,Fecha);
             estilo = "block";
             estiloCommit = "none";
             ingresarAlProyecto(nombreProyecto);
@@ -205,8 +208,9 @@ function crearFormularioCommit(proyectoSeleccionado, nombreProyecto) {
     });
 
     formularioCommit.appendChild(tituloCommit);
+    formularioCommit.appendChild(inputFecha);
     formularioCommit.appendChild(inputCantPruebas);
-    formularioCommit.appendChild(inputCantPruebasAprob);
+
     formularioCommit.appendChild(inputCantLineas);
     formularioCommit.appendChild(inputCobertura);
     formularioCommit.appendChild(inputComplejidad);
