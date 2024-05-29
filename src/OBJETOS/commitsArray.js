@@ -51,6 +51,8 @@ class ArrayCommit {
             let frecuencia="Regular";
             if (diferenciaDias < 2) {
                 frecuencia = "Excelente";
+            } else if (diferenciaDias < 3) {
+                frecuencia = "Bueno";
             }
             this.arrayCommit[i].setFrecuencia(frecuencia);
         }

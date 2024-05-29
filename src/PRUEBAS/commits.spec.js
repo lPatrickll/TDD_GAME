@@ -167,6 +167,13 @@ it("El array de commits debería mostrar el ultimo commit como frecuencia Regula
   expect(arrayCommit.calcularFrecuenciaCommits()).toEqual("Regular");
 });
 
+it("El array de commits deberia de mostrar el ultimo commit como frecuencia Bueno con diferencia < 3 dias", () => {
+  const arrayCommit = new ArrayCommit();
+  arrayCommit.aniadirCommit(4, 100, 100, "Excelente", "2024-04-10");
+  arrayCommit.aniadirCommit(4, 100, 100, "Excelente", "2024-04-12");
+  expect(arrayCommit.calcularFrecuenciaCommits()).toEqual("Bueno");
+});
+
 
 
 
