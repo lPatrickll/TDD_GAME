@@ -188,6 +188,14 @@ it("El array de commits deberia de mostrar el ultimo commit como frecuencia Defi
   expect(arrayCommit.calcularFrecuenciaCommits()).toEqual("Deficiente");
 });
 
+it("El array de commits deberia de mostrar el ultimo commit como frecuencia Regular al ser el unico commit", () => {
+  const arrayCommit = new ArrayCommit();
+  const commit=new Commit(4, 100, 100, "Excelente", "2024-04-10");
+  arrayCommit.aniadirCommitObj(commit);
+  arrayCommit.calcularFrecuenciaCommits();
+  expect(commit.getFrecuencia()).toEqual("Regular");
+});
+
 
     
 });

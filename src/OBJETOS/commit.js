@@ -7,7 +7,7 @@ class Commit {
         this.cantPruebasAprob = 0;
         this.recomendacion = "";
         this.fecha=new Date(fecha);
-        this.frecuenciaCommit="";
+        this.frecuenciaCommit="Regular";
     }
 
     getCantPruebas() {
