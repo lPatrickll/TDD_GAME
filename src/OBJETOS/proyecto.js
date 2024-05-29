@@ -16,9 +16,6 @@ class Proyecto {
         this.arrayCommit.aniadirCommit(cantPruebas, cantLineas, cobertura, complejidad);
     }
 
-    aniadirCommitFinal(cantPruebas, cantLineas, cobertura, complejidad) {
-        this.arrayCommit.aniadirCommit(cantPruebas, cantLineas, cobertura, complejidad);
-    }
 
     mostrarCommits() {
         return this.arrayCommit.mostrarCommitCompleto();

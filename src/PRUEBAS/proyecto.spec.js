@@ -47,7 +47,7 @@ describe("Proyecto", () => {
     it("El proyecto deberia de devolver el puntaje de 50% para la mitad de pruebas aprobadas", () => {
 
         const proyecto = new Proyecto("Proyecto2");
-        proyecto.aniadirCommitFinal(2, 4, 4,"regular");
+        proyecto.aniadirCommit(2, 4, 4,"regular");
 
         expect(proyecto.getPuntajePruebas()).toEqual(0);
     });
@@ -70,10 +70,10 @@ describe("Proyecto", () => {
     it("El proyecto deberia de devolver el puntaje de 100% todas las pruebas aprobadas", () => {
 
         const proyecto = new Proyecto("Proyecto2");
-        proyecto.aniadirCommitFinal(2, 4, 4,"regular");
-        proyecto.aniadirCommitFinal(2, 4, 4,"regular");
-        proyecto.aniadirCommitFinal(2, 4, 4,"regular");
-        proyecto.aniadirCommitFinal(2, 4, 4,"regular");
+        proyecto.aniadirCommit(2, 4, 4,"regular");
+        proyecto.aniadirCommit(2, 4, 4,"regular");
+        proyecto.aniadirCommit(2, 4, 4,"regular");
+        proyecto.aniadirCommit(2, 4, 4,"regular");
 
         expect(proyecto.getPuntajePruebas()).toEqual(0);
     });
@@ -151,8 +151,8 @@ describe("Proyecto", () => {
 
     it("El proyecto deberia de devolver 50 de porcentaje de cobertura para dos commits con 50% de cobertura", () => {
         const proyecto = new Proyecto("Proyecto2");
-        proyecto.aniadirCommitFinal(10,10,50,50);
-        proyecto.aniadirCommitFinal(10,10,50,50);
+        proyecto.aniadirCommit(10,10,50,50);
+        proyecto.aniadirCommit(10,10,50,50);
         expect(proyecto.getPorcentajeCobertura()).toEqual(50);
     });
     
