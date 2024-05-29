@@ -39,6 +39,10 @@ class Commit {
     getFecha(){
         return this.fecha;
     }
+    setFecha(fecha)
+    {
+        this.fecha=new Date(fecha);
+    }
 
     generarRecomendacion() {
         let puntaje_provisional = this.cantPruebasAprob / this.cantPruebas;

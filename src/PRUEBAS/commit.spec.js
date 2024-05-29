@@ -155,6 +155,12 @@ describe("Commits", () => {
     expect(commit.getFecha().toISOString()).toEqual("2024-05-20T00:00:00.000Z");
   });
 
+  it("El commit debería de devolver la fecha en tipo de dato de fecha", () => {
+    let commit = new Commit(4, 100, 100, "Excelente", "2024-05-20");
+    commit.setFecha("2020-05-20");
+    expect(commit.getFecha().toISOString()).toEqual("2020-05-20T00:00:00.000Z");
+  });
+
 
     
 });
