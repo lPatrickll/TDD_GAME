@@ -1,11 +1,12 @@
 class Commit {
-    constructor(cantPruebas, cantLineas, cobertura, complejidad) {
+    constructor(cantPruebas, cantLineas, cobertura, complejidad,fecha) {
         this.cantPruebas = cantPruebas;
         this.cantLineas = cantLineas;
         this.cobertura = cobertura;
         this.complejidad = complejidad;
         this.cantPruebasAprob = 0;
         this.recomendacion = "";
+        this.fecha=fecha;
     }
 
     getCantPruebas() {
@@ -34,6 +35,9 @@ class Commit {
 
     getRecomendacion() {
         return this.generarRecomendacion();
+    }
+    getFecha(){
+        return this.fecha;
     }
 
     generarRecomendacion() {

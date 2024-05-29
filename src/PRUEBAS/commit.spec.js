@@ -141,5 +141,14 @@ describe("Commits", () => {
     let commit = new Commit(4, 100, 100, "Excelente");
     expect(commit.getComplejidad()).toEqual("Excelente");
   });
+
+
+
+  //4ta HU 2do SPRINT
+  it("El commit debería de devolver la fecha correspondiente", () => {
+    let commit = new Commit(4, 100, 100, "Excelente","2024-05-29");
+    expect(commit.getFecha()).toEqual("2024-05-29");
+  });
+
     
 });
