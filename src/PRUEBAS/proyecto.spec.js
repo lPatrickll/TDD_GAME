@@ -56,13 +56,13 @@ describe("Proyecto", () => {
 
     it("El proyecto deberia de mostrar commits con pruebas aprobadas", () => {
         const proyecto = new Proyecto("Proyecto2");
-        proyecto.aniadirCommitFinal(2, 2, 30,2);
+        proyecto.aniadirCommit(2, 2, 30,"regular");
         let expectedArray = [{
         cantPruebas: 2,
-        cantPruebasAprob:2,
         cantLineas: 2,
         cobertura: 30,
-        recomendacion: "Buen trabajo en las pruebas aprobadas. La cobertura de código es baja, considera añadir más pruebas."
+        complejidad:"regular",
+        recomendacion: "Se recomienda mejorar la cantidad de pruebas aprobadas. La cobertura de código es baja, considera añadir más pruebas."
         }];
         expect(proyecto.mostrarCommitCompleto()).toEqual(expectedArray);
     });
@@ -130,13 +130,13 @@ describe("Proyecto", () => {
 
     it("el proyecto deberia de mostrar el commit añadido, incluyendo el porcentaje de cobertura calculado", () => {
         const proyecto = new Proyecto("Proyecto2");
-        proyecto.aniadirCommitFinal(10,10,10,10);
+        proyecto.aniadirCommit(10,10,10,"regular");
         let expectedArray = [{
         cantPruebas: 10,
-        cantPruebasAprob:10,
         cantLineas: 10,
         cobertura: 10,
-        recomendacion: "Buen trabajo en las pruebas aprobadas. La cobertura de código es baja, considera añadir más pruebas."
+        complejidad:"regular",
+        recomendacion: "Se recomienda mejorar la cantidad de pruebas aprobadas. La cobertura de código es baja, considera añadir más pruebas."
         }];
         expect(proyecto.mostrarCommitCompleto()).toEqual(expectedArray);
     });

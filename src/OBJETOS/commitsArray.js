@@ -32,7 +32,6 @@ class ArrayCommit {
     mostrarCommitCompleto() {
         return this.arrayCommit.map(commit => ({
             cantPruebas: commit.getCantPruebas(),
-            cantPruebasAprob: commit.getCantPruebasAprob(),
             cantLineas: commit.getCantLineas(),
             cobertura: commit.getCobertura(),
             complejidad: commit.getComplejidad(),

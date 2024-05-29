@@ -92,13 +92,13 @@ describe("Prueba Lista de commits", () => {
   // 5ta HU Arturo
 
     it("Se debe mostrar un commit con pruebas aprobadas", () => {
-        arrayCommit.aniadirCommitFinal(2, 2, 2,30);
+        arrayCommit.aniadirCommit(2, 2,30,"excelente");
         let expectedArray = [{
         cantPruebas: 2,
-        cantPruebasAprob:2,
         cantLineas: 2,
         cobertura: 30,
-        recomendacion: "Buen trabajo en las pruebas aprobadas. La cobertura de código es baja, considera añadir más pruebas."
+        complejidad:"excelente",
+        recomendacion: "Se recomienda mejorar la cantidad de pruebas aprobadas. La cobertura de código es baja, considera añadir más pruebas."
         }];
         expect(arrayCommit.mostrarCommitCompleto()).toEqual(expectedArray);
     });
@@ -109,11 +109,9 @@ describe("Prueba Lista de commits", () => {
 
     it("El Array de commits deberia de devolver todos sus datos del commit con porcentajeCober CALCULADO", () => {
         let commit2=new Commit(4,100,87);
-        commit2.setPruebasAprob(2);
         arrayCommit.aniadirCommitObj(commit2);
         let expectedArray = [{
         cantPruebas: 4,
-        cantPruebasAprob:2,
         cantLineas: 100,
         cobertura: 87,
         recomendacion: "Se recomienda mejorar la cantidad de pruebas aprobadas. "
@@ -122,13 +120,13 @@ describe("Prueba Lista de commits", () => {
     });
 
     it("Añadir Commit a array de commit aniadiendo lineas de cobertura", () => {
-        arrayCommit.aniadirCommitFinal(10,10,10,100);
+        arrayCommit.aniadirCommit(10,10,100,"bueno");
         let expectedArray = [{
           cantPruebas: 10,
-          cantPruebasAprob:10,
           cantLineas: 10,
           cobertura: 100,
-          recomendacion: "Buen trabajo en las pruebas aprobadas. "
+          complejidad:"bueno",
+          recomendacion: "Se recomienda mejorar la cantidad de pruebas aprobadas. "
         }];
         expect(arrayCommit.mostrarCommitCompleto()).toEqual(expectedArray);
     });
