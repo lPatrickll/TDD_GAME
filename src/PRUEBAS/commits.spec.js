@@ -87,6 +87,21 @@ describe("Prueba Lista de commits", () => {
         expect(arrayCommit.mostrarCommit()).toEqual(expectedArray);
     });
 
+      // ********************************************************************
+  // 5ta HU Arturo
+
+    it("Se debe mostrar un commit con pruebas aprobadas", () => {
+        arrayCommit.aniadirCommitFinal(2, 2, 2,30);
+        let expectedArray = [{
+        cantPruebas: 2,
+        cantPruebasAprob:2,
+        cantLineas: 2,
+        cobertura: 30,
+        recomendacion: "Buen trabajo en las pruebas aprobadas. La cobertura de código es baja, considera añadir más pruebas."
+        }];
+        expect(arrayCommit.mostrarCommitCompleto()).toEqual(expectedArray);
+    });
+
 
 
 

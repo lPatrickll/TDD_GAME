@@ -89,17 +89,7 @@ describe("Ingresar Proyectos", () => {
     expect(proyecto.getPuntajePruebas()).toEqual(50);
   });
 
-  it("Se debe mostrar un commit con pruebas aprobadas", () => {
-    arrayCommit.aniadirCommitFinal(2, 2, 2,30);
-    let expectedArray = [{
-      cantPruebas: 2,
-      cantPruebasAprob:2,
-      cantLineas: 2,
-      cobertura: 30,
-      recomendacion: "Buen trabajo en las pruebas aprobadas. La cobertura de código es baja, considera añadir más pruebas."
-    }];
-    expect(arrayCommit.mostrarCommitCompleto()).toEqual(expectedArray);
-  });
+
 
   it("El proyecto deberia de mostrar commits con pruebas aprobadas", () => {
     const proyecto = new Proyecto("Proyecto2");
