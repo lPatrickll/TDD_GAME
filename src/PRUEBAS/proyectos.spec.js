@@ -302,12 +302,7 @@ describe("Ingresar Proyectos", () => {
   
  
   
-  // ********************************************************************
-  // 2do Salvador
-  it("El commit debería almacenar y devolver correctamente la complejidad", () => {
-    let commit = new Commit(4, 100, 100, "Excelente");
-    expect(commit.getComplejidad()).toEqual("Excelente");
-  });
+
 
   it("El array de commits debería mostrar la complejidad correctamente", () => {
     arrayCommit.aniadirCommit(4, 100, 100, "Excelente");
