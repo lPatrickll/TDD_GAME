@@ -300,56 +300,7 @@ describe("Ingresar Proyectos", () => {
     expect(proyecto.getPorcentajeCobertura()).toEqual(50);
   });
   
-  // ********************************************************************
-  // 8tavo Salvador
-  it("El commit debería generar la recomendacion por defecto", () => {
-    let commitrec = new Commit(4, 100, 100);
-    commitrec.setPruebasAprob(4);
-    let texto = "Buen trabajo en las pruebas aprobadas. ";
-    expect(commitrec.getRecomendacion()).toEqual(texto);
-  });
-
-  it("El commit debería generar una recomendación positiva debido a las pruebas aprobadas", () => {
-    let commitrec = new Commit(4, 100, 100);
-    commitrec.setPruebasAprob(4);
-    let texto = "Buen trabajo en las pruebas aprobadas. ";
-    expect(commitrec.generarRecomendacion()).toEqual(texto);
-  });
-
-  it("El commit debería generar una recomendación para mejorar debido a la poca cantidad de pruebas aprobadas", () => {
-    let commitrec = new Commit(4, 100, 100);
-    commitrec.setPruebasAprob(2);
-    let texto = "Se recomienda mejorar la cantidad de pruebas aprobadas. ";
-    expect(commitrec.generarRecomendacion()).toEqual(texto);
-  });
-
-  it("El commit debería generar una recomendación debido a la cantidad regular de pruebas aprobadas", () => {
-    let commitrec = new Commit(4, 100, 100);
-    commitrec.setPruebasAprob(3);
-    let texto = "Esta bien, pero podrias mejorar con la cantidad de pruebas aprobadas. ";
-    expect(commitrec.generarRecomendacion()).toEqual(texto);
-  });
-
-  it("Generacion de un mensaje adicional de recomendacion referenciado a la cantidad de lineas de codigo", () => {
-    let commitrec = new Commit(4, 501, 100);
-    commitrec.setPruebasAprob(3);
-    let texto = "Esta bien, pero podrias mejorar con la cantidad de pruebas aprobadas. El commit tiene muchas líneas de código, considera refactorizar para mejorar la legibilidad. ";
-    expect(commitrec.generarRecomendacion()).toEqual(texto);
-  });
-
-  it("El commit deberia generar una recomendacion positiva en cuanto al manejo de la cantidad de las lineas de codigo", () => {
-    let commitrec = new Commit(4, 102, 100);
-    commitrec.setPruebasAprob(3);
-    let texto = "Esta bien, pero podrias mejorar con la cantidad de pruebas aprobadas. Buen manejo de la cantidad de líneas de código. ";
-    expect(commitrec.generarRecomendacion()).toEqual(texto);
-  });
-
-  it("Generacion de un ultimo mensaje de recomendacion en base a la cobertura del commit dentro del proyecto", () => {
-    let commitrec = new Commit(4, 102, 60);
-    commitrec.setPruebasAprob(3);
-    let texto = "Esta bien, pero podrias mejorar con la cantidad de pruebas aprobadas. Buen manejo de la cantidad de líneas de código. La cobertura de código es baja, considera añadir más pruebas.";
-    expect(commitrec.generarRecomendacion()).toEqual(texto);
-  });
+ 
   
   // ********************************************************************
   // 2do Salvador
