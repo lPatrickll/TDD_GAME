@@ -6,7 +6,7 @@ class Commit {
         this.complejidad = complejidad;
         this.cantPruebasAprob = 0;
         this.recomendacion = "";
-        this.fecha=fecha;
+        this.fecha=new Date(fecha);
     }
 
     getCantPruebas() {
