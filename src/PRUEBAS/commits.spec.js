@@ -1,3 +1,4 @@
+import Commit from "../OBJETOS/commit";
 import ArrayCommit from "../OBJETOS/commitsArray";
 
 describe("Prueba Lista de commits", () => {
