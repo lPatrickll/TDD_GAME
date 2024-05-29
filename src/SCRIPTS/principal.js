@@ -192,7 +192,7 @@ function crearFormularioCommit(proyectoSeleccionado, nombreProyecto) {
         const cobertura = parseInt(inputCobertura.value);
         const complejidad = inputComplejidad.value;
         if (!isNaN(cantPruebas) && !isNaN(cantLineas) && cantPruebas >= 0 && cantLineas >= 0 && cantPruebasAprob <= cantPruebas) {
-            proyectoSeleccionado.aniadirCommitFinal(cantPruebas, cantLineas, cobertura, cantPruebasAprob, complejidad);
+            proyectoSeleccionado.aniadirCommit(cantPruebas, cantLineas, cobertura, cantPruebasAprob, complejidad);
             estilo = "block";
             estiloCommit = "none";
             ingresarAlProyecto(nombreProyecto);

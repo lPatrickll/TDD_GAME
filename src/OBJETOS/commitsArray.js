@@ -5,12 +5,6 @@ class ArrayCommit {
         this.arrayCommit = [];
     }
 
-    aniadirCommitFinal(cantPruebas, cantPruebasAprob, cantLineas, cobertura, complejidad) {
-        const nuevoCommit = new Commit(cantPruebas, cantLineas, cobertura, complejidad);
-        nuevoCommit.setPruebasAprob(cantPruebasAprob);
-        this.arrayCommit.push(nuevoCommit);
-    }
-
     aniadirCommit(cantPruebas, cantLineas, cobertura, complejidad) {
         const nuevoCommit = new Commit(cantPruebas, cantLineas, cobertura, complejidad);
         this.arrayCommit.push(nuevoCommit);
