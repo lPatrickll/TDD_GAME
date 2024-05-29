@@ -5,8 +5,8 @@ class ArrayCommit {
         this.arrayCommit = [];
     }
 
-    aniadirCommit(cantPruebas, cantLineas, cobertura, complejidad) {
-        const nuevoCommit = new Commit(cantPruebas, cantLineas, cobertura, complejidad);
+    aniadirCommit(cantPruebas, cantLineas, cobertura, complejidad,fecha) {
+        const nuevoCommit = new Commit(cantPruebas, cantLineas, cobertura, complejidad,fecha);
         this.arrayCommit.push(nuevoCommit);
     }
 
@@ -35,5 +35,27 @@ class ArrayCommit {
     getCommits() {
         return this.arrayCommit;
     }
+
+    calcularFrecuenciaCommits() {
+        if (this.arrayCommit.length < 1) {
+            return null;
+        }
+
+        for (let i = 1; i < this.arrayCommit.length; i++) {
+            let fechaActual = this.arrayCommit[i].getFecha();
+            let fechaAnterior = this.arrayCommit[i - 1].getFecha();
+            let diferenciaDias = (fechaActual - fechaAnterior) / (1000 * 60 * 60 * 24);
+
+            let frecuencia="Regular";
+            if (diferenciaDias < 2) {
+                frecuencia = "Excelente";
+            }
+            this.arrayCommit[i].setFrecuencia(frecuencia);
+        }
+
+        return this.arrayCommit[this.arrayCommit.length - 1].getFrecuencia();
+    }
+
+    
 }
 export default ArrayCommit;

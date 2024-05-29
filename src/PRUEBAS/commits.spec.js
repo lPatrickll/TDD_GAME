@@ -153,6 +153,13 @@ describe("Prueba Lista de commits", () => {
         expect(arrayCommit.mostrarCommitCompleto()).toEqual(expectedArray);
     });
 
+// 4ta HU 2do SPRINT
+it("El array de commits debería mostrar la complejidad correctamente", () => {
+  const arrayCommit = new ArrayCommit();
+  arrayCommit.aniadirCommit(4, 100, 100, "Excelente", "2024-04-10");
+  arrayCommit.aniadirCommit(4, 100, 100, "Excelente", "2024-04-11");
+  expect(arrayCommit.calcularFrecuenciaCommits()).toEqual("Excelente");
+});
 
 
 

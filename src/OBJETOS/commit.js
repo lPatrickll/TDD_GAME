@@ -7,6 +7,7 @@ class Commit {
         this.cantPruebasAprob = 0;
         this.recomendacion = "";
         this.fecha=new Date(fecha);
+        this.frecuenciaCommit="";
     }
 
     getCantPruebas() {
@@ -78,5 +79,16 @@ class Commit {
     editarCantLineas(newCantLineas) {
         this.cantLineas = newCantLineas;
     }
+
+    setFrecuencia(frecuencia) {
+        this.frecuenciaCommit = frecuencia;
+    }
+
+    getFrecuencia() {
+        return this.frecuenciaCommit;
+    }
+
+
+
 }
 export default Commit;
