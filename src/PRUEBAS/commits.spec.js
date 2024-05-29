@@ -208,6 +208,21 @@ it("El array de commits deberia de mostrar el ultimo commit como frecuencia Regu
   expect(commit.getFrecuencia()).toEqual("Regular");
 });
 
+it("El array de commits deberia devovler un commit con una frecuencia Regular", () => {
+  arrayCommit.aniadirCommit(10,10,100,"bueno");
+  let expectedArray = [{
+    cantPruebas: 10,
+    cantLineas: 10,
+    cobertura: 100,
+    complejidad:"bueno",
+    recomendacion: "Se recomienda mejorar la cantidad de pruebas aprobadas. ",
+    "frecuencia": "Regular"
+  }];
+  expect(arrayCommit.mostrarCommitCompleto()).toEqual(expectedArray);
+});
+
+
+
 
     
 });
