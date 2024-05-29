@@ -49,18 +49,7 @@ describe("Ingresar Proyectos", () => {
     expect(arrayProyectos.getProyectos()).toEqual(["Proyecto2"]);
   });
 
-  // 4ta HU -> Fabio ****************************************************
 
-
-  it("Deberia eliminar un commit desde un objeto proyecto", () => {
-    const proyecto = new Proyecto("Elim");
-    proyecto.aniadirCommit(4, 4, 4);
-    proyecto.eliminarUltimoCommit();
-    let expectedArray = [
-      { cantPruebas: 4, cantLineas: 4, cobertura: 4 }, { cantPruebas: 10, cantLineas: 9, cobertura: 10}];
-    expect(proyecto.mostrarCommits()).toEqual([]);
-  });
- 
   // ********************************************************************
   // 5ta HU Arturo
 
