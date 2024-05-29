@@ -144,7 +144,7 @@ function mostrarCommits(proyectoSeleccionado) {
     }
 
     commitsProyecto.forEach(commit => {
-        const commitItem = crearElemento('li', `Pruebas: ${commit.cantPruebas}, Pruebas Aprobadas: ${commit.cantPruebasAprob}, Líneas: ${commit.cantLineas}, Cobertura: ${commit.cobertura}%, Complejidad: ${commit.complejidad}`);
+        const commitItem = crearElemento('li', `Pruebas: ${commit.cantPruebas}, Líneas: ${commit.cantLineas}, Cobertura: ${commit.cobertura}%, Complejidad: ${commit.complejidad},frecuencia:${commit.frecuencia}`);
         const btnMostrarRecomendacion = crearElemento('button', 'Ver recomendación');
         let paragraph;
         btnMostrarRecomendacion.addEventListener('click', () => {

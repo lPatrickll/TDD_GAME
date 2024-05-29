@@ -7,7 +7,7 @@ class Commit {
         this.cantPruebasAprob = 0;
         this.recomendacion = "";
         this.fecha=new Date(fecha);
-        this.frecuenciaCommit="Regular";
+        this.frecuencia="Regular";
     }
 
     getCantPruebas() {
@@ -81,11 +81,11 @@ class Commit {
     }
 
     setFrecuencia(frecuencia) {
-        this.frecuenciaCommit = frecuencia;
+        this.frecuencia = frecuencia;
     }
 
     getFrecuencia() {
-        return this.frecuenciaCommit;
+        return this.frecuencia;
     }
 
 
