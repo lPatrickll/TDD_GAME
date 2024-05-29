@@ -21,7 +21,8 @@ class ArrayCommit {
             cantLineas: commit.getCantLineas(),
             cobertura: commit.getCobertura(),
             complejidad: commit.getComplejidad(),
-            recomendacion: commit.getRecomendacion()
+            recomendacion: commit.getRecomendacion(),
+            frecuencia:commit.getFrecuencia()
         }));
     }
 
