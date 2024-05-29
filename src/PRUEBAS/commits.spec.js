@@ -16,37 +16,45 @@ describe("Prueba Lista de commits", () => {
       let cantLineas = 10;
       let cobertura = 15;
   
-      arrayCommit.aniadirCommit(cantPruebas, cantLineas, cobertura);
+      arrayCommit.aniadirCommit(cantPruebas, cantLineas, cobertura,"regular");
       let expectedArray = [{
         cantPruebas: 1,
         cantLineas: 10,
-        cobertura: 15
+        cobertura: 15,
+        complejidad:"regular",
+        recomendacion: "Se recomienda mejorar la cantidad de pruebas aprobadas. La cobertura de código es baja, considera añadir más pruebas."
       }];
   
-      expect(arrayCommit.mostrarCommit()).toEqual(expectedArray);
+      expect(arrayCommit.mostrarCommitCompleto()).toEqual(expectedArray);
     });
 
     it("Se debe mostra varios commits", () => {
-        arrayCommit.aniadirCommit(2, 20, 30);
-        arrayCommit.aniadirCommit(1, 15, 25);
-        arrayCommit.aniadirCommit(3, 30, 35);
+        arrayCommit.aniadirCommit(2, 20, 30,"regular");
+        arrayCommit.aniadirCommit(1, 15, 25,"regular");
+        arrayCommit.aniadirCommit(3, 30, 35,"regular");
         let expectedArray = [{
           cantPruebas: 2,
           cantLineas: 20,
-          cobertura: 30
+          cobertura: 30,
+          complejidad:"regular",
+          recomendacion: "Se recomienda mejorar la cantidad de pruebas aprobadas. La cobertura de código es baja, considera añadir más pruebas."
         },
         {
           cantPruebas: 1,
           cantLineas: 15,
-          cobertura: 25
+          cobertura: 25,
+          complejidad:"regular",
+          recomendacion:"Se recomienda mejorar la cantidad de pruebas aprobadas. La cobertura de código es baja, considera añadir más pruebas."
         },
         {
           cantPruebas: 3,
           cantLineas: 30,
-          cobertura: 35
+          cobertura: 35,
+          complejidad:"regular",
+          recomendacion: "Se recomienda mejorar la cantidad de pruebas aprobadas. La cobertura de código es baja, considera añadir más pruebas."
         }];
     
-        expect(arrayCommit.mostrarCommit()).toEqual(expectedArray);
+        expect(arrayCommit.mostrarCommitCompleto()).toEqual(expectedArray);
       });
 
       // ********************************************************************
@@ -54,38 +62,40 @@ describe("Prueba Lista de commits", () => {
     it("no debería hacer nada si no hay commits en el array", () => {
         const arrayCommit = new ArrayCommit();
         arrayCommit.eliminarUltimoCommit();
-        expect(arrayCommit.mostrarCommit()).toEqual([]);
+        expect(arrayCommit.mostrarCommitCompleto()).toEqual([]);
     });
 
     it("debería eliminar el último commit si hay commits en el array", () => {
         const arrayCommit = new ArrayCommit();
-        arrayCommit.aniadirCommit(4, 4, 4);
+        arrayCommit.aniadirCommit(4, 4, 4,"regular");
         arrayCommit.eliminarUltimoCommit();
-        expect(arrayCommit.mostrarCommit()).toEqual([]);
+        expect(arrayCommit.mostrarCommitCompleto()).toEqual([]);
     });
 
     it("Si añadi dos commits debería eliminar el último commit", () => {
         const arrayCommit = new ArrayCommit();
-        arrayCommit.aniadirCommit(4, 4, 4);
+        arrayCommit.aniadirCommit(4, 4, 4,"regular");
         arrayCommit.aniadirCommit(5, 5, 5);
         arrayCommit.eliminarUltimoCommit();
         let expectedArray = [{
         cantPruebas: 4,
         cantLineas: 4,
-        cobertura: 4 
+        cobertura: 4 ,
+        complejidad:"regular",
+        recomendacion: "Se recomienda mejorar la cantidad de pruebas aprobadas. La cobertura de código es baja, considera añadir más pruebas.",
         }];
-        expect(arrayCommit.mostrarCommit()).toEqual(expectedArray);
+        expect(arrayCommit.mostrarCommitCompleto()).toEqual(expectedArray);
     });
 
     it("Si añadi Tres commits debería eliminar el último commit", () => {
         const arrayCommit = new ArrayCommit();
-        arrayCommit.aniadirCommit(4, 4, 4);
-        arrayCommit.aniadirCommit(10, 9, 10);
-        arrayCommit.aniadirCommit(5, 5, 5);
+        arrayCommit.aniadirCommit(4, 4, 4,"regular");
+        arrayCommit.aniadirCommit(10, 9, 10,"regular");
+        arrayCommit.aniadirCommit(5, 5, 5,"regular");
         arrayCommit.eliminarUltimoCommit();
         let expectedArray = [
-        { cantPruebas: 4, cantLineas: 4, cobertura: 4 }, { cantPruebas: 10, cantLineas: 9, cobertura: 10}];
-        expect(arrayCommit.mostrarCommit()).toEqual(expectedArray);
+        { cantPruebas: 4, cantLineas: 4, cobertura: 4,complejidad:"regular",recomendacion: "Se recomienda mejorar la cantidad de pruebas aprobadas. La cobertura de código es baja, considera añadir más pruebas.", }, { cantPruebas: 10, cantLineas: 9, cobertura: 10,complejidad:"regular",recomendacion:"Se recomienda mejorar la cantidad de pruebas aprobadas. La cobertura de código es baja, considera añadir más pruebas."}];
+        expect(arrayCommit.mostrarCommitCompleto()).toEqual(expectedArray);
     });
 
       // ********************************************************************
@@ -137,9 +147,10 @@ describe("Prueba Lista de commits", () => {
           cantPruebas: 4,
           cantLineas: 100,
           cobertura: 100,
-          complejidad: "Excelente"
+          complejidad: "Excelente",
+          "recomendacion": "Se recomienda mejorar la cantidad de pruebas aprobadas. ",
         }];
-        expect(arrayCommit.mostrarCommit()).toEqual(expectedArray);
+        expect(arrayCommit.mostrarCommitCompleto()).toEqual(expectedArray);
     });
 
 
