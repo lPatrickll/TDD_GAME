@@ -62,8 +62,7 @@ class Proyecto {
             }
             porcentaje = (totalPruebasAprobadas / totalPruebas) * 100;
         }
-        console.log("-------------------------------------------------------------------", porcentaje);
-        return porcentaje;
+       return porcentaje;
     }
 
     calcularPuntajeLineasCodigo() {
