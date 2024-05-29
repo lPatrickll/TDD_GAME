@@ -21,10 +21,6 @@ class Proyecto {
     }
 
     mostrarCommits() {
-        return this.arrayCommit.mostrarCommit();
-    }
-
-    mostrarCommitCompleto() {
         return this.arrayCommit.mostrarCommitCompleto();
     }
 

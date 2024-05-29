@@ -13,9 +13,9 @@ describe("Proyecto", () => {
 
 
     it("debería añadir un commit correctamente", () => {
-        proyecto.aniadirCommit(3, 100, 80);
+        proyecto.aniadirCommit(3, 100, 80,"regular");
         expect(proyecto.mostrarCommits()).toEqual([
-          { cantPruebas: 3, cantLineas: 100, cobertura: 80 }
+          { cantPruebas: 3, cantLineas: 100, cobertura: 80,complejidad:"regular",recomendacion: "Se recomienda mejorar la cantidad de pruebas aprobadas. " }
         ]);
       });
 
@@ -64,7 +64,7 @@ describe("Proyecto", () => {
         complejidad:"regular",
         recomendacion: "Se recomienda mejorar la cantidad de pruebas aprobadas. La cobertura de código es baja, considera añadir más pruebas."
         }];
-        expect(proyecto.mostrarCommitCompleto()).toEqual(expectedArray);
+        expect(proyecto.mostrarCommits()).toEqual(expectedArray);
     });
 
     it("El proyecto deberia de devolver el puntaje de 100% todas las pruebas aprobadas", () => {
@@ -138,7 +138,7 @@ describe("Proyecto", () => {
         complejidad:"regular",
         recomendacion: "Se recomienda mejorar la cantidad de pruebas aprobadas. La cobertura de código es baja, considera añadir más pruebas."
         }];
-        expect(proyecto.mostrarCommitCompleto()).toEqual(expectedArray);
+        expect(proyecto.mostrarCommits()).toEqual(expectedArray);
     });
 
 
@@ -166,7 +166,8 @@ describe("Proyecto", () => {
         cantPruebas: 4,
         cantLineas: 100,
         cobertura: 100,
-        complejidad: "Excelente"
+        complejidad: "Excelente",
+        recomendacion: "Se recomienda mejorar la cantidad de pruebas aprobadas. ",
         }];
         expect(proyecto.mostrarCommits()).toEqual(expectedArray);
     });
