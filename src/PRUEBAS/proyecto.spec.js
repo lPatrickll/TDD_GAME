@@ -175,6 +175,7 @@ describe("Proyecto", () => {
 
     const archivoText = '..\/commits.txt';
     const archivoLeido = '..\/archivoLeido.txt';
+    const archivoCommits = '..\/archivoCommits.txt';
 
     it("El proyecto debería leer un archivo de texto vacio, y devolver un mensaje que diga Achivo Vacio", () => {
         expect(proyecto.ingresarCommitsPor(archivoText)).toEqual("Archivo vacio");
@@ -184,5 +185,19 @@ describe("Proyecto", () => {
         expect(proyecto.ingresarCommitsPor(archivoLeido)).toEqual("Archivo leido");
     });
 
-
+    it("El proyecto debería leer un archivo de texto con el formato especificado que contenga un commit, y devolver un mensaje que diga Achivo Leido, y mostrar el commit en el array", () => {
+        proyecto.ingresarCommitsPor(archivoCommits);
+        //expect(proyecto.ingresarCommitsPor(archivoCommits)).toEqual("Archivo leido");
+        let expectedArray = [{
+            idCommit: 1,
+            fechaHora: "12/04/2024-08:24",
+            cantPruebas: 2,
+            cantLineas: 4,
+            cobertura: 97,
+            complejidad: "Excelente",
+            recomendacion:"Se recomienda mejorar la cantidad de pruebas aprobadas. ",
+            frecuencia: "Regular"
+        }];
+        expect(proyecto.mostrarCommits()).toEqual(expectedArray);
+    });
 });

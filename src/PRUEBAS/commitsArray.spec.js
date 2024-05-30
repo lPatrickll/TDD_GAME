@@ -28,11 +28,13 @@ describe("Prueba Lista de commits", () => {
     });
 
     it("Se debe mostra varios commits", () => {
-        arrayCommit.aniadirCommit(2, 20, 30,"regular","2024-04-10");
-        arrayCommit.aniadirCommit(1, 15, 25,"regular","2024-04-10");
-        arrayCommit.aniadirCommit(3, 30, 35,"regular","2024-04-10");
+        arrayCommit.aniadirCommit(2, 20, 30,"regular","2024-04-10", 1);
+        arrayCommit.aniadirCommit(1, 15, 25,"regular","2024-04-10", 2);
+        arrayCommit.aniadirCommit(3, 30, 35,"regular","2024-04-10", 3);
         arrayCommit.calcularFrecuenciaCommits();
         let expectedArray = [{
+          idCommit: 1,
+          fechaHora: "2024-04-10",
           cantPruebas: 2,
           cantLineas: 20,
           cobertura: 30,
@@ -41,7 +43,9 @@ describe("Prueba Lista de commits", () => {
           "frecuencia": "Regular"
         },
         {
+          idCommit: 2,
           cantPruebas: 1,
+          fechaHora: "2024-04-10",
           cantLineas: 15,
           cobertura: 25,
           complejidad:"regular",
@@ -49,6 +53,8 @@ describe("Prueba Lista de commits", () => {
           "frecuencia": "Excelente"
         },
         {
+          idCommit: 3,
+          fechaHora: "2024-04-10",
           cantPruebas: 3,
           cantLineas: 30,
           cobertura: 35,
@@ -149,9 +155,11 @@ describe("Prueba Lista de commits", () => {
     });
 
     it("El array de commits debería mostrar la complejidad correctamente", () => {
-        arrayCommit.aniadirCommit(4, 100, 100, "Excelente","2024-04-10");
+        arrayCommit.aniadirCommit(4, 100, 100, "Excelente","2024-04-10", 1);
         arrayCommit.calcularFrecuenciaCommits();
         let expectedArray = [{
+          idCommit: 1,
+          fechaHora: "2024-04-10",
           cantPruebas: 4,
           cantLineas: 100,
           cobertura: 100,
@@ -219,18 +227,22 @@ it("El array de commits deberia devovler un commit con una frecuencia Regular", 
   expect(arrayCommit.mostrarCommitCompleto()).toEqual(expectedArray);
 });
   it("Se debe mostra varios commits con frecuencia Excelente al no haber diferencia de fechas", () => {
-    arrayCommit.aniadirCommit(2, 20, 30,"regular","2024-04-10");
-    arrayCommit.aniadirCommit(1, 15, 25,"regular","2024-04-10");
-    arrayCommit.aniadirCommit(3, 30, 35,"regular","2024-04-10");
+    arrayCommit.aniadirCommit(2, 20, 30,"regular","2024-04-10", 1);
+    arrayCommit.aniadirCommit(1, 15, 25,"regular","2024-04-10", 2);
+    arrayCommit.aniadirCommit(3, 30, 35,"regular","2024-04-10", 3);
     arrayCommit.calcularFrecuenciaCommits();
     let expectedArray = [{
-    cantPruebas: 2,
-    cantLineas: 20,
-    cobertura: 30,
-    complejidad:"regular",
-    recomendacion: "Se recomienda mejorar la cantidad de pruebas aprobadas. La cobertura de código es baja, considera añadir más pruebas.",
-    "frecuencia": "Regular" },
+      idCommit: 1,
+      fechaHora: "2024-04-10",
+      cantPruebas: 2,
+      cantLineas: 20,
+      cobertura: 30,
+      complejidad:"regular",
+      recomendacion: "Se recomienda mejorar la cantidad de pruebas aprobadas. La cobertura de código es baja, considera añadir más pruebas.",
+      "frecuencia": "Regular" },
     {
+      idCommit: 2,
+      fechaHora: "2024-04-10",
       cantPruebas: 1,
       cantLineas: 15,
       cobertura: 25,
@@ -239,12 +251,14 @@ it("El array de commits deberia devovler un commit con una frecuencia Regular", 
       "frecuencia": "Excelente"
     }, 
     {
+      idCommit: 3,
+      fechaHora: "2024-04-10",
       cantPruebas: 3,
       cantLineas: 30,
       cobertura: 35,
       complejidad:"regular",
       recomendacion: "Se recomienda mejorar la cantidad de pruebas aprobadas. La cobertura de código es baja, considera añadir más pruebas.",
-      "frecuencia": "Excelente"
+      frecuencia: "Excelente"
     }];
     expect(arrayCommit.mostrarCommitCompleto()).toEqual(expectedArray);
   });

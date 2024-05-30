@@ -5,8 +5,8 @@ class ArrayCommit {
         this.arrayCommit = [];
     }
 
-    aniadirCommit(cantPruebas, cantLineas, cobertura, complejidad,fecha) {
-        const nuevoCommit = new Commit(cantPruebas, cantLineas, cobertura, complejidad,fecha);
+    aniadirCommit(cantPruebas, cantLineas, cobertura, complejidad, fecha, id) {
+        const nuevoCommit = new Commit(cantPruebas, cantLineas, cobertura, complejidad,fecha, id);
         this.arrayCommit.push(nuevoCommit);
     }
 
@@ -17,12 +17,14 @@ class ArrayCommit {
 
     mostrarCommitCompleto() {
         return this.arrayCommit.map(commit => ({
+            idCommit: commit.getId(),
+            fechaHora: commit.getFechaHora(),
             cantPruebas: commit.getCantPruebas(),
             cantLineas: commit.getCantLineas(),
             cobertura: commit.getCobertura(),
             complejidad: commit.getComplejidad(),
             recomendacion: commit.getRecomendacion(),
-            frecuencia:commit.getFrecuencia()
+            frecuencia:commit.getFrecuencia(),
         }));
     }
 
