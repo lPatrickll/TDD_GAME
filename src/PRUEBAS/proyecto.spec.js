@@ -176,6 +176,7 @@ describe("Proyecto", () => {
     const archivoText = '..\/commits.txt';
     const archivoLeido = '..\/archivoLeido.txt';
     const archivoCommits = '..\/archivoCommits.txt';
+    const variosCommits = '..\/variosCommits.txt';
 
     it("El proyecto debería leer un archivo de texto vacio, y devolver un mensaje que diga Achivo Vacio", () => {
         expect(proyecto.ingresarCommitsPor(archivoText)).toEqual("Archivo vacio");
@@ -185,7 +186,7 @@ describe("Proyecto", () => {
         expect(proyecto.ingresarCommitsPor(archivoLeido)).toEqual("Archivo leido");
     });
 
-    it("El proyecto debería leer un archivo de texto con el formato especificado que contenga un commit, y devolver un mensaje que diga Achivo Leido, y mostrar el commit en el array", () => {
+    it("El proyecto debería leer un archivo de texto con el formato especificado que contenga un commit, y mostrar el commit en el array", () => {
         proyecto.ingresarCommitsPor(archivoCommits);
         //expect(proyecto.ingresarCommitsPor(archivoCommits)).toEqual("Archivo leido");
         let expectedArray = [{
@@ -198,6 +199,63 @@ describe("Proyecto", () => {
             recomendacion:"Se recomienda mejorar la cantidad de pruebas aprobadas. ",
             frecuencia: "Regular"
         }];
+        expect(proyecto.mostrarCommits()).toEqual(expectedArray);
+    });
+
+    it("El proyecto debería leer un archivo de texto con el formato especificado que contenga varios commits, y mostrar los commits en el array", () => {
+        proyecto.ingresarCommitsPor(variosCommits);
+        let expectedArray = [{
+            idCommit: 1,
+            fechaHora: "12/04/2024-08:24",
+            cantPruebas: 2,
+            cantLineas: 4,
+            cobertura: 97,
+            complejidad: "Excelente",
+            recomendacion: "Se recomienda mejorar la cantidad de pruebas aprobadas. ",
+            frecuencia: "Regular"
+          },
+          {
+            idCommit: 2,
+            fechaHora: "25/06/2024-09:45",
+            cantPruebas: 2,
+            cantLineas: 7,
+            cobertura: 95,
+            complejidad: "Regular",
+            recomendacion: "Se recomienda mejorar la cantidad de pruebas aprobadas. ",
+            frecuencia: "Regular"
+          }, 
+          {
+            idCommit: 3,
+            fechaHora: "10/07/2024-11:30",
+            cantPruebas: 3,
+            cantLineas: 5,
+            cobertura: 90,
+            complejidad: "Bueno",
+            recomendacion: "Se recomienda mejorar la cantidad de pruebas aprobadas. ",
+            frecuencia: "Regular"
+          }, 
+          {
+            idCommit: 4,
+            fechaHora: "15/08/2024-14:50",
+            cantPruebas: 1,
+            cantLineas: 8,
+            cobertura: 85,
+            complejidad:"Excelente",
+            recomendacion: "Se recomienda mejorar la cantidad de pruebas aprobadas. ",
+            frecuencia: "Regular"
+          }, 
+          {
+            idCommit: 5,
+            fechaHora: "22/09/2024-16:15",
+            cantPruebas: 4,
+            cantLineas: 6,
+            cobertura: 92,
+            complejidad:"Regular",
+            recomendacion: "Se recomienda mejorar la cantidad de pruebas aprobadas. ",
+            frecuencia: "Regular"
+          }
+        ];
+
         expect(proyecto.mostrarCommits()).toEqual(expectedArray);
     });
 });

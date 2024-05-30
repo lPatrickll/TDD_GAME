@@ -119,15 +119,6 @@ class Proyecto {
         return (puntajePruebas + puntajeLineasCodigo + puntajeCobertura) / 3;
     }    
 
-    // ingresarCommitsPor(rutaArchivoTxt) {
-    //     const archivoTxt = fs.readFileSync(path.join(__dirname, rutaArchivoTxt), 'utf8').trim();
-    //     if (archivoTxt.length === 0) {
-    //         return "Archivo vacio";
-    //     } else {
-    //         return "Archivo leido";
-    //     }
-    // }
-
     ingresarCommitsPor(rutaArchivoTxt) {
         const archivoTxt = fs.readFileSync(path.join(__dirname, rutaArchivoTxt), 'utf8').trim();
         if (archivoTxt.length === 0) {
@@ -135,8 +126,8 @@ class Proyecto {
         }
 
         const lines = archivoTxt.split('\n');
-        console.log(lines);
         for (let line of lines) {
+            console.log(lines);
             const [id, fechaHora, cantPruebas, cantLineas, cobertura, complejidad] = line.split(',').map(item => item.trim());
             const nuevoCommit = new Commit(Number(cantPruebas), Number(cantLineas), Number(cobertura), String(complejidad), String(fechaHora), Number(id));
             this.arrayCommit.aniadirCommitObj(nuevoCommit);
