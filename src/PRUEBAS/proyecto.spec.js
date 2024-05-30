@@ -322,4 +322,10 @@ describe("Proyecto", () => {
 
         expect(proyecto.mostrarCommits()).toEqual(expectedArray);
     });
+
+
+    it("El proyecto debería leer un contenido vacio, y mostrar un mensaje que diga archivo vacio", () => {
+        const contenidoTxt = ``;
+        expect(proyecto.ingresarCommitsPorContenidoDe(contenidoTxt)).toEqual("Archivo vacio");
+    });
 });

@@ -136,9 +136,9 @@ class Proyecto {
 
     ingresarCommitsPorContenidoDe(ArchivoTxt) {
         const archivoTxt = ArchivoTxt.trim(); // Usar el contenido del archivo en lugar de leerlo de nuevo
-        // if (archivoTxt.length === 0) {
-        //     return "Archivo vacio";
-        // }
+        if (archivoTxt.length === 0) {
+            return "Archivo vacio";
+        }
     
         const lines = archivoTxt.split('\n');
         for (let line of lines) {
