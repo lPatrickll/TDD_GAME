@@ -1,4 +1,3 @@
-
 import Proyecto from "../OBJETOS/proyecto";
 import ArrayProyectos from "../OBJETOS/proyectosArray";
 

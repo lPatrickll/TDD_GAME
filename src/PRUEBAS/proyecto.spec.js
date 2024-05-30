@@ -1,23 +1,23 @@
 
 import Proyecto from "../OBJETOS/proyecto";
-
+import fs from 'fs';
+import path from 'path'; // Asegúrate de importar path
 
 describe("Proyecto", () => {
-
-    let proyecto;
+  let proyecto;
   beforeEach(() => {
     proyecto = new Proyecto("Proyecto 1");
   });
 
-    // Tercera Historia de Usuario -> Patrick *********************************
+  // Tercera Historia de Usuario -> Patrick *********************************
 
 
-    it("debería añadir un commit correctamente", () => {
-        proyecto.aniadirCommit(3, 100, 80,"regular");
-        expect(proyecto.mostrarCommits()).toEqual([
-          { cantPruebas: 3, cantLineas: 100, cobertura: 80,complejidad:"regular",recomendacion: "Se recomienda mejorar la cantidad de pruebas aprobadas. ",frecuencia:"Regular" }
-        ]);
-      });
+  it("debería añadir un commit correctamente", () => {
+    proyecto.aniadirCommit(3, 100, 80,"regular");
+    expect(proyecto.mostrarCommits()).toEqual([
+    { cantPruebas: 3, cantLineas: 100, cobertura: 80,complejidad:"regular",recomendacion: "Se recomienda mejorar la cantidad de pruebas aprobadas. ",frecuencia:"Regular" } 
+  ]);
+});
 
 
 
@@ -174,5 +174,5 @@ describe("Proyecto", () => {
         }];
         expect(proyecto.mostrarCommits()).toEqual(expectedArray);
     });
- 
+
 });

@@ -3,14 +3,12 @@ import ArrayCommit from "../OBJETOS/commitsArray";
 
 describe("Prueba Lista de commits", () => {
     let arrayCommit = new ArrayCommit();
-
-
     // Tercera Historia de Usuario -> Patrick *********************************
   
     beforeEach(() => {
-        arrayCommit = new ArrayCommit();
+      arrayCommit = new ArrayCommit();
+    });
 
-      });
     it("Se debe mostra un commit", () => {
       let cantPruebas = 1;
       let cantLineas = 10;
@@ -220,42 +218,34 @@ it("El array de commits deberia devovler un commit con una frecuencia Regular", 
   }];
   expect(arrayCommit.mostrarCommitCompleto()).toEqual(expectedArray);
 });
-
-it("Se debe mostra varios commits con frecuencia Excelente al no haber diferencia de fechas", () => {
-  arrayCommit.aniadirCommit(2, 20, 30,"regular","2024-04-10");
-  arrayCommit.aniadirCommit(1, 15, 25,"regular","2024-04-10");
-  arrayCommit.aniadirCommit(3, 30, 35,"regular","2024-04-10");
-  arrayCommit.calcularFrecuenciaCommits();
-  let expectedArray = [{
+  it("Se debe mostra varios commits con frecuencia Excelente al no haber diferencia de fechas", () => {
+    arrayCommit.aniadirCommit(2, 20, 30,"regular","2024-04-10");
+    arrayCommit.aniadirCommit(1, 15, 25,"regular","2024-04-10");
+    arrayCommit.aniadirCommit(3, 30, 35,"regular","2024-04-10");
+    arrayCommit.calcularFrecuenciaCommits();
+    let expectedArray = [{
     cantPruebas: 2,
     cantLineas: 20,
     cobertura: 30,
     complejidad:"regular",
     recomendacion: "Se recomienda mejorar la cantidad de pruebas aprobadas. La cobertura de código es baja, considera añadir más pruebas.",
-    "frecuencia": "Regular"
-  },
-  {
-    cantPruebas: 1,
-    cantLineas: 15,
-    cobertura: 25,
-    complejidad:"regular",
-    recomendacion:"Se recomienda mejorar la cantidad de pruebas aprobadas. La cobertura de código es baja, considera añadir más pruebas.",
-    "frecuencia": "Excelente"
-  },
-  {
-    cantPruebas: 3,
-    cantLineas: 30,
-    cobertura: 35,
-    complejidad:"regular",
-    recomendacion: "Se recomienda mejorar la cantidad de pruebas aprobadas. La cobertura de código es baja, considera añadir más pruebas.",
-    "frecuencia": "Excelente"
-  }];
-
-  expect(arrayCommit.mostrarCommitCompleto()).toEqual(expectedArray);
-});
-
-
-
-
-    
+    "frecuencia": "Regular" },
+    {
+      cantPruebas: 1,
+      cantLineas: 15,
+      cobertura: 25,
+      complejidad:"regular",
+      recomendacion:"Se recomienda mejorar la cantidad de pruebas aprobadas. La cobertura de código es baja, considera añadir más pruebas.",
+      "frecuencia": "Excelente"
+    }, 
+    {
+      cantPruebas: 3,
+      cantLineas: 30,
+      cobertura: 35,
+      complejidad:"regular",
+      recomendacion: "Se recomienda mejorar la cantidad de pruebas aprobadas. La cobertura de código es baja, considera añadir más pruebas.",
+      "frecuencia": "Excelente"
+    }];
+    expect(arrayCommit.mostrarCommitCompleto()).toEqual(expectedArray);
+  });
 });

@@ -146,19 +146,19 @@ describe("Commits", () => {
 
 // 4ta HU 2do SPRINT
   it("El commit debería de devolver la fecha correspondiente", () => {
-    let commit = new Commit(4, 100, 100, "Excelente", "2024-05-29");
-    expect(commit.getFecha().toISOString()).toEqual("2024-05-29T00:00:00.000Z");
+    let commit = new Commit(4, 100, 100, "Excelente", "12/04/2024-08:24");
+    expect(commit.getFechaHora()).toEqual("12/04/2024-08:24");
+  });
+
+  it("El commit debería de devolver la fecha en tipo de dato de fecha", () => {
+    let commit = new Commit(4, 100, 100, "Excelente", "2024/05/20-09:23");
+    expect(commit.getFechaHora()).toEqual("2024/05/20-09:23");
   });
 
   it("El commit debería de devolver la fecha en tipo de dato de fecha", () => {
     let commit = new Commit(4, 100, 100, "Excelente", "2024-05-20");
-    expect(commit.getFecha().toISOString()).toEqual("2024-05-20T00:00:00.000Z");
-  });
-
-  it("El commit debería de devolver la fecha en tipo de dato de fecha", () => {
-    let commit = new Commit(4, 100, 100, "Excelente", "2024-05-20");
-    commit.setFecha("2020-05-20");
-    expect(commit.getFecha().toISOString()).toEqual("2020-05-20T00:00:00.000Z");
+    commit.setFechaHora("20/20/05-04:23");
+    expect(commit.getFechaHora()).toEqual("20/20/05-04:23");
   });
 
 

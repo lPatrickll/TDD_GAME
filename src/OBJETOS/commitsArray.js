@@ -45,8 +45,8 @@ class ArrayCommit {
         }
 
         for (let i = 1; i < this.arrayCommit.length; i++) {
-            let fechaActual = this.arrayCommit[i].getFecha();
-            let fechaAnterior = this.arrayCommit[i - 1].getFecha();
+            let fechaActual = new Date(this.arrayCommit[i].getFechaHora());
+            let fechaAnterior = new Date(this.arrayCommit[i - 1].getFechaHora());
             let diferenciaDias = (fechaActual - fechaAnterior) / (1000 * 60 * 60 * 24);
 
             let frecuencia="Regular";
@@ -59,6 +59,7 @@ class ArrayCommit {
             } else {
                 frecuencia = "Deficiente";
             }
+
             this.arrayCommit[i].setFrecuencia(frecuencia);
         }
 

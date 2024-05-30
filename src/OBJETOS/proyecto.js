@@ -1,5 +1,7 @@
 import ArrayCommit from "./commitsArray";
+import Commit from "./commit";
 import Puntaje from "./puntaje";
+import fs from 'fs';
 
 class Proyecto {
     constructor(titulo) {
@@ -15,7 +17,6 @@ class Proyecto {
     aniadirCommit(cantPruebas, cantLineas, cobertura, complejidad) {
         this.arrayCommit.aniadirCommit(cantPruebas, cantLineas, cobertura, complejidad);
     }
-
 
     mostrarCommits() {
         return this.arrayCommit.mostrarCommitCompleto();
@@ -115,6 +116,6 @@ class Proyecto {
 
         // Aquí puedes ajustar cómo se combinan estas puntuaciones para obtener una puntuación general
         return (puntajePruebas + puntajeLineasCodigo + puntajeCobertura) / 3;
-    }
+    }    
 }
 export default Proyecto;
