@@ -74,22 +74,12 @@ class ArrayCommit {
     }
 
     parseFecha(fechaHoraStr) {
-        if (!fechaHoraStr) {
-            throw new Error("Fecha y hora no definida");
-        }
-
+    
         const partesFechaHora = fechaHoraStr.split('-');
-        if (partesFechaHora.length !== 2) {
-            throw new Error(`Formato de fecha y hora incorrecto: ${fechaHoraStr}`);
-        }
 
         const [fecha, hora] = partesFechaHora;
         const partesFecha = fecha.split('/');
         const partesHora = hora.split(':');
-
-        if (partesFecha.length !== 3 || partesHora.length !== 2) {
-            throw new Error(`Formato de fecha y hora incorrecto: ${fechaHoraStr}`);
-        }
 
         const [dia, mes, anio] = partesFecha.map(num => parseInt(num, 10));
         const [horas, minutos] = partesHora.map(num => parseInt(num, 10));
