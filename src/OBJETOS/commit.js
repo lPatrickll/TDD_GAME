@@ -7,7 +7,7 @@ class Commit {
         this.cantPruebasAprob = 0;
         this.recomendacion = "";
         this.fechaHora = fechaHora;
-        this.frecuencia="Regular";
+        this.frecuencia = "Regular";
     }
 
     // constructorCommitArchivo(){
@@ -30,15 +30,15 @@ class Commit {
     getCobertura() {
         return this.cobertura;
     }
-    
+
     getComplejidad() {
         return this.complejidad;
     }
-    
+
     setPruebasAprob(cantidad) {
         this.cantPruebasAprob = cantidad;
     }
-    
+
     getCantPruebasAprob() {
         return this.cantPruebasAprob;
     }
@@ -47,12 +47,11 @@ class Commit {
         return this.generarRecomendacion();
     }
 
-    getFechaHora(){
+    getFechaHora() {
         return this.fechaHora;
     }
 
-    setFechaHora(fechaHora)
-    {
+    setFechaHora(fechaHora) {
         this.fechaHora = fechaHora;
     }
 
@@ -89,6 +88,10 @@ class Commit {
 
     editarCantLineas(newCantLineas) {
         this.cantLineas = newCantLineas;
+    }
+
+    editarCobertura(newCobertura) {
+        this.cobertura = newCobertura;
     }
 
     setFrecuencia(frecuencia) {
