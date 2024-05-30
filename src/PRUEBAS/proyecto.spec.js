@@ -188,6 +188,7 @@ describe("Proyecto", () => {
 
     it("El proyecto debería leer un archivo de texto con el formato especificado que contenga un commit, y mostrar el commit en el array", () => {
         proyecto.ingresarCommitsPor(archivoCommits);
+        proyecto.getArrayCommit().calcularFrecuenciaCommits();
         //expect(proyecto.ingresarCommitsPor(archivoCommits)).toEqual("Archivo leido");
         let expectedArray = [{
             idCommit: 1,
@@ -204,6 +205,7 @@ describe("Proyecto", () => {
 
     it("El proyecto debería leer un archivo de texto con el formato especificado que contenga varios commits, y mostrar los commits en el array", () => {
         proyecto.ingresarCommitsPor(variosCommits);
+        proyecto.getArrayCommit().calcularFrecuenciaCommits();
         let expectedArray = [{
             idCommit: 1,
             fechaHora: "12/04/2024-08:24",
@@ -222,7 +224,7 @@ describe("Proyecto", () => {
             cobertura: 95,
             complejidad: "Regular",
             recomendacion: "Se recomienda mejorar la cantidad de pruebas aprobadas. ",
-            frecuencia: "Regular"
+            frecuencia: "Deficiente"
           }, 
           {
             idCommit: 3,
@@ -232,7 +234,7 @@ describe("Proyecto", () => {
             cobertura: 90,
             complejidad: "Bueno",
             recomendacion: "Se recomienda mejorar la cantidad de pruebas aprobadas. ",
-            frecuencia: "Regular"
+            frecuencia: "Deficiente"
           }, 
           {
             idCommit: 4,
@@ -242,7 +244,7 @@ describe("Proyecto", () => {
             cobertura: 85,
             complejidad:"Excelente",
             recomendacion: "Se recomienda mejorar la cantidad de pruebas aprobadas. ",
-            frecuencia: "Regular"
+            frecuencia: "Deficiente"
           }, 
           {
             idCommit: 5,
@@ -252,7 +254,7 @@ describe("Proyecto", () => {
             cobertura: 92,
             complejidad:"Regular",
             recomendacion: "Se recomienda mejorar la cantidad de pruebas aprobadas. ",
-            frecuencia: "Regular"
+            frecuencia: "Deficiente"
           }
         ];
 

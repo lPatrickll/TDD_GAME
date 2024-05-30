@@ -8,6 +8,7 @@ class ArrayCommit {
     aniadirCommit(cantPruebas, cantLineas, cobertura, complejidad, fecha, id) {
         const nuevoCommit = new Commit(cantPruebas, cantLineas, cobertura, complejidad,fecha, id);
         this.arrayCommit.push(nuevoCommit);
+
     }
 
     aniadirCommitObj(Commit) {
@@ -50,7 +51,9 @@ class ArrayCommit {
         }
 
         for (let i = 1; i < this.arrayCommit.length; i++) {
+                console.log("1",this.arrayCommit[i].getFechaHora());
                 let fechaActual = this.parseFecha(this.arrayCommit[i].getFechaHora());
+                console.log("2",this.arrayCommit[i - 1].getFechaHora());
                 let fechaAnterior = this.parseFecha(this.arrayCommit[i - 1].getFechaHora());
                 let diferenciaDias = (fechaActual - fechaAnterior) / (1000 * 60 * 60 * 24);
 
@@ -74,12 +77,15 @@ class ArrayCommit {
     }
 
     parseFecha(fechaHoraStr) {
-    
+
+
         const partesFechaHora = fechaHoraStr.split('-');
+
 
         const [fecha, hora] = partesFechaHora;
         const partesFecha = fecha.split('/');
         const partesHora = hora.split(':');
+
 
         const [dia, mes, anio] = partesFecha.map(num => parseInt(num, 10));
         const [horas, minutos] = partesHora.map(num => parseInt(num, 10));
