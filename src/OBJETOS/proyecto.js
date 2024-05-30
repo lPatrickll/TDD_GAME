@@ -1,6 +1,7 @@
 import ArrayCommit from "./commitsArray";
 import Puntaje from "./puntaje";
 import path from "path";
+import fs from "fs";
 
 class Proyecto {
     constructor(titulo) {
@@ -118,9 +119,12 @@ class Proyecto {
     }    
 
     ingresarCommitsPor(rutaArchivoTxt) {
-        const archivoTxt = path.join(__dirname, rutaArchivoTxt);
-        console.log(rutaArchivoTxt);
-        return "Archivo vacio";
+        const archivoTxt = fs.readFileSync(path.join(__dirname, rutaArchivoTxt), 'utf8').trim();
+        if (archivoTxt.length === 0) {
+            return "Archivo vacio";
+        } else {
+            return "Archivo leido";
+        }
     }
 }
 export default Proyecto;

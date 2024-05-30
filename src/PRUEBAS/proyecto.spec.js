@@ -173,10 +173,16 @@ describe("Proyecto", () => {
     });
 
 
-    const archivoText = '..\\commits.txt';
+    const archivoText = '..\/commits.txt';
+    const archivoLeido = '..\/archivoLeido.txt';
 
     it("El proyecto debería leer un archivo de texto vacio, y devolver un mensaje que diga Achivo Vacio", () => {
         expect(proyecto.ingresarCommitsPor(archivoText)).toEqual("Archivo vacio");
     });
+
+    it("El proyecto debería leer un archivo de texto archivoleido.txt, y devolver un mensaje que diga Achivo Leido", () => {
+        expect(proyecto.ingresarCommitsPor(archivoLeido)).toEqual("Archivo leido");
+    });
+
 
 });
