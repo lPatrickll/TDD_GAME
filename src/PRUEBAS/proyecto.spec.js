@@ -158,9 +158,6 @@ describe("Proyecto", () => {
         expect(proyecto.getPorcentajeCobertura()).toEqual(50);
     });
     
-    
-
-
     it("El proyecto debería mostrar los commits con la complejidad incluida", () => {
         const proyecto = new Proyecto("Proyecto Complejidad");
         proyecto.aniadirCommit(4, 100, 100, "Excelente");
@@ -173,6 +170,13 @@ describe("Proyecto", () => {
         frecuencia:"Regular"
         }];
         expect(proyecto.mostrarCommits()).toEqual(expectedArray);
+    });
+
+
+    const archivoText = '..\\commits.txt';
+
+    it("El proyecto debería leer un archivo de texto vacio, y devolver un mensaje que diga Achivo Vacio", () => {
+        expect(proyecto.ingresarCommitsPor(archivoText)).toEqual("Archivo vacio");
     });
 
 });

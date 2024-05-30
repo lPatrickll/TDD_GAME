@@ -1,7 +1,6 @@
 import ArrayCommit from "./commitsArray";
-import Commit from "./commit";
 import Puntaje from "./puntaje";
-import fs from 'fs';
+import path from "path";
 
 class Proyecto {
     constructor(titulo) {
@@ -117,5 +116,11 @@ class Proyecto {
         // Aquí puedes ajustar cómo se combinan estas puntuaciones para obtener una puntuación general
         return (puntajePruebas + puntajeLineasCodigo + puntajeCobertura) / 3;
     }    
+
+    ingresarCommitsPor(rutaArchivoTxt) {
+        const archivoTxt = path.join(__dirname, rutaArchivoTxt);
+        console.log(rutaArchivoTxt);
+        return "Archivo vacio";
+    }
 }
 export default Proyecto;
