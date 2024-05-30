@@ -1,5 +1,5 @@
 class Commit {
-    constructor(cantPruebas, cantLineas, cobertura, complejidad, fechaHora) {
+    constructor(cantPruebas, cantLineas, cobertura, complejidad, fechaHora, idCommit) {
         this.cantPruebas = cantPruebas;
         this.cantLineas = cantLineas;
         this.cobertura = cobertura;
@@ -8,16 +8,12 @@ class Commit {
         this.recomendacion = "";
         this.fechaHora = fechaHora;
         this.frecuencia = "Regular";
+        this.id = idCommit;
     }
 
-    // constructorCommitArchivo(){
-    //     this.idCommit = commitId;
-    //     this.fechaHora = fechaHora;
-    //     this.cantPruebas = cantPruebas;
-    //     this.cantLineas = cantLineas;
-    //     this.cobertura = cobertura;
-    //     this.complejidad = complejidad;
-    // }
+    getId(){
+        return this.id;
+    }
 
     getCantPruebas() {
         return this.cantPruebas;

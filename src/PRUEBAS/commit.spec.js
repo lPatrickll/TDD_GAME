@@ -180,5 +180,9 @@ describe("Commits", () => {
   });
 
 
+  it("Se deberia poder crear un commit ahora con ID", () => {
+    let commit = new Commit(4, 100, 100, "Excelente", "2024-05-20", 1);
+    expect(commit.getId()).toEqual(1);
+  });
 
 });
