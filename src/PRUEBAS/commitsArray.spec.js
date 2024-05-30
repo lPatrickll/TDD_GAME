@@ -263,4 +263,17 @@ it("El array de commits deberia devovler un commit con una frecuencia Regular", 
     }];
     expect(arrayCommit.mostrarCommitCompleto()).toEqual(expectedArray);
   });
+
+
+  it("Se debe mostra un mensaje si no hay commits", () => {
+    expect(arrayCommit.calcularFrecuenciaCommits()).toEqual("No hay commits suficientes para calcular la frecuencia");
+  });
+
+  it("El array de commits deberia de mostrar el ultimo commit como frecuencia Regular con diferencia < 7 dias", () => {
+    const arrayCommit = new ArrayCommit();
+    arrayCommit.aniadirCommit(4, 100, 100, "Excelente", "22/08/2024-14:50");
+    arrayCommit.aniadirCommit(4, 100, 100, "Excelente", "27/08/2024-14:50");
+    expect(arrayCommit.calcularFrecuenciaCommits()).toEqual("Regular");
+  });
+
 });

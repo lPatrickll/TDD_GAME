@@ -50,7 +50,6 @@ class ArrayCommit {
         }
 
         for (let i = 1; i < this.arrayCommit.length; i++) {
-            try {
                 let fechaActual = this.parseFecha(this.arrayCommit[i].getFechaHora());
                 let fechaAnterior = this.parseFecha(this.arrayCommit[i - 1].getFechaHora());
                 let diferenciaDias = (fechaActual - fechaAnterior) / (1000 * 60 * 60 * 24);
@@ -69,10 +68,6 @@ class ArrayCommit {
                 }
 
                 this.arrayCommit[i].setFrecuencia(frecuencia);
-            } catch (error) {
-                console.error(`Error al calcular la frecuencia para el commit en la posición ${i}: ${error.message}`);
-                this.arrayCommit[i].setFrecuencia("Error en el formato de fecha");
-            }
         }
 
         return this.arrayCommit[this.arrayCommit.length - 1].getFrecuencia();
