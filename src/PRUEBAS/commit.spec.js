@@ -27,6 +27,12 @@ describe("Commits", () => {
     expect(commit.getComplejidad()).toEqual("Regular");
   });
 
+  it("Despues de ingresar un commit editar la Fecha y la hora del commit", () => {
+    let commit = new Commit(4, 100, 100, "Excelente", "2024/05/20-09:23");
+    commit.editarFechaHora("2024/05/21-10:00");
+    expect(commit.getFechaHora()).toEqual("2024/05/21-10:00");
+  });
+
   // Tercera Historia de Usuario -> Patrick *********************************
   it("Se debe añadir un la cantidad de prueba para un commit", () => {
     let cantPruebas = 1;

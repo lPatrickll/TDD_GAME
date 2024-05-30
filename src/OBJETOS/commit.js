@@ -98,6 +98,10 @@ class Commit {
         this.complejidad = newComplejidad;
     }
 
+    editarFechaHora(newFechaHora) {
+        this.fechaHora = newFechaHora;
+    }
+
     setFrecuencia(frecuencia) {
         this.frecuencia = frecuencia;
     }
