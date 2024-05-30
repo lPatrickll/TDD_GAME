@@ -22,6 +22,36 @@ function mostrarFormularioProyecto() {
     formularioProyecto.style.display = 'block';
 }
 
+function manejarArchivoSeleccionado(event, proyecto) {
+    const archivo = event.target.files[0];
+    const lector = new FileReader();
+
+    console.log(proyecto);
+
+    lector.onload = function(event) {
+        const contenidoArch = event.target.result;
+        console.log(contenidoArch);
+        const proyectoSeleccionado = arrayProyectos.proyectosArray.find(p => p.getTitulo() === proyecto);
+
+        const resultado = proyectoSeleccionado.ingresarCommitsPorContenidoDe(contenidoArch); // Pasar la ruta y el contenido
+        console.log(resultado);
+        if (resultado === "Archivo leido") {
+            alert("Commits añadidos con éxito desde el archivo, pulsa el boton ver commits.");
+            actualizarListaProyectos(); // Actualizar la lista de proyectos después de añadir los commits
+        } else {
+            alert("Archivo.txt vacio sin contenido");
+        }
+    };
+
+    lector.onerror = function() {
+        mostrarMensajeError("Error al cargar el archivo.");
+    };
+
+    lector.readAsText(archivo);
+}
+
+
+
 function confirmarProyecto() {
     const tituloProyecto = inputTituloProyecto.value;
     if (tituloProyecto) {
@@ -64,6 +94,25 @@ function actualizarListaProyectos() {
 
 function crearElementoProyecto(proyecto) {
     const proyectoElement = crearElemento("div", proyecto);
+
+    const btnIngresarCommitsPorArchivoTxt = crearElemento("button", "subir commits en archivo.txt");
+    btnIngresarCommitsPorArchivoTxt.addEventListener('click', () => {
+        // Estilo de bloquear otros elementos mientras se carga el archivo
+        estilo = "none";
+        estiloCommit = "none";
+
+        // Crear input para seleccionar archivo y disparar su evento de cambio
+        const inputArchivo = document.createElement('input');
+        inputArchivo.type = 'file';
+        inputArchivo.accept = '.txt'; // Aceptar solo archivos de texto
+        inputArchivo.addEventListener('change', (event) => {
+            manejarArchivoSeleccionado(event, proyecto);
+        });
+        inputArchivo.click(); // Simular clic en el input de archivo
+    });
+    proyectoElement.appendChild(btnIngresarCommitsPorArchivoTxt);
+
+
     const btnVerCommits = crearElemento("button", "Ver Commits");
     btnVerCommits.addEventListener('click', () => {
         estilo = "none";
@@ -169,7 +218,7 @@ function crearFormularioCommit(proyectoSeleccionado, nombreProyecto) {
     const formularioCommit = crearElemento('form');
     const inputFecha = crearElemento('input', '');
     inputFecha.type = 'text';
-    inputFecha.placeholder = 'Fecha en formato 2020-05-05';
+    inputFecha.placeholder = 'Fecha y Hora en formato YY/MM/DD-HH:MM';
     const inputCantPruebas = crearInputNumerico('Cantidad de pruebas');
 
     const inputCantLineas = crearInputNumerico('Cantidad de líneas');

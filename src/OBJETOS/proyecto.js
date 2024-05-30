@@ -127,7 +127,21 @@ class Proyecto {
 
         const lines = archivoTxt.split('\n');
         for (let line of lines) {
-            console.log(lines);
+            const [id, fechaHora, cantPruebas, cantLineas, cobertura, complejidad] = line.split(',').map(item => item.trim());
+            const nuevoCommit = new Commit(Number(cantPruebas), Number(cantLineas), Number(cobertura), String(complejidad), String(fechaHora), Number(id));
+            this.arrayCommit.aniadirCommitObj(nuevoCommit);
+        }
+        return "Archivo leido";
+    }
+
+    ingresarCommitsPorContenidoDe(ArchivoTxt) {
+        const archivoTxt = ArchivoTxt.trim(); // Usar el contenido del archivo en lugar de leerlo de nuevo
+        // if (archivoTxt.length === 0) {
+        //     return "Archivo vacio";
+        // }
+    
+        const lines = archivoTxt.split('\n');
+        for (let line of lines) {
             const [id, fechaHora, cantPruebas, cantLineas, cobertura, complejidad] = line.split(',').map(item => item.trim());
             const nuevoCommit = new Commit(Number(cantPruebas), Number(cantLineas), Number(cobertura), String(complejidad), String(fechaHora), Number(id));
             this.arrayCommit.aniadirCommitObj(nuevoCommit);

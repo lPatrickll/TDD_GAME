@@ -258,4 +258,68 @@ describe("Proyecto", () => {
 
         expect(proyecto.mostrarCommits()).toEqual(expectedArray);
     });
+
+    it("El proyecto debería leer un contenido con el formato especificado que contenga varios commits, y mostrar los commits en el array", () => {
+        const contenidoTxt = `
+        1, 12/04/2024-08:24, 2, 4, 97, Excelente
+        2, 25/06/2024-09:45, 2, 7, 95, Regular
+        3, 10/07/2024-11:30, 3, 5, 90, Bueno
+        4, 15/08/2024-14:50, 1, 8, 85, Excelente
+        5, 22/09/2024-16:15, 4, 6, 92, Regular
+        `;
+        proyecto.ingresarCommitsPorContenidoDe(contenidoTxt);
+        let expectedArray = [{
+            idCommit: 1,
+            fechaHora: "12/04/2024-08:24",
+            cantPruebas: 2,
+            cantLineas: 4,
+            cobertura: 97,
+            complejidad: "Excelente",
+            recomendacion: "Se recomienda mejorar la cantidad de pruebas aprobadas. ",
+            frecuencia: "Regular"
+          },
+          {
+            idCommit: 2,
+            fechaHora: "25/06/2024-09:45",
+            cantPruebas: 2,
+            cantLineas: 7,
+            cobertura: 95,
+            complejidad: "Regular",
+            recomendacion: "Se recomienda mejorar la cantidad de pruebas aprobadas. ",
+            frecuencia: "Regular"
+          }, 
+          {
+            idCommit: 3,
+            fechaHora: "10/07/2024-11:30",
+            cantPruebas: 3,
+            cantLineas: 5,
+            cobertura: 90,
+            complejidad: "Bueno",
+            recomendacion: "Se recomienda mejorar la cantidad de pruebas aprobadas. ",
+            frecuencia: "Regular"
+          }, 
+          {
+            idCommit: 4,
+            fechaHora: "15/08/2024-14:50",
+            cantPruebas: 1,
+            cantLineas: 8,
+            cobertura: 85,
+            complejidad:"Excelente",
+            recomendacion: "Se recomienda mejorar la cantidad de pruebas aprobadas. ",
+            frecuencia: "Regular"
+          }, 
+          {
+            idCommit: 5,
+            fechaHora: "22/09/2024-16:15",
+            cantPruebas: 4,
+            cantLineas: 6,
+            cobertura: 92,
+            complejidad:"Regular",
+            recomendacion: "Se recomienda mejorar la cantidad de pruebas aprobadas. ",
+            frecuencia: "Regular"
+          }
+        ];
+
+        expect(proyecto.mostrarCommits()).toEqual(expectedArray);
+    });
 });
