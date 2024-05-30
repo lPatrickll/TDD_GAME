@@ -94,6 +94,10 @@ class Commit {
         this.cobertura = newCobertura;
     }
 
+    editarComplejidad(newComplejidad) {
+        this.complejidad = newComplejidad;
+    }
+
     setFrecuencia(frecuencia) {
         this.frecuencia = frecuencia;
     }

@@ -15,10 +15,16 @@ describe("Commits", () => {
     expect(commit.getCantLineas()).toEqual(15);
   });
 
-  it("Despues de ingresar un commit editar la cantidad de pruebas", () => {
+  it("Despues de ingresar un commit editar la cobertura", () => {
     commit = new Commit(2, 10, 100);
     commit.editarCobertura(80);
     expect(commit.getCobertura()).toEqual(80);
+  });
+
+  it("Despues de ingresar un commit editar la complejidad", () => {
+    commit = new Commit(2, 10, 100, "Excelente");
+    commit.editarComplejidad("Regular");
+    expect(commit.getComplejidad()).toEqual("Regular");
   });
 
   // Tercera Historia de Usuario -> Patrick *********************************
