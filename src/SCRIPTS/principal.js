@@ -169,6 +169,7 @@ function ingresarAlProyecto(nombreProyecto) {
 }
 
 function mostrarCommits(proyectoSeleccionado) {
+    proyectoSeleccionado.getArrayCommit().calcularFrecuenciaCommits();
     const commitsProyecto = proyectoSeleccionado.mostrarCommits();
     const listaCommits = crearElemento('ul');
 
@@ -245,6 +246,7 @@ function crearFormularioCommit(proyectoSeleccionado, nombreProyecto) {
         const complejidad = inputComplejidad.value;
         if (!isNaN(cantPruebas) && !isNaN(cantLineas) && cantPruebas >= 0 && cantLineas >= 0) {
             proyectoSeleccionado.aniadirCommit(cantPruebas, cantLineas, cobertura, complejidad,Fecha);
+            
             estilo = "block";
             estiloCommit = "none";
             ingresarAlProyecto(nombreProyecto);
@@ -254,6 +256,7 @@ function crearFormularioCommit(proyectoSeleccionado, nombreProyecto) {
             estiloCommit = "none";
             ingresarAlProyecto(nombreProyecto);
         }
+
     });
 
     formularioCommit.appendChild(tituloCommit);

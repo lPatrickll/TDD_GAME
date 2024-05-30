@@ -28,6 +28,7 @@ class ArrayProyectos {
         
         return proyectosCopia;
     }
+
 };
 
 export default ArrayProyectos;

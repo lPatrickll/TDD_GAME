@@ -264,10 +264,11 @@ describe("Proyecto", () => {
         1, 12/04/2024-08:24, 2, 4, 97, Excelente
         2, 25/06/2024-09:45, 2, 7, 95, Regular
         3, 10/07/2024-11:30, 3, 5, 90, Bueno
-        4, 15/08/2024-14:50, 1, 8, 85, Excelente
-        5, 22/09/2024-16:15, 4, 6, 92, Regular
+        4, 22/08/2024-14:50, 1, 8, 85, Excelente
+        5, 22/08/2024-16:15, 4, 6, 92, Regular
         `;
         proyecto.ingresarCommitsPorContenidoDe(contenidoTxt);
+        proyecto.getArrayCommit().calcularFrecuenciaCommits();
         let expectedArray = [{
             idCommit: 1,
             fechaHora: "12/04/2024-08:24",
@@ -286,7 +287,7 @@ describe("Proyecto", () => {
             cobertura: 95,
             complejidad: "Regular",
             recomendacion: "Se recomienda mejorar la cantidad de pruebas aprobadas. ",
-            frecuencia: "Regular"
+            frecuencia: "Deficiente"
           }, 
           {
             idCommit: 3,
@@ -296,27 +297,27 @@ describe("Proyecto", () => {
             cobertura: 90,
             complejidad: "Bueno",
             recomendacion: "Se recomienda mejorar la cantidad de pruebas aprobadas. ",
-            frecuencia: "Regular"
+            frecuencia: "Deficiente"
           }, 
           {
             idCommit: 4,
-            fechaHora: "15/08/2024-14:50",
+            fechaHora: "22/08/2024-14:50",
             cantPruebas: 1,
             cantLineas: 8,
             cobertura: 85,
             complejidad:"Excelente",
             recomendacion: "Se recomienda mejorar la cantidad de pruebas aprobadas. ",
-            frecuencia: "Regular"
+            frecuencia: "Deficiente"
           }, 
           {
             idCommit: 5,
-            fechaHora: "22/09/2024-16:15",
+            fechaHora: "22/08/2024-16:15",
             cantPruebas: 4,
             cantLineas: 6,
             cobertura: 92,
             complejidad:"Regular",
             recomendacion: "Se recomienda mejorar la cantidad de pruebas aprobadas. ",
-            frecuencia: "Regular"
+            frecuencia: "Excelente"
           }
         ];
 

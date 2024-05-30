@@ -11,6 +11,9 @@ class Proyecto {
         this.puntaje = new Puntaje(); 
     }
 
+    getArrayCommit(){
+        return this.arrayCommit;
+    }
     getTitulo() {
         return this.titulo;
     }
