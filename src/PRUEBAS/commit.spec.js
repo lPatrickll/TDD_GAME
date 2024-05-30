@@ -150,12 +150,12 @@ describe("Commits", () => {
     expect(commit.getFechaHora()).toEqual("12/04/2024-08:24");
   });
 
-  it("El commit debería de devolver la fecha en tipo de dato de fecha", () => {
+  it("El commit debería de devolver la fecha ingresada en el constructor", () => {
     let commit = new Commit(4, 100, 100, "Excelente", "2024/05/20-09:23");
     expect(commit.getFechaHora()).toEqual("2024/05/20-09:23");
   });
 
-  it("El commit debería de devolver la fecha en tipo de dato de fecha", () => {
+  it("El commit debería de devolver la fecha ingresada con set", () => {
     let commit = new Commit(4, 100, 100, "Excelente", "2024-05-20");
     commit.setFechaHora("20/20/05-04:23");
     expect(commit.getFechaHora()).toEqual("20/20/05-04:23");
