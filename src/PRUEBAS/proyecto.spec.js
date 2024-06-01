@@ -393,4 +393,36 @@ describe("Proyecto", () => {
   it("El proyecto calcula la cobertura de un proyecto con 0 commits", () => {
     expect(proyecto.getPuntajeCobertura(proyecto.getArrayCommit())).toEqual(8);
   });
+
+  it("El proyecto calcula el puntaje de cobertura con un porcentaje mayor al 90% por commit", () => {
+    proyecto.aniadirCommit(2, 19, 91);
+    expect(proyecto.getPuntajeCobertura(proyecto.getArrayCommit())).toEqual(20);
+  });
+
+  it("El proyecto calcula la cantidad de lineas de un proyecto con un promedio es 20-40 lineas por commit", () => {
+    proyecto.aniadirCommit(2, 40, 80);
+    proyecto.aniadirCommit(2, 50, 80);
+    proyecto.aniadirCommit(2, 45, 86);
+    proyecto.aniadirCommit(2, 60, 80);
+    proyecto.aniadirCommit(0, 40, 80);
+    expect(proyecto.getPuntajeCobertura(proyecto.getArrayCommit())).toEqual(16);
+  });
+
+  it("El proyecto calcula la cantidad de lineas de un proyecto con un promedio es 20-40 lineas por commit", () => {
+    proyecto.aniadirCommit(2, 40, 75);
+    proyecto.aniadirCommit(2, 50, 75);
+    proyecto.aniadirCommit(2, 45, 75);
+    proyecto.aniadirCommit(2, 60, 75);
+    proyecto.aniadirCommit(0, 40, 75);
+    expect(proyecto.getPuntajeCobertura(proyecto.getArrayCommit())).toEqual(12);
+  });
+
+  it("El proyecto calcula la cantidad de lineas de un proyecto con un promedio es 20-40 lineas por commit", () => {
+    proyecto.aniadirCommit(2, 40, 65);
+    proyecto.aniadirCommit(2, 50, 60);
+    proyecto.aniadirCommit(2, 45, 65);
+    proyecto.aniadirCommit(2, 60, 60);
+    proyecto.aniadirCommit(0, 40, 60);
+    expect(proyecto.getPuntajeCobertura(proyecto.getArrayCommit())).toEqual(8);
+  });
 });

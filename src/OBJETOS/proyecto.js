@@ -209,8 +209,33 @@ class Proyecto {
         }
     }
 
+    objeterPuntajesCobertura(promedioCobertura) {
+        if (promedioCobertura > 90)
+            return 20;
+        else if (promedioCobertura <= 90 && promedioCobertura >= 80)
+            return 16;
+        else if (promedioCobertura < 80 && promedioCobertura >= 70)
+            return 12;
+        else
+            return 8;
+    }
+
+    calcularPromedioCobertura(arrayCommit) {
+        let totalCobertura = 0;
+        let totalCommits = arrayCommit.getCommits().length;
+
+        for (let commit of arrayCommit.getCommits()) {
+            totalCobertura += commit.getCobertura();
+        }
+
+        return totalCobertura / totalCommits;
+    }
+
     getPuntajeCobertura(arrayCommit) {
-        return 8;
+        if (this.tieneCommits(arrayCommit)) {
+            return this.objeterPuntajesCobertura(this.calcularPromedioCobertura(arrayCommit));
+        } else
+            return 8;
     }
 }
 export default Proyecto;
