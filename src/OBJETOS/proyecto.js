@@ -165,8 +165,10 @@ class Proyecto {
             const porcentajePruebasNuevas = (contCommitsPruebas / totalPruebas) * 100;
             if (porcentajePruebasNuevas === 100)
                 return 20;
-            else
+            else if (porcentajePruebasNuevas < 100 && porcentajePruebasNuevas >= 80)
                 return 16;
+            else
+                return 12;
         } else
             return 8;
     }
