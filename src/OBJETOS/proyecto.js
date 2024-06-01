@@ -162,10 +162,13 @@ class Proyecto {
         else
             return 12;
     }
+    tieneCommits(arrayCommit) {
+        return arrayCommit.getCommits().length !== 0;
+    }
     getPuntajeCantPruebas(arrayCommit) {
         let contCommitsPruebas = 0;
         let totalPruebas = 0;
-        if (arrayCommit.getCommits().length !== 0) {
+        if (this.tieneCommits(arrayCommit)) {
             for (let commit of arrayCommit.getCommits()) {
                 if (commit.getCantPruebas() > 0)
                     contCommitsPruebas++;
