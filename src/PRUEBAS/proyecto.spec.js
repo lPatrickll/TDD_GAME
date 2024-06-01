@@ -332,8 +332,14 @@ describe("Proyecto", () => {
     expect(proyecto.ingresarCommitsPorContenidoDe(contenidoTxt)).toEqual("Archivo vacio");
   });
 
+  ////////////////////////////////////////
   it("El proyecto calcula la cantidad de pruebas de un proyecto con 0 commits", () => {
 
     expect(proyecto.getPuntajeCantPruebas(proyecto.getArrayCommit())).toEqual(8);
+  });
+
+  it("El proyecto calcula la cantidad de pruebas de un proyecto con 1 commit con 100% pruebas nuevas", () => {
+    proyecto.aniadirCommit(2);
+    expect(proyecto.getPuntajeCantPruebas(proyecto.getArrayCommit())).toEqual(20);
   });
 });

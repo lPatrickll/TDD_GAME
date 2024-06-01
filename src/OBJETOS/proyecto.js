@@ -154,7 +154,10 @@ class Proyecto {
 
     ///////////////////////////////////////
     getPuntajeCantPruebas(arrayCommit) {
-        return 8;
+        if (arrayCommit.getCommits().length !== 0)
+            return 20;
+        else
+            return 8;
     }
 }
 export default Proyecto;
