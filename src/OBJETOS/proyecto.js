@@ -184,5 +184,9 @@ class Proyecto {
         } else
             return 8;
     }
+
+    getPuntajeCantLineas(arrayCommit) {
+        return 8;
+    }
 }
 export default Proyecto;

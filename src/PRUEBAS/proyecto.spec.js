@@ -362,4 +362,8 @@ describe("Proyecto", () => {
 
     expect(proyecto.getPuntajeCantPruebas(proyecto.getArrayCommit())).toEqual(12);
   });
+
+  it("El proyecto calcula la cantidad de pruebas de un proyecto con 0 commits", () => {
+    expect(proyecto.getPuntajeCantLineas(proyecto.getArrayCommit())).toEqual(8);
+  });
 });
