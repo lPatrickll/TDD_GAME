@@ -193,20 +193,19 @@ class Proyecto {
             return 12;
     }
 
-    getPuntajeCantLineas(arrayCommit) {
+    calcularPromedioLineas(arrayCommit) {
         let totalLineas = 0;
-        let totalCommits = arrayCommit.getCommits().length;
+        for (let commit of arrayCommit.getCommits()) {
+            totalLineas += commit.getCantLineas();
+        }
+        return totalLineas / arrayCommit.getCommits().length;
+    }
 
-        if (totalCommits !== 0) {
-            for (let commit of arrayCommit.getCommits()) {
-                totalLineas += commit.getCantLineas();
-            }
-
-            const promedioLineas = totalLineas / totalCommits;
-
-            return this.objeterPuntajesCantLineas(promedioLineas);
+    getPuntajeCantLineas(arrayCommit) {
+        if (this.tieneCommits(arrayCommit)) {
+            return this.objeterPuntajesCantLineas(this.calcularPromedioLineas(arrayCommit));
         } else {
-            return 8; // Puedes ajustar esto según tu sistema de puntuación
+            return 8;
         }
     }
 }
