@@ -186,10 +186,23 @@ class Proyecto {
     }
 
     getPuntajeCantLineas(arrayCommit) {
-        if (arrayCommit.getCommits().length !== 0) {
-            return 20;
-        } else
-            return 8;
+        let totalLineas = 0;
+        let totalCommits = arrayCommit.getCommits().length;
+
+        if (totalCommits !== 0) {
+            for (let commit of arrayCommit.getCommits()) {
+                totalLineas += commit.getCantLineas();
+            }
+
+            const promedioLineas = totalLineas / totalCommits;
+
+            if (promedioLineas < 20) {
+                return 20;
+            } else
+                return 16;
+        } else {
+            return 8; // Puedes ajustar esto según tu sistema de puntuación
+        }
     }
 }
 export default Proyecto;

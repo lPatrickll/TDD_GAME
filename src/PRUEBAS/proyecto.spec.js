@@ -371,4 +371,13 @@ describe("Proyecto", () => {
     proyecto.aniadirCommit(2, 19);
     expect(proyecto.getPuntajeCantLineas(proyecto.getArrayCommit())).toEqual(20);
   });
+
+  it("El proyecto calcula la cantidad de lineas de un proyecto con un promedio es 20-40 lineas por commit", () => {
+    proyecto.aniadirCommit(2, 19);
+    proyecto.aniadirCommit(2, 25);
+    proyecto.aniadirCommit(2, 25);
+    proyecto.aniadirCommit(2, 25);
+    proyecto.aniadirCommit(0, 25);
+    expect(proyecto.getPuntajeCantLineas(proyecto.getArrayCommit())).toEqual(16);
+  });
 });
