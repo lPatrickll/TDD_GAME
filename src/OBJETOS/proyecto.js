@@ -154,7 +154,6 @@ class Proyecto {
 
     ///////////////////////////////////////
     objeterPuntajes(porcentajePruebasNuevas) {
-
         if (porcentajePruebasNuevas === 100)
             return 20;
         else if (porcentajePruebasNuevas < 100 && porcentajePruebasNuevas >= 80)
@@ -185,6 +184,15 @@ class Proyecto {
             return 8;
     }
 
+    objeterPuntajesCantLineas(promedioLineas) {
+        if (promedioLineas < 20)
+            return 20;
+        else if (promedioLineas < 40 && promedioLineas >= 20)
+            return 16;
+        else
+            return 12;
+    }
+
     getPuntajeCantLineas(arrayCommit) {
         let totalLineas = 0;
         let totalCommits = arrayCommit.getCommits().length;
@@ -196,10 +204,7 @@ class Proyecto {
 
             const promedioLineas = totalLineas / totalCommits;
 
-            if (promedioLineas < 20) {
-                return 20;
-            } else
-                return 16;
+            return this.objeterPuntajesCantLineas(promedioLineas);
         } else {
             return 8; // Puedes ajustar esto según tu sistema de puntuación
         }
