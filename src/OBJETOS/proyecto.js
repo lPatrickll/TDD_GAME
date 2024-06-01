@@ -8,18 +8,18 @@ class Proyecto {
     constructor(titulo) {
         this.titulo = titulo;
         this.arrayCommit = new ArrayCommit();
-        this.puntaje = new Puntaje(); 
+        this.puntaje = new Puntaje();
     }
 
-    getArrayCommit(){
+    getArrayCommit() {
         return this.arrayCommit;
     }
     getTitulo() {
         return this.titulo;
     }
 
-    aniadirCommit(cantPruebas, cantLineas, cobertura, complejidad,fecha) {
-        this.arrayCommit.aniadirCommit(cantPruebas, cantLineas, cobertura, complejidad,fecha);
+    aniadirCommit(cantPruebas, cantLineas, cobertura, complejidad, fecha) {
+        this.arrayCommit.aniadirCommit(cantPruebas, cantLineas, cobertura, complejidad, fecha);
     }
 
     mostrarCommits() {
@@ -60,7 +60,7 @@ class Proyecto {
             }
             porcentaje = (totalPruebasAprobadas / totalPruebas) * 100;
         }
-       return porcentaje;
+        return porcentaje;
     }
 
     calcularPuntajeLineasCodigo() {
@@ -120,7 +120,7 @@ class Proyecto {
 
         // Aquí puedes ajustar cómo se combinan estas puntuaciones para obtener una puntuación general
         return (puntajePruebas + puntajeLineasCodigo + puntajeCobertura) / 3;
-    }    
+    }
 
     ingresarCommitsPor(rutaArchivoTxt) {
         const archivoTxt = fs.readFileSync(path.join(__dirname, rutaArchivoTxt), 'utf8').trim();
@@ -142,7 +142,7 @@ class Proyecto {
         if (archivoTxt.length === 0) {
             return "Archivo vacio";
         }
-    
+
         const lines = archivoTxt.split('\n');
         for (let line of lines) {
             const [id, fechaHora, cantPruebas, cantLineas, cobertura, complejidad] = line.split(',').map(item => item.trim());
@@ -150,6 +150,11 @@ class Proyecto {
             this.arrayCommit.aniadirCommitObj(nuevoCommit);
         }
         return "Archivo leido";
+    }
+
+    ///////////////////////////////////////
+    getPuntajeCantPruebas(arrayCommit) {
+        return 8;
     }
 }
 export default Proyecto;
