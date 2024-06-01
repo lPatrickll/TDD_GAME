@@ -153,8 +153,8 @@ class Proyecto {
     }
 
     ///////////////////////////////////////
-    objeterPuntajes(commitsConPruebas, totalPruebas) {
-        const porcentajePruebasNuevas = (commitsConPruebas / totalPruebas) * 100;
+    objeterPuntajes(porcentajePruebasNuevas) {
+
         if (porcentajePruebasNuevas === 100)
             return 20;
         else if (porcentajePruebasNuevas < 100 && porcentajePruebasNuevas >= 80)
@@ -162,19 +162,25 @@ class Proyecto {
         else
             return 12;
     }
+
     tieneCommits(arrayCommit) {
         return arrayCommit.getCommits().length !== 0;
     }
-    getPuntajeCantPruebas(arrayCommit) {
+
+    calcularPorcentaje(arrayCommit) {
         let contCommitsPruebas = 0;
         let totalPruebas = 0;
+        for (let commit of arrayCommit.getCommits()) {
+            if (commit.getCantPruebas() > 0)
+                contCommitsPruebas++;
+            totalPruebas++;
+        }
+        return (contCommitsPruebas / totalPruebas) * 100;
+    }
+
+    getPuntajeCantPruebas(arrayCommit) {
         if (this.tieneCommits(arrayCommit)) {
-            for (let commit of arrayCommit.getCommits()) {
-                if (commit.getCantPruebas() > 0)
-                    contCommitsPruebas++;
-                totalPruebas++;
-            }
-            return this.objeterPuntajes(contCommitsPruebas, totalPruebas);
+            return this.objeterPuntajes(this.calcularPorcentaje(arrayCommit));
         } else
             return 8;
     }
