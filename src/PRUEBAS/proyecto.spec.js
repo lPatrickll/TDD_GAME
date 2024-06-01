@@ -389,4 +389,8 @@ describe("Proyecto", () => {
     proyecto.aniadirCommit(0, 40);
     expect(proyecto.getPuntajeCantLineas(proyecto.getArrayCommit())).toEqual(12);
   });
+
+  it("El proyecto calcula la cobertura de un proyecto con 0 commits", () => {
+    expect(proyecto.getPuntajeCobertura(proyecto.getArrayCommit())).toEqual(8);
+  });
 });

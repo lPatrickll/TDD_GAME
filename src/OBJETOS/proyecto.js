@@ -208,5 +208,9 @@ class Proyecto {
             return 8;
         }
     }
+
+    getPuntajeCobertura(arrayCommit) {
+        return 8;
+    }
 }
 export default Proyecto;
