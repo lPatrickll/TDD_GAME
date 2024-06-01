@@ -154,9 +154,20 @@ class Proyecto {
 
     ///////////////////////////////////////
     getPuntajeCantPruebas(arrayCommit) {
-        if (arrayCommit.getCommits().length !== 0)
-            return 20;
-        else
+        let contCommitsPruebas = 0;
+        let totalPruebas = 0;
+        if (arrayCommit.getCommits().length !== 0) {
+            for (let commit of arrayCommit.getCommits()) {
+                if (commit.getCantPruebas() > 0)
+                    contCommitsPruebas++;
+                totalPruebas++;
+            }
+            const porcentajePruebasNuevas = (contCommitsPruebas / totalPruebas) * 100;
+            if (porcentajePruebasNuevas === 100)
+                return 20;
+            else
+                return 16;
+        } else
             return 8;
     }
 }
