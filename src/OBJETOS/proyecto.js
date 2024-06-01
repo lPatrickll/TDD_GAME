@@ -153,6 +153,15 @@ class Proyecto {
     }
 
     ///////////////////////////////////////
+    objeterPuntajes(commitsConPruebas, totalPruebas) {
+        const porcentajePruebasNuevas = (commitsConPruebas / totalPruebas) * 100;
+        if (porcentajePruebasNuevas === 100)
+            return 20;
+        else if (porcentajePruebasNuevas < 100 && porcentajePruebasNuevas >= 80)
+            return 16;
+        else
+            return 12;
+    }
     getPuntajeCantPruebas(arrayCommit) {
         let contCommitsPruebas = 0;
         let totalPruebas = 0;
@@ -162,13 +171,7 @@ class Proyecto {
                     contCommitsPruebas++;
                 totalPruebas++;
             }
-            const porcentajePruebasNuevas = (contCommitsPruebas / totalPruebas) * 100;
-            if (porcentajePruebasNuevas === 100)
-                return 20;
-            else if (porcentajePruebasNuevas < 100 && porcentajePruebasNuevas >= 80)
-                return 16;
-            else
-                return 12;
+            return this.objeterPuntajes(contCommitsPruebas, totalPruebas);
         } else
             return 8;
     }
