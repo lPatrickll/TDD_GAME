@@ -308,7 +308,7 @@ function ingresarPuntajeProyecto(nombreProyecto) {
     const puntajeTextCantPruebas = proyectoSeleccionado.obterPuntuacionTexto(puntajeCantPruebas);
     const puntuacionCantPruebas = crearElemento('p', `${puntajeCantPruebas} puntos (${puntajeTextCantPruebas})`);
     contenedorProyectos.appendChild(puntuacionCantPruebas);
-
+    ////////////////////////////////
     const tituloCantLineas = crearElemento('p', `Cantidad de Lineas por Commit (20%)`);
     contenedorProyectos.appendChild(tituloCantLineas);
 
@@ -316,6 +316,22 @@ function ingresarPuntajeProyecto(nombreProyecto) {
     const puntajeTextCantLineas = proyectoSeleccionado.obterPuntuacionTexto(puntajeCantPruebas);
     const puntuacionCantLineas = crearElemento('p', `${puntajeCantLineas} puntos (${puntajeTextCantLineas})`);
     contenedorProyectos.appendChild(puntuacionCantLineas);
+    ///////////////////////////
+    const tituloCobertura = crearElemento('p', `Porcentaje de Cobertura de Pruebas por Commit (20%)`);
+    contenedorProyectos.appendChild(tituloCobertura);
+
+    const puntajeCobertura = proyectoSeleccionado.getPuntajeCobertura(proyectoSeleccionado.getArrayCommit());
+    const puntajeTextCobertura = proyectoSeleccionado.obterPuntuacionTexto(puntajeCobertura);
+    const puntuacionCobertura = crearElemento('p', `${puntajeCobertura} puntos (${puntajeTextCobertura})`);
+    contenedorProyectos.appendChild(puntuacionCobertura);
+    //////////////////////////////
+    const tituloFrecuencia = crearElemento('p', `Frecuencia de Commits (20%)`);
+    contenedorProyectos.appendChild(tituloFrecuencia);
+
+    const puntajeFrecuencia = proyectoSeleccionado.getPuntajeFrecuenciaCommits(proyectoSeleccionado.getArrayCommit());
+    const puntajeTextFrecuencia = proyectoSeleccionado.obterPuntuacionTexto(puntajeFrecuencia);
+    const puntuacionFrecuencia = crearElemento('p', `${puntajeFrecuencia} puntos (${puntajeTextFrecuencia})`);
+    contenedorProyectos.appendChild(puntuacionFrecuencia);
     ////////////////////////////////
     /*
     const puntajePruebas = proyectoSeleccionado.getPuntajePruebas();
