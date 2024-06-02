@@ -272,5 +272,26 @@ class Proyecto {
         if (promedioComplejidad <= 3.5) return 12;
         return 8;
     }
+
+    //////////////////////////////////////////////////////////
+    getPuntajeFrecuenciaCommits(arrayCommit) {
+        const frecuencia = arrayCommit.calcularPromedioFrecuenciaCommits();
+        return this.asignarPuntajeFrecuencia(frecuencia);
+    }
+
+    asignarPuntajeFrecuencia(frecuencia) {
+        switch (frecuencia) {
+            case "Excelente":
+                return 20;
+            case "Bueno":
+                return 16;
+            case "Regular":
+                return 12;
+            case "Deficiente":
+            default:
+                return 8;
+        }
+    }
+
 }
 export default Proyecto;

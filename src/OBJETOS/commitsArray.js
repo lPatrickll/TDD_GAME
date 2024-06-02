@@ -72,6 +72,32 @@ class ArrayCommit {
         return this.arrayCommit[this.arrayCommit.length - 1].getFrecuencia();
     }
 
+    calcularPromedioFrecuenciaCommits() {
+        if (this.arrayCommit.length < 2) {
+            return "Deficiente"; // Consideramos 'Deficiente' si hay menos de 2 commits
+        }
+
+        let totalDias = 0;
+        for (let i = 1; i < this.arrayCommit.length; i++) {
+            let fechaActual = this.parseFecha(this.arrayCommit[i].getFechaHora());
+            let fechaAnterior = this.parseFecha(this.arrayCommit[i - 1].getFechaHora());
+            let diferenciaDias = (fechaActual - fechaAnterior) / (1000 * 60 * 60 * 24);
+            totalDias += diferenciaDias;
+        }
+
+        let promedioDias = totalDias / (this.arrayCommit.length - 1);
+
+        if (promedioDias < 2) {
+            return "Excelente";
+        } else if (promedioDias < 3) {
+            return "Bueno";
+        } else if (promedioDias < 7) {
+            return "Regular";
+        } else {
+            return "Deficiente";
+        }
+    }
+
     parseFecha(fechaHoraStr) {
 
 
