@@ -296,6 +296,9 @@ class Proyecto {
     obterPuntuacionTexto(puntuacion) {
         if (puntuacion === 20) {
             return "Excelente";
+        } else if (puntuacion === 16) {
+            return "Bueno";
+
         } else {
             return "Deficiente";
         }

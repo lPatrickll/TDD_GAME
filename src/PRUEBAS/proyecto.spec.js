@@ -510,4 +510,9 @@ describe("Proyecto", () => {
     let puntuacion = proyecto.getPuntajeComplejidad(proyecto.getArrayCommit());
     expect(proyecto.obterPuntuacionTexto(puntuacion)).toEqual("Excelente");
   });
+
+  it("Mostra la puntiacion para cualquier parametro solo con la puntuacion", () => {
+    let puntuacion = 16;
+    expect(proyecto.obterPuntuacionTexto(puntuacion)).toEqual("Bueno");
+  });
 });
