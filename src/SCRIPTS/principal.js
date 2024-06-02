@@ -300,7 +300,18 @@ function ingresarPuntajeProyecto(nombreProyecto) {
     const btnVolver = crearElemento('button', 'Volver a la lista de proyectos');
     btnVolver.addEventListener('click', actualizarListaProyectos);
     contenedorProyectos.appendChild(btnVolver);
+    /////////////////////////////////
+    const tituloCantPruebas = crearElemento('p', `Cantidad de Pruebas por Commit (20%)`);
+    contenedorProyectos.appendChild(tituloCantPruebas);
 
+    const puntajeCantPruebas = proyectoSeleccionado.getPuntajeCantPruebas(proyectoSeleccionado.getArrayCommit());
+    const puntajeTextCantPruebas = proyectoSeleccionado.obterPuntuacionTexto(puntajeCantPruebas);
+    const puntuacionCantPruebas = crearElemento('p', `${puntajeCantPruebas} puntos (${puntajeTextCantPruebas})`);
+    contenedorProyectos.appendChild(puntuacionCantPruebas);
+
+
+    ////////////////////////////////
+    /*
     const puntajePruebas = proyectoSeleccionado.getPuntajePruebas();
     const tituloPuntajePruebas = crearElemento('p', `Puntaje de pruebas: ${puntajePruebas}%`);
     contenedorProyectos.appendChild(tituloPuntajePruebas);
@@ -312,6 +323,7 @@ function ingresarPuntajeProyecto(nombreProyecto) {
     const porcentajeCobertura = proyectoSeleccionado.getPorcentajeCobertura();
     const tituloPorcentajeCobertura = crearElemento('p', `Porcentaje de cobertura: ${porcentajeCobertura}%`);
     contenedorProyectos.appendChild(tituloPorcentajeCobertura);
+    */
 }
 
 actualizarListaProyectos();
