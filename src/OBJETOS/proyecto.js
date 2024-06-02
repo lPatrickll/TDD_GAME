@@ -298,7 +298,8 @@ class Proyecto {
             return "Excelente";
         } else if (puntuacion === 16) {
             return "Bueno";
-
+        } else if (puntuacion === 12) {
+            return "Regular";
         } else {
             return "Deficiente";
         }

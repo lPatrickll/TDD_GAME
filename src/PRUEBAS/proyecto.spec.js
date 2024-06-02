@@ -499,20 +499,25 @@ describe("Proyecto", () => {
     expect(proyecto.getPuntajeFrecuenciaCommits(proyecto.getArrayCommit())).toEqual(8);
   });
 
-  it("Mostra la puntiacion para cualquier parametro solo con la puntuacion", () => {
+  it("Mostra la puntiacion para cualquier parametro solo con la puntuacion igual a 8", () => {
     proyecto.aniadirCommit(10, 50, 80, "Buena", "01/06/2024-12:00", 1);
     let puntuacion = proyecto.getPuntajeFrecuenciaCommits(proyecto.getArrayCommit());
     expect(proyecto.obterPuntuacionTexto(puntuacion)).toEqual("Deficiente");
   });
 
-  it("Mostra la puntiacion para cualquier parametro solo con la puntuacion", () => {
+  it("Mostra la puntiacion para cualquier parametro solo con la puntuacion igual a 20", () => {
     proyecto.aniadirCommit(2, 40, 65, "Excelente");
     let puntuacion = proyecto.getPuntajeComplejidad(proyecto.getArrayCommit());
     expect(proyecto.obterPuntuacionTexto(puntuacion)).toEqual("Excelente");
   });
 
-  it("Mostra la puntiacion para cualquier parametro solo con la puntuacion", () => {
+  it("Mostra la puntiacion para cualquier parametro solo con la puntuacion igual a 16", () => {
     let puntuacion = 16;
     expect(proyecto.obterPuntuacionTexto(puntuacion)).toEqual("Bueno");
+  });
+
+  it("Mostra la puntiacion para cualquier parametro solo con la puntuacion igual a 12", () => {
+    let puntuacion = 12;
+    expect(proyecto.obterPuntuacionTexto(puntuacion)).toEqual("Regular");
   });
 });
