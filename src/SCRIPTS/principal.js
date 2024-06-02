@@ -306,7 +306,7 @@ function ingresarPuntajeProyecto(nombreProyecto) {
 
     const puntajeCantPruebas = proyectoSeleccionado.getPuntajeCantPruebas(proyectoSeleccionado.getArrayCommit());
     const puntajeTextCantPruebas = proyectoSeleccionado.obterPuntuacionTexto(puntajeCantPruebas);
-    const puntuacionCantPruebas = crearElemento('p', `${puntajeCantPruebas} puntos (${puntajeTextCantPruebas})`);
+    const puntuacionCantPruebas = crearElemento('li', `${puntajeCantPruebas} puntos (${puntajeTextCantPruebas})`);
     contenedorProyectos.appendChild(puntuacionCantPruebas);
     ////////////////////////////////
     const tituloCantLineas = crearElemento('p', `Cantidad de Lineas por Commit (20%)`);
@@ -314,7 +314,7 @@ function ingresarPuntajeProyecto(nombreProyecto) {
 
     const puntajeCantLineas = proyectoSeleccionado.getPuntajeCantLineas(proyectoSeleccionado.getArrayCommit());
     const puntajeTextCantLineas = proyectoSeleccionado.obterPuntuacionTexto(puntajeCantPruebas);
-    const puntuacionCantLineas = crearElemento('p', `${puntajeCantLineas} puntos (${puntajeTextCantLineas})`);
+    const puntuacionCantLineas = crearElemento('li', `${puntajeCantLineas} puntos (${puntajeTextCantLineas})`);
     contenedorProyectos.appendChild(puntuacionCantLineas);
     ///////////////////////////
     const tituloCobertura = crearElemento('p', `Porcentaje de Cobertura de Pruebas por Commit (20%)`);
@@ -322,7 +322,7 @@ function ingresarPuntajeProyecto(nombreProyecto) {
 
     const puntajeCobertura = proyectoSeleccionado.getPuntajeCobertura(proyectoSeleccionado.getArrayCommit());
     const puntajeTextCobertura = proyectoSeleccionado.obterPuntuacionTexto(puntajeCobertura);
-    const puntuacionCobertura = crearElemento('p', `${puntajeCobertura} puntos (${puntajeTextCobertura})`);
+    const puntuacionCobertura = crearElemento('li', `${puntajeCobertura} puntos (${puntajeTextCobertura})`);
     contenedorProyectos.appendChild(puntuacionCobertura);
     //////////////////////////////
     const tituloFrecuencia = crearElemento('p', `Frecuencia de Commits (20%)`);
@@ -330,22 +330,16 @@ function ingresarPuntajeProyecto(nombreProyecto) {
 
     const puntajeFrecuencia = proyectoSeleccionado.getPuntajeFrecuenciaCommits(proyectoSeleccionado.getArrayCommit());
     const puntajeTextFrecuencia = proyectoSeleccionado.obterPuntuacionTexto(puntajeFrecuencia);
-    const puntuacionFrecuencia = crearElemento('p', `${puntajeFrecuencia} puntos (${puntajeTextFrecuencia})`);
+    const puntuacionFrecuencia = crearElemento('li', `${puntajeFrecuencia} puntos (${puntajeTextFrecuencia})`);
     contenedorProyectos.appendChild(puntuacionFrecuencia);
     ////////////////////////////////
-    /*
-    const puntajePruebas = proyectoSeleccionado.getPuntajePruebas();
-    const tituloPuntajePruebas = crearElemento('p', `Puntaje de pruebas: ${puntajePruebas}%`);
-    contenedorProyectos.appendChild(tituloPuntajePruebas);
+    const tituloComplejidad = crearElemento('p', `Complejidad de Código (20%)`);
+    contenedorProyectos.appendChild(tituloComplejidad);
 
-    const puntajeLineasCodigo = proyectoSeleccionado.getPuntajeLineasCodigo();
-    const tituloPuntajeLineasCodigo = crearElemento('p', `Puntaje por líneas de código: ${puntajeLineasCodigo}%`);
-    contenedorProyectos.appendChild(tituloPuntajeLineasCodigo);
-
-    const porcentajeCobertura = proyectoSeleccionado.getPorcentajeCobertura();
-    const tituloPorcentajeCobertura = crearElemento('p', `Porcentaje de cobertura: ${porcentajeCobertura}%`);
-    contenedorProyectos.appendChild(tituloPorcentajeCobertura);
-    */
+    const puntajeComplejidad = proyectoSeleccionado.getPuntajeFrecuenciaCommits(proyectoSeleccionado.getArrayCommit());
+    const puntajeTextComplejidad = proyectoSeleccionado.obterPuntuacionTexto(puntajeComplejidad);
+    const puntuacionComplejidad = crearElemento('li', `${puntajeComplejidad} puntos (${puntajeTextComplejidad})`);
+    contenedorProyectos.appendChild(puntuacionComplejidad);
 }
 
 actualizarListaProyectos();
