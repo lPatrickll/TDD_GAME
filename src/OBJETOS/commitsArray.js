@@ -6,7 +6,7 @@ class ArrayCommit {
     }
 
     aniadirCommit(cantPruebas, cantLineas, cobertura, complejidad, fecha, id) {
-        const nuevoCommit = new Commit(cantPruebas, cantLineas, cobertura, complejidad,fecha, id);
+        const nuevoCommit = new Commit(cantPruebas, cantLineas, cobertura, complejidad, fecha, id);
         this.arrayCommit.push(nuevoCommit);
 
     }
@@ -25,7 +25,7 @@ class ArrayCommit {
             cobertura: commit.getCobertura(),
             complejidad: commit.getComplejidad(),
             recomendacion: commit.getRecomendacion(),
-            frecuencia:commit.getFrecuencia(),
+            frecuencia: commit.getFrecuencia(),
         }));
     }
 
@@ -51,26 +51,22 @@ class ArrayCommit {
         }
 
         for (let i = 1; i < this.arrayCommit.length; i++) {
-                console.log("1",this.arrayCommit[i].getFechaHora());
-                let fechaActual = this.parseFecha(this.arrayCommit[i].getFechaHora());
-                console.log("2",this.arrayCommit[i - 1].getFechaHora());
-                let fechaAnterior = this.parseFecha(this.arrayCommit[i - 1].getFechaHora());
-                let diferenciaDias = (fechaActual - fechaAnterior) / (1000 * 60 * 60 * 24);
+            let fechaActual = this.parseFecha(this.arrayCommit[i].getFechaHora());
+            let fechaAnterior = this.parseFecha(this.arrayCommit[i - 1].getFechaHora());
+            let diferenciaDias = (fechaActual - fechaAnterior) / (1000 * 60 * 60 * 24);
 
-                console.log("diferencia: ", diferenciaDias);
+            let frecuencia = "Regular";
+            if (diferenciaDias < 2) {
+                frecuencia = "Excelente";
+            } else if (diferenciaDias < 3) {
+                frecuencia = "Bueno";
+            } else if (diferenciaDias < 7) {
+                frecuencia = "Regular";
+            } else {
+                frecuencia = "Deficiente";
+            }
 
-                let frecuencia = "Regular";
-                if (diferenciaDias < 2) {
-                    frecuencia = "Excelente";
-                } else if (diferenciaDias < 3) {
-                    frecuencia = "Bueno";
-                } else if (diferenciaDias < 7) {
-                    frecuencia = "Regular";
-                } else {
-                    frecuencia = "Deficiente";
-                }
-
-                this.arrayCommit[i].setFrecuencia(frecuencia);
+            this.arrayCommit[i].setFrecuencia(frecuencia);
         }
 
         return this.arrayCommit[this.arrayCommit.length - 1].getFrecuencia();
@@ -93,6 +89,6 @@ class ArrayCommit {
         return new Date(anio, mes - 1, dia, horas, minutos);
     }
 
-    
+
 }
 export default ArrayCommit;

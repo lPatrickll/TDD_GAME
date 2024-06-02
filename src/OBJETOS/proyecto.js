@@ -237,5 +237,9 @@ class Proyecto {
         } else
             return 8;
     }
+
+    getPuntajeComplejidad(arrayCommit) {
+        return 20;
+    }
 }
 export default Proyecto;

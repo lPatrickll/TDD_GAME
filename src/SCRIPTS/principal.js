@@ -26,15 +26,13 @@ function manejarArchivoSeleccionado(event, proyecto) {
     const archivo = event.target.files[0];
     const lector = new FileReader();
 
-    console.log(proyecto);
-
-    lector.onload = function(event) {
+    lector.onload = function (event) {
         const contenidoArch = event.target.result;
-        console.log(contenidoArch);
+
         const proyectoSeleccionado = arrayProyectos.proyectosArray.find(p => p.getTitulo() === proyecto);
 
         const resultado = proyectoSeleccionado.ingresarCommitsPorContenidoDe(contenidoArch); // Pasar la ruta y el contenido
-        console.log(resultado);
+
         if (resultado === "Archivo leido") {
             alert("Commits añadidos con éxito desde el archivo, pulsa el boton ver commits.");
             actualizarListaProyectos(); // Actualizar la lista de proyectos después de añadir los commits
@@ -43,7 +41,7 @@ function manejarArchivoSeleccionado(event, proyecto) {
         }
     };
 
-    lector.onerror = function() {
+    lector.onerror = function () {
         mostrarMensajeError("Error al cargar el archivo.");
     };
 
@@ -169,9 +167,9 @@ function ingresarAlProyecto(nombreProyecto) {
 }
 
 function mostrarCommits(proyectoSeleccionado) {
-    
+
     const commitsProyecto = proyectoSeleccionado.mostrarCommits();
-    
+
     const listaCommits = crearElemento('ul');
 
     if (commitsProyecto.length > 0) {
@@ -195,7 +193,7 @@ function mostrarCommits(proyectoSeleccionado) {
     }
 
     commitsProyecto.forEach(commit => {
-        const commitItem = crearElemento('li', `Pruebas: ${commit.cantPruebas}, Líneas: ${commit.cantLineas}, Cobertura: ${commit.cobertura}%, Complejidad: ${commit.complejidad},frecuencia:${commit.frecuencia}`);
+        const commitItem = crearElemento('li', `Pruebas: ${commit.cantPruebas}, Líneas: ${commit.cantLineas}, Cobertura: ${commit.cobertura}%, Complejidad: ${commit.complejidad}, Frecuencia: ${commit.frecuencia}`);
         const btnMostrarRecomendacion = crearElemento('button', 'Ver recomendación');
         let paragraph;
         btnMostrarRecomendacion.addEventListener('click', () => {
@@ -246,7 +244,7 @@ function crearFormularioCommit(proyectoSeleccionado, nombreProyecto) {
         const cobertura = parseInt(inputCobertura.value);
         const complejidad = inputComplejidad.value;
         if (!isNaN(cantPruebas) && !isNaN(cantLineas) && cantPruebas >= 0 && cantLineas >= 0) {
-            proyectoSeleccionado.aniadirCommit(cantPruebas, cantLineas, cobertura, complejidad,Fecha);
+            proyectoSeleccionado.aniadirCommit(cantPruebas, cantLineas, cobertura, complejidad, Fecha);
             estilo = "block";
             estiloCommit = "none";
             ingresarAlProyecto(nombreProyecto);

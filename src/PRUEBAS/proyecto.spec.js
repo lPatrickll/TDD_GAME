@@ -425,4 +425,9 @@ describe("Proyecto", () => {
     proyecto.aniadirCommit(0, 40, 60);
     expect(proyecto.getPuntajeCobertura(proyecto.getArrayCommit())).toEqual(8);
   });
+
+  it("El proyecto calcula el promedio de la complejidad para un proyecto con un promedio Excelente de complejidad", () => {
+    proyecto.aniadirCommit(2, 40, 65, "Excelente");
+    expect(proyecto.getPuntajeComplejidad(proyecto.getArrayCommit())).toEqual(20);
+  });
 });
