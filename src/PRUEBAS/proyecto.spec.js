@@ -427,12 +427,37 @@ describe("Proyecto", () => {
   });
 
   it("El proyecto calcula el promedio de la complejidad para un proyecto con un promedio Excelente de complejidad", () => {
-    proyecto.aniadirCommit(2, 40, 65, "Excelente");
-    expect(proyecto.getPuntajeComplejidad(proyecto.getArrayCommit())).toEqual(20);
+    expect(proyecto.getPuntajeComplejidad(proyecto.getArrayCommit())).toEqual(8);
   });
 
   it("El proyecto calcula el promedio de la complejidad para un proyecto con un promedio Excelente de complejidad", () => {
     proyecto.aniadirCommit(2, 40, 65, "Excelente");
     expect(proyecto.getPuntajeComplejidad(proyecto.getArrayCommit())).toEqual(20);
+  });
+
+  it("El proyecto calcula el promedio de la complejidad para un proyecto con un promedio Bueno de complejidad", () => {
+    proyecto.aniadirCommit(2, 40, 65, "Bueno");
+    proyecto.aniadirCommit(2, 45, 80, "Bueno");
+    expect(proyecto.getPuntajeComplejidad(proyecto.getArrayCommit())).toEqual(16);
+  });
+
+  it("El proyecto calcula el promedio de la complejidad para un proyecto con un promedio Regular de complejidad", () => {
+    proyecto.aniadirCommit(2, 40, 65, "Regular");
+    proyecto.aniadirCommit(2, 45, 80, "Regular");
+    expect(proyecto.getPuntajeComplejidad(proyecto.getArrayCommit())).toEqual(12);
+  });
+
+  it("El proyecto calcula el promedio de la complejidad para un proyecto con un promedio Regular de complejidad", () => {
+    proyecto.aniadirCommit(2, 40, 65, "Deficiente ");
+    proyecto.aniadirCommit(2, 45, 80, "Deficiente ");
+    expect(proyecto.getPuntajeComplejidad(proyecto.getArrayCommit())).toEqual(8);
+  });
+
+  it("El proyecto calcula el promedio de la complejidad para un proyecto con un promedio Regular de complejidad", () => {
+    proyecto.aniadirCommit(2, 40, 65, 'Excelente');
+    proyecto.aniadirCommit(2, 50, 75, 'Bueno');
+    proyecto.aniadirCommit(2, 60, 85, 'Regular');
+    proyecto.aniadirCommit(2, 70, 95, 'Deficiente');
+    expect(proyecto.getPuntajeComplejidad(proyecto.getArrayCommit())).toEqual(16);
   });
 });

@@ -239,7 +239,38 @@ class Proyecto {
     }
 
     getPuntajeComplejidad(arrayCommit) {
-        return 20;
+        if (this.tieneCommits(arrayCommit)) {
+            const promedioComplejidad = this.calcularPromedioComplejidad(arrayCommit);
+
+            return this.asignarPuntajeComplejidad(promedioComplejidad);
+        } else {
+            return 8;
+        }
+    }
+
+    calcularPromedioComplejidad(arrayCommit) {
+        const complejidades = arrayCommit.getCommits().map(commit => {
+            switch (commit.getComplejidad().toLowerCase()) {
+                case 'excelente':
+                    return 1;
+                case 'bueno':
+                    return 2;
+                case 'regular':
+                    return 3;
+                case 'deficiente':
+                    return 4;
+            }
+        });
+
+        const sumaComplejidad = complejidades.reduce((acc, complejidad) => acc + complejidad, 0);
+        return sumaComplejidad / complejidades.length;
+    }
+
+    asignarPuntajeComplejidad(promedioComplejidad) {
+        if (promedioComplejidad <= 1.5) return 20;
+        if (promedioComplejidad <= 2.5) return 16;
+        if (promedioComplejidad <= 3.5) return 12;
+        return 8;
     }
 }
 export default Proyecto;
