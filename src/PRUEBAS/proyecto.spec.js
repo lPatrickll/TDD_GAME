@@ -505,5 +505,9 @@ describe("Proyecto", () => {
     expect(proyecto.obterPuntuacionTexto(puntuacion)).toEqual("Deficiente");
   });
 
-
+  it("Mostra la puntiacion para cualquier parametro solo con la puntuacion", () => {
+    proyecto.aniadirCommit(2, 40, 65, "Excelente");
+    let puntuacion = proyecto.getPuntajeComplejidad(proyecto.getArrayCommit());
+    expect(proyecto.obterPuntuacionTexto(puntuacion)).toEqual("Excelente");
+  });
 });

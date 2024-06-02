@@ -294,9 +294,11 @@ class Proyecto {
     }
 
     obterPuntuacionTexto(puntuacion) {
-
-        return "Deficiente";
-
+        if (puntuacion === 20) {
+            return "Excelente";
+        } else {
+            return "Deficiente";
+        }
     }
 }
 export default Proyecto;
