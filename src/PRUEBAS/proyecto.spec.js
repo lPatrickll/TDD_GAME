@@ -493,4 +493,17 @@ describe("Proyecto", () => {
     proyecto.aniadirCommit(10, 50, 80, "Buena", "01/06/2024-12:00", 1);
     expect(proyecto.getPuntajeFrecuenciaCommits(proyecto.getArrayCommit())).toEqual(8);
   });
+
+  it("El proyecto calcula el promedio de la complejidad para un proyecto con un promedio Regular de complejidad", () => {
+    proyecto.aniadirCommit(10, 50, 80, "Buena", "01/06/2024-12:00", 1);
+    expect(proyecto.getPuntajeFrecuenciaCommits(proyecto.getArrayCommit())).toEqual(8);
+  });
+
+  it("Mostra la puntiacion para cualquier parametro solo con la puntuacion", () => {
+    proyecto.aniadirCommit(10, 50, 80, "Buena", "01/06/2024-12:00", 1);
+    let puntuacion = proyecto.getPuntajeFrecuenciaCommits(proyecto.getArrayCommit());
+    expect(proyecto.obterPuntuacionTexto(puntuacion)).toEqual("Deficiente");
+  });
+
+
 });

@@ -194,8 +194,9 @@ function mostrarCommits(proyectoSeleccionado) {
 
     commitsProyecto.forEach(commit => {
         const commitItem = crearElemento('li', `Pruebas: ${commit.cantPruebas}, Líneas: ${commit.cantLineas}, Cobertura: ${commit.cobertura}%, Complejidad: ${commit.complejidad}, Frecuencia: ${commit.frecuencia}`);
-        const btnMostrarRecomendacion = crearElemento('button', 'Ver recomendación');
-        let paragraph;
+        // const btnMostrarRecomendacion = crearElemento('button', 'Ver recomendación');
+        // let paragraph;
+        /*
         btnMostrarRecomendacion.addEventListener('click', () => {
             if (!paragraph) {
                 paragraph = crearElemento('p', commit.recomendacion);
@@ -207,7 +208,8 @@ function mostrarCommits(proyectoSeleccionado) {
                 btnMostrarRecomendacion.textContent = 'Ver recomendación';
             }
         });
-        commitItem.appendChild(btnMostrarRecomendacion);
+        */
+        // commitItem.appendChild(btnMostrarRecomendacion);
         listaCommits.appendChild(commitItem);
     });
     contenedorProyectos.appendChild(listaCommits);

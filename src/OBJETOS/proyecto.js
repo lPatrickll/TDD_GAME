@@ -293,5 +293,10 @@ class Proyecto {
         }
     }
 
+    obterPuntuacionTexto(puntuacion) {
+
+        return "Deficiente";
+
+    }
 }
 export default Proyecto;
