@@ -309,7 +309,13 @@ function ingresarPuntajeProyecto(nombreProyecto) {
     const puntuacionCantPruebas = crearElemento('p', `${puntajeCantPruebas} puntos (${puntajeTextCantPruebas})`);
     contenedorProyectos.appendChild(puntuacionCantPruebas);
 
+    const tituloCantLineas = crearElemento('p', `Cantidad de Lineas por Commit (20%)`);
+    contenedorProyectos.appendChild(tituloCantLineas);
 
+    const puntajeCantLineas = proyectoSeleccionado.getPuntajeCantLineas(proyectoSeleccionado.getArrayCommit());
+    const puntajeTextCantLineas = proyectoSeleccionado.obterPuntuacionTexto(puntajeCantPruebas);
+    const puntuacionCantLineas = crearElemento('p', `${puntajeCantLineas} puntos (${puntajeTextCantLineas})`);
+    contenedorProyectos.appendChild(puntuacionCantLineas);
     ////////////////////////////////
     /*
     const puntajePruebas = proyectoSeleccionado.getPuntajePruebas();
