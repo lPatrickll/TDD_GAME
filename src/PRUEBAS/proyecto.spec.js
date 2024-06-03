@@ -1,7 +1,9 @@
 
 import Proyecto from "../OBJETOS/proyecto";
 import fs from 'fs';
-import path from 'path'; // Asegúrate de importar path
+import path from 'path'; 
+import Commit from "../OBJETOS/commit";
+import { profileEnd } from "console";
 
 describe("Proyecto", () => {
   let proyecto;
@@ -505,19 +507,26 @@ describe("Proyecto", () => {
     expect(proyecto.obterPuntuacionTexto(puntuacion)).toEqual("Deficiente");
   });
 
-  it("Mostra la puntiacion para cualquier parametro solo con la puntuacion igual a 20", () => {
+  it("Mostra la puntuacion para cualquier parametro solo con la puntuacion igual a 20", () => {
     proyecto.aniadirCommit(2, 40, 65, "Excelente");
     let puntuacion = proyecto.getPuntajeComplejidad(proyecto.getArrayCommit());
     expect(proyecto.obterPuntuacionTexto(puntuacion)).toEqual("Excelente");
   });
 
-  it("Mostra la puntiacion para cualquier parametro solo con la puntuacion igual a 16", () => {
+  it("Mostra la puntuacion para cualquier parametro solo con la puntuacion igual a 16", () => {
     let puntuacion = 16;
     expect(proyecto.obterPuntuacionTexto(puntuacion)).toEqual("Bueno");
   });
 
-  it("Mostra la puntiacion para cualquier parametro solo con la puntuacion igual a 12", () => {
+  it("Mostra la puntuacion para cualquier parametro solo con la puntuacion igual a 12", () => {
     let puntuacion = 12;
     expect(proyecto.obterPuntuacionTexto(puntuacion)).toEqual("Regular");
+  });
+
+
+  /* Devolver puntuacion general del proyecto */
+  it("Deberia devolver 0 para una puntuacion total de un proyecto", () => {
+
+    expect(proyecto.obtenerPuntuacionTotalProyecto()).toEqual(0);
   });
 });

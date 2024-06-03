@@ -304,5 +304,9 @@ class Proyecto {
             return "Deficiente";
         }
     }
+
+    obtenerPuntuacionTotalProyecto(){
+        return 0;
+    }
 }
 export default Proyecto;
