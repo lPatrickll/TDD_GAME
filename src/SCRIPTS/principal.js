@@ -1,6 +1,7 @@
 import ArrayCommit from "../OBJETOS/commitsArray";
 import ArrayProyectos from "../OBJETOS/proyectosArray";
 import crearElemento from "./crearElemento";
+import formatearFecha from "./formatearFecha";
 
 const arrayProyectos = new ArrayProyectos();
 
@@ -218,9 +219,10 @@ function mostrarCommits(proyectoSeleccionado) {
 function crearFormularioCommit(proyectoSeleccionado, nombreProyecto) {
     const tituloCommit = crearElemento('h3', 'Añadir commit');
     const formularioCommit = crearElemento('form');
+    const labelFecha = crearElemento('label', 'Fecha y Hora:');
     const inputFecha = crearElemento('input', '');
-    inputFecha.type = 'text';
-    inputFecha.placeholder = 'Fecha y Hora en formato YY/MM/DD-HH:MM';
+    inputFecha.type = 'datetime-local';
+    inputFecha.id = 'datetime';
     const inputCantPruebas = crearInputNumerico('Cantidad de pruebas');
 
     const inputCantLineas = crearInputNumerico('Cantidad de líneas');
@@ -241,7 +243,8 @@ function crearFormularioCommit(proyectoSeleccionado, nombreProyecto) {
 
     btnConfirmarCommit.addEventListener('click', () => {
         const cantPruebas = parseInt(inputCantPruebas.value);
-        const Fecha = inputFecha.value;
+        const fechaOriginal = inputFecha.value;
+        const Fecha = formatearFecha(fechaOriginal);
         const cantLineas = parseInt(inputCantLineas.value);
         const cobertura = parseInt(inputCobertura.value);
         const complejidad = inputComplejidad.value;
@@ -259,6 +262,7 @@ function crearFormularioCommit(proyectoSeleccionado, nombreProyecto) {
     });
 
     formularioCommit.appendChild(tituloCommit);
+    formularioCommit.appendChild(labelFecha);
     formularioCommit.appendChild(inputFecha);
     formularioCommit.appendChild(inputCantPruebas);
 
