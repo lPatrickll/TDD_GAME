@@ -3,12 +3,15 @@ import ArrayProyectos from "../OBJETOS/proyectosArray";
 
 describe("Ingresar Proyectos", () => {
   // (INICIO PROYECTO) -> FABIO *************************************
-  let arrayProyectos = new ArrayProyectos();
-
-
+  let arrayProyectos;
+  let proyecto1;
+  let proyecto2;
+  let proyecto3;
   beforeEach(() => {
     arrayProyectos = new ArrayProyectos();
-
+    proyecto1 = new Proyecto("Proyecto 1");
+    proyecto2 = new Proyecto("Proyecto 2");
+    proyecto3 = new Proyecto("Proyecto 3");
   });
 
   it("Si no ingreso nada, deberia devolverme un array de proyectos vacio", () => {
@@ -48,7 +51,6 @@ describe("Ingresar Proyectos", () => {
   });
 
   it("Si solo le ingreso un proyecto deberia devolverme ese mismo proyecto", () => {
-    let proyecto1 = new Proyecto("Proyecto 1")
     //proyecto1.aniadirCommit(10, 50, 20, "Buena", "01/06/2024-13:00", 1);
     arrayProyectos.aniadirProyectoObj(proyecto1);
 
@@ -60,11 +62,23 @@ describe("Ingresar Proyectos", () => {
     expect(arrayProyectos.obtenerRankingDeProyectos()).toEqual(expectedArray);
   });
 
-  /*
   it("Si solo le ingreso 2 proyectos deberia devolverme un ranking de proyectos sin ordenar", () => {
-    proyecto.aniadirCommit(10, 50, 20, "Buena", "01/06/2024-13:00", 1);
-    proyecto.aniadirCommit(0, 40, 50, "Excelente", "2/06/2024-12:00", 2);
-    proyecto.aniadirCommit(0, 10, 40, "Regular", "3/06/2024-11:00", 3);
-    expect(arrayProyectos.obtenerRankingDeProyectos()).toEqual(["Proyecto1", "Proyecto2"]);
-  });*/
+    proyecto1.aniadirCommit(10, 50, 20, "Buena", "01/06/2024-13:00", 1);
+    proyecto2.aniadirCommit(12, 40, 50, "Excelente", "2/06/2024-12:00", 2);
+    arrayProyectos.aniadirProyectoObj(proyecto1);
+    arrayProyectos.aniadirProyectoObj(proyecto2);
+
+    let expectedArray = [
+      {
+        "titulo": "Proyecto 2",
+        "puntajeTotal": 68
+      },
+      {
+        "titulo": "Proyecto 1",
+        "puntajeTotal": 56
+      }
+    ];
+
+    expect(arrayProyectos.obtenerRankingDeProyectos()).toEqual(expectedArray);
+  });
 });

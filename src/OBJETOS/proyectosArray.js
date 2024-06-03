@@ -30,14 +30,15 @@ class ArrayProyectos {
                 titulo: proyecto.getTitulo(),
                 puntajeTotal: proyecto.obtenerPuntuacionTotalProyecto()
             }));
-
+    
             // Ordenar el array por puntaje total en orden descendente
-            ranking.sort((a, b) => a.puntajeTotal - b.puntajeTotal);
-
+            ranking.sort((a, b) => b.puntajeTotal - a.puntajeTotal);
+    
             return ranking;
         }
         return [];
     }
+    
 };
 
 export default ArrayProyectos;
