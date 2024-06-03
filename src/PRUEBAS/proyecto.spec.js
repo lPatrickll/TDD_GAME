@@ -545,6 +545,4 @@ describe("Proyecto", () => {
     proyecto.aniadirCommit(0, 10, 40, "Regular", "3/06/2024-11:00", 3);
     expect(proyecto.obtenerPuntuacionTotalProyecto()).toEqual(64);
   });
-
-
 });

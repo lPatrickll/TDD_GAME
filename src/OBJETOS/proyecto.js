@@ -113,15 +113,6 @@ class Proyecto {
         return porcentaje;
     }
 
-    calcularPuntuacionGeneral() {
-        const puntajePruebas = this.getPuntajePruebas();
-        const puntajeLineasCodigo = this.getPuntajeLineasCodigo();
-        const puntajeCobertura = this.getPorcentajeCobertura();
-
-        // Aquí puedes ajustar cómo se combinan estas puntuaciones para obtener una puntuación general
-        return (puntajePruebas + puntajeLineasCodigo + puntajeCobertura) / 3;
-    }
-
     ingresarCommitsPor(rutaArchivoTxt) {
         const archivoTxt = fs.readFileSync(path.join(__dirname, rutaArchivoTxt), 'utf8').trim();
         if (archivoTxt.length === 0) {
