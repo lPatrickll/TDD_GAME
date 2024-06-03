@@ -530,11 +530,21 @@ describe("Proyecto", () => {
     expect(proyecto.obtenerPuntuacionTotalProyecto()).toEqual(0);
   });
 
-  it("Deberia solo devolver la puntuacion de la cantidad de pruebas para un proyecto ", () => {
+  it("Deberia devolver la puntuacion total para un proyecto ", () => {
     //aniadirCommit(cantPruebas, cantLineas, cobertura, complejidad, fecha)
     proyecto.aniadirCommit(10, 50, 80, "Buena", "01/06/2024-12:00", 1);
     proyecto.aniadirCommit(0, 50, 80, "Buena", "10/06/2024-12:00", 2);
     proyecto.aniadirCommit(0, 50, 80, "Buena", "20/06/2024-12:00", 3);
-    expect(proyecto.obtenerPuntuacionTotalProyecto()).toEqual(12);
+    expect(proyecto.obtenerPuntuacionTotalProyecto()).toEqual(56);
   });
+
+  it("Deberia solo devolver la puntuacion total para un proyecto ", () => {
+    //aniadirCommit(cantPruebas, cantLineas, cobertura, complejidad, fecha)
+    proyecto.aniadirCommit(10, 50, 20, "Buena", "01/06/2024-13:00", 1);
+    proyecto.aniadirCommit(0, 40, 50, "Excelente", "2/06/2024-12:00", 2);
+    proyecto.aniadirCommit(0, 10, 40, "Regular", "3/06/2024-11:00", 3);
+    expect(proyecto.obtenerPuntuacionTotalProyecto()).toEqual(64);
+  });
+
+
 });

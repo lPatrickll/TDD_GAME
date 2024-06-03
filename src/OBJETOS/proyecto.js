@@ -307,7 +307,7 @@ class Proyecto {
 
     obtenerPuntuacionTotalProyecto(){
         if( this.tieneCommits(this.arrayCommit) ){
-            let total = this.getPuntajeCantPruebas(this.arrayCommit);
+            let total = this.getPuntajeCantPruebas(this.arrayCommit) + this.getPuntajeCantLineas(this.arrayCommit) + this.getPuntajeCobertura(this.arrayCommit) + this.getPuntajeFrecuenciaCommits(this.arrayCommit) + this.getPuntajeComplejidad(this.arrayCommit);
             return total;
         }
         return 0;
