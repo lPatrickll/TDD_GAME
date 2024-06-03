@@ -7,6 +7,7 @@ import { profileEnd } from "console";
 
 describe("Proyecto", () => {
   let proyecto;
+
   beforeEach(() => {
     proyecto = new Proyecto("Proyecto 1");
   });
@@ -526,7 +527,14 @@ describe("Proyecto", () => {
 
   /* Devolver puntuacion general del proyecto */
   it("Deberia devolver 0 para una puntuacion total de un proyecto", () => {
-
     expect(proyecto.obtenerPuntuacionTotalProyecto()).toEqual(0);
+  });
+
+  it("Deberia solo devolver la puntuacion de la cantidad de pruebas para un proyecto ", () => {
+    //aniadirCommit(cantPruebas, cantLineas, cobertura, complejidad, fecha)
+    proyecto.aniadirCommit(10, 50, 80, "Buena", "01/06/2024-12:00", 1);
+    proyecto.aniadirCommit(0, 50, 80, "Buena", "10/06/2024-12:00", 2);
+    proyecto.aniadirCommit(0, 50, 80, "Buena", "20/06/2024-12:00", 3);
+    expect(proyecto.obtenerPuntuacionTotalProyecto()).toEqual(12);
   });
 });
