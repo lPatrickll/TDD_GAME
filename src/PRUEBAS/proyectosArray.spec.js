@@ -7,11 +7,15 @@ describe("Ingresar Proyectos", () => {
   let proyecto1;
   let proyecto2;
   let proyecto3;
+  let proyecto4;
+  let proyecto5;
   beforeEach(() => {
     arrayProyectos = new ArrayProyectos();
     proyecto1 = new Proyecto("Proyecto 1");
     proyecto2 = new Proyecto("Proyecto 2");
     proyecto3 = new Proyecto("Proyecto 3");
+    proyecto4 = new Proyecto("Proyecto 4");
+    proyecto5 = new Proyecto("Proyecto 5");
   });
 
   it("Si no ingreso nada, deberia devolverme un array de proyectos vacio", () => {
@@ -75,6 +79,44 @@ describe("Ingresar Proyectos", () => {
       },
       {
         "titulo": "Proyecto 1",
+        "puntajeTotal": 56
+      }
+    ];
+
+    expect(arrayProyectos.obtenerRankingDeProyectos()).toEqual(expectedArray);
+  });
+
+  it("Si solo le ingreso 2 proyectos deberia devolverme un ranking de proyectos sin ordenar", () => {
+    proyecto1.aniadirCommit(10, 50, 20, "Buena", "01/06/2024-13:00", 1);
+    proyecto2.aniadirCommit(12, 30, 60, "Excelente", "2/06/2024-12:00", 2);
+    proyecto3.aniadirCommit(89, 20, 30, "Regular", "2/06/2024-12:00", 3);
+    proyecto4.aniadirCommit(100, 90, 60, "Excelente", "2/06/2024-12:00", 4);
+    proyecto5.aniadirCommit(22, 70, 50, "Buena", "2/06/2024-12:00", 5);
+    arrayProyectos.aniadirProyectoObj(proyecto1);
+    arrayProyectos.aniadirProyectoObj(proyecto2);
+    arrayProyectos.aniadirProyectoObj(proyecto3);
+    arrayProyectos.aniadirProyectoObj(proyecto4);
+    arrayProyectos.aniadirProyectoObj(proyecto5);
+
+    let expectedArray = [
+      {
+        "titulo": "Proyecto 2",
+        "puntajeTotal": 72
+      },
+      {
+        "titulo": "Proyecto 4",
+        "puntajeTotal": 68
+      },
+      {
+        "titulo": "Proyecto 3",
+        "puntajeTotal": 64
+      },
+      {
+        "titulo": "Proyecto 1",
+        "puntajeTotal": 56
+      },
+      {
+        "titulo": "Proyecto 5",
         "puntajeTotal": 56
       }
     ];
