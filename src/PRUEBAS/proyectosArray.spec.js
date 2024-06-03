@@ -47,7 +47,10 @@ describe("Ingresar Proyectos", () => {
     expect(arrayProyectos.obtenerRankingDeProyectos()).toEqual([]);
   });
 
-
+  it("Si solo le ingreso un proyecto deberia devolverme ese mismo proyecto", () => {
+    arrayProyectos.aniadirProyecto("Proyecto1");
+    expect(arrayProyectos.obtenerRankingDeProyectos()).toEqual(["Proyecto1"]);
+  });
 
 
 });

@@ -20,6 +20,9 @@ class ArrayProyectos {
     }
 
     obtenerRankingDeProyectos(){
+        if(this.proyectosArray.length !== 0){
+            return this.getProyectos();
+        }
         return [];
     }
 };
