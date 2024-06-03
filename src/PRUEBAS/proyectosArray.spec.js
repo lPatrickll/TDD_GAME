@@ -48,9 +48,23 @@ describe("Ingresar Proyectos", () => {
   });
 
   it("Si solo le ingreso un proyecto deberia devolverme ese mismo proyecto", () => {
-    arrayProyectos.aniadirProyecto("Proyecto1");
-    expect(arrayProyectos.obtenerRankingDeProyectos()).toEqual(["Proyecto1"]);
+    let proyecto1 = new Proyecto("Proyecto 1")
+    //proyecto1.aniadirCommit(10, 50, 20, "Buena", "01/06/2024-13:00", 1);
+    arrayProyectos.aniadirProyectoObj(proyecto1);
+
+    let expectedArray = [{
+      "titulo": "Proyecto 1",
+      "puntajeTotal": 0
+    }];
+
+    expect(arrayProyectos.obtenerRankingDeProyectos()).toEqual(expectedArray);
   });
 
-
+  /*
+  it("Si solo le ingreso 2 proyectos deberia devolverme un ranking de proyectos sin ordenar", () => {
+    proyecto.aniadirCommit(10, 50, 20, "Buena", "01/06/2024-13:00", 1);
+    proyecto.aniadirCommit(0, 40, 50, "Excelente", "2/06/2024-12:00", 2);
+    proyecto.aniadirCommit(0, 10, 40, "Regular", "3/06/2024-11:00", 3);
+    expect(arrayProyectos.obtenerRankingDeProyectos()).toEqual(["Proyecto1", "Proyecto2"]);
+  });*/
 });

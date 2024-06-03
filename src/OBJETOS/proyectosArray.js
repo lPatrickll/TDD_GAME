@@ -10,6 +10,10 @@ class ArrayProyectos {
         this.proyectosArray.push(nuevoProyecto);
     }
 
+    aniadirProyectoObj(nuevoProyecto) {
+        this.proyectosArray.push(nuevoProyecto);
+    }
+
     getProyectos() {
         return this.proyectosArray.map(proyecto => proyecto.getTitulo());
     }
@@ -19,9 +23,18 @@ class ArrayProyectos {
         return this.proyectosArray;
     }
 
-    obtenerRankingDeProyectos(){
-        if(this.proyectosArray.length !== 0){
-            return this.getProyectos();
+    obtenerRankingDeProyectos() {
+        if (this.proyectosArray.length !== 0) {
+            // Crear un array con objetos que contengan solo el título y el puntaje total
+            let ranking = this.proyectosArray.map(proyecto => ({
+                titulo: proyecto.getTitulo(),
+                puntajeTotal: proyecto.obtenerPuntuacionTotalProyecto()
+            }));
+
+            // Ordenar el array por puntaje total en orden descendente
+            ranking.sort((a, b) => a.puntajeTotal - b.puntajeTotal);
+
+            return ranking;
         }
         return [];
     }
