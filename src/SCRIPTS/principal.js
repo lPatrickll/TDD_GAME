@@ -12,11 +12,15 @@ const btnConfirmarProyecto = document.getElementById('btnConfirmProyecto');
 const contenedorProyectos = document.getElementById('proyectoContainer');
 const mensajeError = document.getElementById('mensajeError');
 
+const btnMostrarRanking = document.getElementById('btnMostrarRanking');
+
 let estilo = "none";
 let estiloCommit = "none";
 
 btnAniadirProyecto.addEventListener('click', mostrarFormularioProyecto);
 btnConfirmarProyecto.addEventListener('click', confirmarProyecto);
+
+btnMostrarRanking.addEventListener('click', mostrarRankingProyectos);
 
 function mostrarFormularioProyecto() {
     btnAniadirProyecto.style.display = 'none';
@@ -83,6 +87,7 @@ function mostrarMensajeExito(mensaje) {
 }
 
 function actualizarListaProyectos() {
+    btnMostrarRanking.style.display = 'block';
     contenedorProyectos.innerHTML = '';
     const proyectos = arrayProyectos.getProyectos();
     proyectos.forEach(proyecto => {
@@ -344,6 +349,26 @@ function ingresarPuntajeProyecto(nombreProyecto) {
     const puntajeTextComplejidad = proyectoSeleccionado.obterPuntuacionTexto(puntajeComplejidad);
     const puntuacionComplejidad = crearElemento('li', `${puntajeComplejidad} puntos (${puntajeTextComplejidad})`);
     contenedorProyectos.appendChild(puntuacionComplejidad);
+}
+
+function mostrarRankingProyectos() {
+    btnMostrarRanking.style.display = 'none';
+
+    contenedorProyectos.innerHTML = '';
+    const ranking = arrayProyectos.obtenerRankingDeProyectos();
+
+    const listaRanking = crearElemento('ol');
+
+    ranking.forEach(proyecto => {
+        const itemRanking = crearElemento('li', `${proyecto.titulo} - Puntaje: ${proyecto.puntajeTotal}`);
+        listaRanking.appendChild(itemRanking);
+    });
+
+    contenedorProyectos.appendChild(listaRanking);
+
+    const btnVolver = crearElemento('button', 'Volver a la lista de proyectos');
+    btnVolver.addEventListener('click', actualizarListaProyectos);
+    contenedorProyectos.appendChild(btnVolver);
 }
 
 actualizarListaProyectos();
